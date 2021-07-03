@@ -14,9 +14,9 @@ const userSchema = mongoose.Schema({
         required: true
     },
     username: {
-        type: String, 
-        unique: true, 
-        required: true
+        type: String,
+        trim: true,
+        required: "Username is Required"
     },
     email: { 
         type: String, 
@@ -24,11 +24,12 @@ const userSchema = mongoose.Schema({
         unique: true,
         match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
     },
-    password: { 
-        type: String, 
-        required: true, 
-        minlength: 8 
-    },
+    password: {
+        type: String,
+        trim: true,
+        required: "Password is Required",
+        validate: [({ length }) => length >= 8, "Password should be longer."]
+      },
     userCreated: {
         type: Date,
         default: Date.now
