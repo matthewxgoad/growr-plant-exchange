@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
+
 const AddressSchema = mongoose.Schema({
     street: String,
     city: String,
     state: String,
     zipcode: Number
   });
+
 const placeSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.objectId,
     title: {
@@ -26,4 +28,5 @@ const placeSchema = mongoose.Schema({
     },
     website: String,
 });
+
 module.exports = mongoose.model('Place', placeSchema);
