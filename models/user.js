@@ -1,18 +1,8 @@
 const mongoose = require("mongoose");
-
-const AddressSchema = mongoose.Schema({
-    street: String,
-    city: String,
-    state: String,
-    zipcode: Number
-  });
+const Schema = mongoose.Schema;
 
 const userSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.objectId,
-    fullname: {
-        type: String, 
-        required: true
-    },
+    // _id: mongoose.Schema.Types.objectId,
     username: {
         type: String,
         trim: true,
@@ -36,24 +26,26 @@ const userSchema = mongoose.Schema({
     },
     userImage: { 
         type: String, 
-        required: true 
+        required: false 
     },
     address: {
-        type: AddressSchema,
+        type: String,
         required: true,
-    },
-    trades: {
-        type: Schema.Types.objectId,
-        ref: "trade"
-    },
-    events: {
-        type: Schema.Types.objectId,
-        ref: "event"
-    },
-    places: {
-        type: Schema.Types.objectId,
-        ref: "place"
     }
+    // trades: {
+    //     type: Schema.Types.objectId,
+    //     ref: "trade"
+    // },
+    // events: {
+    //     type: Schema.Types.objectId,
+    //     ref: "event"
+    // },
+    // places: {
+    //     type: Schema.Types.objectId,
+    //     ref: "place"
+    // }
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
