@@ -93,20 +93,23 @@ export default function TemporaryDrawer() {
 
   return (
     <div className="rightbar">
-      {['right'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>
-            <img alt="menu-tab" src="./assets/plant5.png" />
-            </Button>
-          <Drawer 
-          anchor={anchor} 
-          open={state[anchor]} 
-          onClose={toggleDrawer(anchor, false)}
-          classes={{ paper: classes.paper }}>
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      <div className="menu-btn">
+        {['right'].map((anchor) => (
+          <React.Fragment key={anchor}>
+            <Button onClick={toggleDrawer(anchor, true)}>
+              
+                <img alt="menu-tab" src="./assets/plant5.png" />
+              </Button>
+            <Drawer 
+            anchor={anchor} 
+            open={state[anchor]} 
+            onClose={toggleDrawer(anchor, false)}
+            classes={{ paper: classes.paper }}>
+              {list(anchor)}
+            </Drawer>
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }
