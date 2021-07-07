@@ -39,7 +39,13 @@ const userSchema = new Schema({
         type: mongoose.Types.ObjectId, 
         required: true, 
         ref: 'Place'
-    }]
+    }],
+    trades: [
+        { 
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        ref: 'Trade'
+    }],
 });
 
 userSchema.plugin(uniqueValidator);
