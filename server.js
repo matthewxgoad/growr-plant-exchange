@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 // const routes = require("./routes");
 const usersRoutes = require('./routes/api/user-routes');
 const placeRoutes = require('./routes/api/place-routes');
+const tradeRoutes = require('./routes/api/trade-routes');
 const HttpError = require('./models/http-error');
 const path = require('path');
 const app = express();
@@ -28,6 +29,7 @@ app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 // app.use(routes);
 app.use('/api/users', usersRoutes);
 app.use('/api/places', placeRoutes);
+app.use('/api/trades', tradeRoutes)
 
 // Error handler
 app.use((req, res, next) => {
