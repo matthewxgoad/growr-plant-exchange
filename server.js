@@ -2,9 +2,10 @@ require('dotenv').config();
 const express = require("express");
 const bodyParser = require('body-parser');
 
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 // const routes = require("./routes");
-const usersRoutes = require('./routes//api/user-routes')
+const usersRoutes = require('./routes/api/user-routes');
+const placeRoutes = require('./routes/api/place-routes');
 const HttpError = require('./models/http-error');
 
 const app = express();
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV === "production") {
 
 // app.use(routes);
 app.use('/api/users', usersRoutes);
+app.use('/api/places', placeRoutes);
 
 // Error handler
 app.use((req, res, next) => {
@@ -40,12 +42,13 @@ app.use((error ,req, res, next) => {
 
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-//   }
-// );
+mongoose.connect("mongodb://localhost/grower",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  }
+);
 
 // Start the API server
 app.listen(PORT, function () {
