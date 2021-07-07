@@ -1,10 +1,11 @@
-# ![GROWR-logo](./assets/growr-logo.png)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+# ![GROWR-logo](./assets/growr-logo.png)
 ## Table of Contents
 
 ****
 
 ## Project overview
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 Welcome to Growr, a plant exchange app with the focus of promoting community/local gathering and networking through the love of all things plant related.
 
