@@ -7,7 +7,7 @@ body {
 .header {
     display:flex;
     justify-content:center;
-    margin: 10%;
+    margin-top: 100px;
 }
 
 h1 {
@@ -16,11 +16,13 @@ h1 {
     font-size:70px;
     letter-spacing:2px;
     text-align: left;
+    margin-bottom: 0;
 }
 
 h3 {
     text-align: center;
     margin-bottom: 10px;
+    margin-top: 0;
 }
 
 .search-field {
@@ -45,4 +47,3 @@ h3 {
     background:#09621f;
     cursor: pointer;
 }
-
