@@ -8,9 +8,7 @@ export default function Leftbar(props) {
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
-      <Link class="link" to="/">
-        <h1>growr</h1>
-      </Link>
+        <Link class="link" to="/">growr</Link>
         <h2>{props.name}</h2>
       </div>
     </div>
