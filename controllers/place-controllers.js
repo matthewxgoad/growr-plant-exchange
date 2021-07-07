@@ -1,4 +1,3 @@
-// const uuid = require('uuid/v4');
 const { validationResult } = require('express-validator');
 const mongoose = require('mongoose');
 
@@ -22,10 +21,7 @@ const getPlaceById = async (req, res, next) => {
   }
 
   if (!place) {
-    const error = new HttpError(
-      'Could not find a place for the provided id.',
-      404
-    );
+    const error = new HttpError('Could not find a place for the provided id.', 404);
     return next(error);
   }
 
@@ -35,23 +31,16 @@ const getPlaceById = async (req, res, next) => {
 const getPlacesByUserId = async (req, res, next) => {
   const userId = req.params.uid;
 
-  // let places;
   let userWithPlaces;
   try {
     userWithPlaces = await User.findById(userId).populate('places');
   } catch (err) {
-    const error = new HttpError(
-      'Fetching places failed, please try again later',
-      500
-    );
+    const error = new HttpError('Fetching places failed, please try again later', 500);
     return next(error);
   }
 
-  // if (!places || places.length === 0) {
   if (!userWithPlaces || userWithPlaces.places.length === 0) {
-    return next(
-      new HttpError('Could not find places for the provided user id.', 404)
-    );
+    return next(new HttpError('Could not find places for the provided user id.', 404));
   }
 
   res.json({
@@ -64,9 +53,7 @@ const getPlacesByUserId = async (req, res, next) => {
 const createPlace = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return next(
-      new HttpError('Invalid inputs passed, please check your data.', 422)
-    );
+    return next(new HttpError('Invalid inputs passed, please check your data.', 422));
   }
 
   const { title, description, address, creator } = req.body;
@@ -83,8 +70,7 @@ const createPlace = async (req, res, next) => {
     description,
     address,
     location: coordinates,
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/400px-Empire_State_Building_%28aerial_view%29.jpg',
+    image:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/400px-Empire_State_Building_%28aerial_view%29.jpg',
     creator
   });
 
@@ -108,10 +94,7 @@ const createPlace = async (req, res, next) => {
     user.places.push(createdPlace);
     await user.save();
   } catch (err) {
-    const error = new HttpError(
-      'Creating place failed, please try again.',
-      500
-    );
+    const error = new HttpError('Creating place failed, please try again.', 500);
     return next(error);
   }
 
@@ -125,10 +108,7 @@ const deletePlace = async (req, res, next) => {
   try {
     place = await Place.findById(placeId).populate('creator');
   } catch (err) {
-    const error = new HttpError(
-      'Something went wrong, could not delete place.',
-      500
-    );
+    const error = new HttpError('Something went wrong, could not delete place.', 500);
     return next(error);
   }
 
@@ -142,10 +122,7 @@ const deletePlace = async (req, res, next) => {
     place.creator.places.pull(place);
     await place.creator.save();
   } catch (err) {
-    const error = new HttpError(
-      'Something went wrong, could not delete place.',
-      500
-    );
+    const error = new HttpError('Something went wrong, could not delete place.', 500);
     return next(error);
   }
 
