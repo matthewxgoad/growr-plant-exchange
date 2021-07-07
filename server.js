@@ -1,3 +1,4 @@
+const fs = require('fs');
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require('body-parser');
@@ -7,7 +8,7 @@ const mongoose = require("mongoose");
 const usersRoutes = require('./routes/api/user-routes');
 const placeRoutes = require('./routes/api/place-routes');
 const HttpError = require('./models/http-error');
-
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -20,7 +21,9 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
+
+// Static images
+app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
 // app.use(routes);
 app.use('/api/users', usersRoutes);
@@ -33,6 +36,11 @@ app.use((req, res, next) => {
 });
 
 app.use((error ,req, res, next) => {
+  if(req.file) {
+    fs.unlink(req.file.path, (err) => {
+      console.log(err)
+    })
+  }
   if (res.headerSent) {
       return next(error);
   }
