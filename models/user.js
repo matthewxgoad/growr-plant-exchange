@@ -1,51 +1,47 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
+
 const Schema = mongoose.Schema;
 
-const userSchema = mongoose.Schema({
-    // _id: mongoose.Schema.Types.objectId,
-    username: {
-        type: String,
-        trim: true,
-        required: "Username is Required"
+const userSchema = new Schema({
+    name: { 
+        type: String, 
+        required: true 
     },
     email: { 
         type: String, 
-        required: true,
-        unique: true,
-        match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+        required: true, 
+        unique: true 
     },
-    password: {
-        type: String,
-        trim: true,
-        required: "Password is Required",
-        validate: [({ length }) => length >= 8, "Password should be longer."]
-      },
+    password: { 
+        type: String, 
+        required: true, 
+        minlength: 6 
+    },
+    image: { 
+        type: String, 
+        required: true 
+    },
+    address: { 
+        type: String, 
+        required: true 
+    },
+    location: {
+        lat: { type: Number, required: true },
+        lng: { type: Number, required: true },
+    },
     userCreated: {
         type: Date,
         default: Date.now
     },
-    userImage: { 
-        type: String, 
-        required: false 
-    },
-    address: {
-        type: String,
-        required: true,
-    }
-    // trades: {
-    //     type: Schema.Types.objectId,
-    //     ref: "trade"
-    // },
-    // events: {
-    //     type: Schema.Types.objectId,
-    //     ref: "event"
-    // },
-    // places: {
-    //     type: Schema.Types.objectId,
-    //     ref: "place"
-    // }
+    places: [
+        { 
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        ref: 'Place'
+    }]
 });
 
-const User = mongoose.model("User", userSchema);
+userSchema.plugin(uniqueValidator);
 
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
