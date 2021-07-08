@@ -9,9 +9,9 @@
 
 Welcome to Growr, a plant exchange app with the focus of promoting community/local gathering and networking through the love of all things plant related.
 
-With the dependency on mobile apps rooted deep in our behaviors, we want to revitilize what it means to be part of and have the support of a community. Growr acts as a facilitator of "good neighbor vibes" by targeting the all your acitivities within a set radius - we're in support of face-to-plant interactions, not emoji-to-emoji. :seedling:
+With the dependency on mobile apps rooted deep in our behaviors, we want to revitalize what it means to be part of and have the support of a community. Growr acts as a facilitator of "good neighbor vibes" by targeting the all your activities within a set radius - we're in support of face-to-plant interactions, not emoji-to-emoji. :seedling:
 
-Exchanges are just to get you into first gear - trade seeds for clippings, give away some free aloe pups, request some strange succulant to add to the collection - grow not just new plants but also your community and hit up the farmer's market or start a new urban/community garden with your new-to-you neighbors!
+Exchanges are just to get you into first gear - trade seeds for clippings, give away some free aloe pups, request some strange succulent to add to the collection - grow not just new plants but also your community and hit up the farmer's market or start a new urban/community garden with your new-to-you neighbors!
 
 ### Project Status:
 
@@ -57,13 +57,13 @@ The following components are used to build the code for this project:
 
 The following lists all functions within this project:
 
-* user can see read-only **demo** page through a zipcode search on landing page
-* user can see **about** page with info on app and creators
-* user can **login or signup** for account with app
-* user can acess **profile** page to see personal trades and message board
-* user can access **trades, events, and places** within the set local area according to their own address
-* user can **add** to trades, events, and places using a dynamic prompt page
-* user can **message** other trade cards' users to initiate conversation
+* user can *see read-only **demo** page through a zipcode search on landing page*
+* user can *see **about** page with info on app and creators*
+* user can ***login or signup** for account with app*
+* user can *acess **profile** page to see personal trades and message board*
+* user can *access **trades, events, and places** within the set local area according to their own address*
+* user can ***add** to trades, events, and places using a dynamic prompt page*
+* user can ***message** other trade cards' users to initiate conversation*
 
 
 ### Process:
