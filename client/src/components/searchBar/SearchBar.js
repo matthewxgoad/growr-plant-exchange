@@ -4,7 +4,6 @@ import "./searchbar.css"
 export default function SearchBar() {
   return (
     <>
-      {/* <div className="homeContainer"> */}
         <div className="header">
           <form>
             <h1>growr</h1>
@@ -15,7 +14,6 @@ export default function SearchBar() {
               </div>
           </form>
         </div>
-      {/* </div> */}
     </>
   );
 }
