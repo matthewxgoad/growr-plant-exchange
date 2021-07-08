@@ -1,33 +1,30 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const AddressSchema = mongoose.Schema({
-    street: String,
-    city: String,
-    state: String,
-    zipcode: Number
-  });
+const Schema = mongoose.Schema;
 
-const eventSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.objectId,
-    title: {
+const eventSchema = new Schema({
+    title: { 
         type: String, 
-        required: true
+        required: true 
     },
-    description: {
-        type: String, 
-        required: true,
-        maxlength: 200
+    description: { 
+        type: String,
+        required: true 
     },
-    eventImage: { 
+    image: { 
         type: String, 
         required: true 
     },
     address: {
-        type: AddressSchema,
-        required: true,
+        type: String, 
+        required: true 
+    },
+    location: {
+        lat: { type: Number, required: true },
+        lng: { type: Number, required: true },
     },
     date: {
-        type: Date,
+        type: String,
         required: true
     },
     time: {
@@ -35,6 +32,11 @@ const eventSchema = mongoose.Schema({
         required: true
     },
     website: String,
+    creator: { 
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        ref: 'User'
+    }
 });
 
 module.exports = mongoose.model('Event', eventSchema);

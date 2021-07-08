@@ -46,6 +46,12 @@ const userSchema = new Schema({
         required: true, 
         ref: 'Trade'
     }],
+    events: [
+        { 
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        ref: 'Event'
+    }],
 });
 
 userSchema.plugin(uniqueValidator);
