@@ -52,6 +52,12 @@ const userSchema = new Schema({
         required: true, 
         ref: 'Event'
     }],
+    comments: [
+        { 
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        ref: 'Comment'
+    }],
 });
 
 userSchema.plugin(uniqueValidator);
