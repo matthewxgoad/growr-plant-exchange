@@ -1,7 +1,7 @@
 body {
     margin:0;
     padding:0;
-    background-color: rgb(238, 245, 241)
+    background-color: rgb(181, 181, 181)
 }
 
 .header {
@@ -14,7 +14,6 @@ h1 {
     font-family: 'Dancing Script', cursive;
     color: rgb(90, 167, 90);
     font-size:70px;
-    letter-spacing:2px;
     text-align: left;
     margin-bottom: 0;
 }

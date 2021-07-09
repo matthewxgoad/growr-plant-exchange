@@ -49,43 +49,63 @@ export default function TemporaryDrawer() {
 
       <List className>
         <ListItem button component={Link} color="inherit" href="/add">
-          <ListItemText primary="add"/>
+          <ListItemText primary="add"/> 
+          {/* Viewable if logged in */}
         </ListItem>
       </List>
       <List>
         <ListItem button component={Link} color="inherit" href="/trade">
           <ListItemText primary="trade"/>
+                    {/* Viewable if logged in */}
         </ListItem>
       </List>
       <List>
         <ListItem button component={Link} color="inherit" href="/events">
           <ListItemText primary="events"/>
+                    {/* Viewable if logged in */}
         </ListItem>
       </List>
       <List>
         <ListItem button component={Link} color="inherit" href="/places">
           <ListItemText primary="places"/>
+                    {/* Viewable if logged in */}
         </ListItem>
       </List>
       <List>
         <ListItem button component={Link} color="inherit" href="/profile">
           <ListItemText primary="profile"/>
+                    {/* Viewable if logged in */}
         </ListItem>
       </List>
       <List>
         <ListItem button component={Link} color="inherit" href="/inbox">
           <ListItemText primary="inbox"/>
+                    {/* Viewable if logged in */}
         </ListItem>
       </List>
       <Divider/>
       <List>
         <ListItem button component={Link} color="inherit" href="/about">
           <ListItemText primary="about"/>
+                    {/* Viewable if logged in OR out */}
+        </ListItem>
+      </List>
+      <List>
+        <ListItem button component={Link} color="inherit" href="/signup">
+          <ListItemText primary="sign up"/>
+                    {/* Viewable if logged out */}
+        </ListItem>
+      </List>
+      <List>
+        <ListItem button component={Link} color="inherit" href="/login">
+          <ListItemText primary="login"/>
+                    {/* Viewable if logged out */}
         </ListItem>
       </List>
       <List>
         <ListItem button component={Link} color="inherit" href="/logout">
           <ListItemText primary="logout"/>
+                    {/* Viewable if logged in */}
         </ListItem>
       </List>
     </div>
