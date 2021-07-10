@@ -1,4 +1,4 @@
-import SearchBar from "../../components/searchBar/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import NavBar from "../../components/NavBar";
 import './Root.css';
 
