@@ -135,22 +135,22 @@ export default function NavBar() {
             growr
           </Typography>
           <Button color="inherit">
-            <Link className={classes.links} to="/login">
+            <Link component={Link} className={classes.links} href="/login">
               Log In
             </Link>
           </Button>
           <Button color="inherit">
-            <Link className={classes.links} to="/signup">
+            <Link component={Link} className={classes.links} href="/signup">
               Sign Up
             </Link>
           </Button>
           <Button color="inherit">
-            <Link className={classes.links} to="/profile">
+            <Link component={Link} className={classes.links} href="/profile">
               Profile
             </Link>
           </Button>
           <Button color="inherit">
-            <Link className={classes.links} to="/logout">
+            <Link component={Link} className={classes.links} href="/logout">
               Logout
             </Link>
           </Button>
