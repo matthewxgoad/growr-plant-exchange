@@ -1,13 +1,13 @@
-import Trade from "./pages/trade/Trade";
-import Events from "./pages/events/Events";
-import Places from "./pages/places/Places";
-import Login from "./pages/login/Login";
-import Profile from "./pages/profile/Profile";
-import SignUp from "./pages/signup/SignUp";
-import About from "./pages/about/About";
-import Inbox from "./pages/inbox/Inbox";
-import Add from "./pages/add/add";
-import Root from "./pages/root/Root";
+import Trade from "./pages/Trade";
+import Events from "./pages/Events";
+import Places from "./pages/Places";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import SignUp from "./pages/SignUp";
+import About from "./pages/About";
+import Inbox from "./pages/Inbox";
+import Add from "./pages/Add";
+import Root from "./pages/Root";
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,7 +15,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-// import "./App.css";
+import "./App.css";
 
 function App() {
   return (

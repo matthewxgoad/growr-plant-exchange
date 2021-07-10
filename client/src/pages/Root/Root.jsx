@@ -1,6 +1,6 @@
 import SearchBar from "../../components/searchBar/SearchBar";
-import RootNav from "../../components/rootNav/RootNav";
 import NavBar from "../../components/NavBar";
+import './Root.css';
 
 export default function Root() {
   return (
