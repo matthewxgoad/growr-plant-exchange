@@ -1,0 +1,50 @@
+[
+  {
+    "img": "./assets/pictures/iu.jpeg",
+    "title": "Image",
+    "author": "author",
+    "cols": 2
+  },
+  {
+    "img": "../../../../assets/pictures/iu-2.jpeg",
+    "title": "Image",
+    "author": "author",
+    "cols": 2
+  },
+  {
+    "img": "../../../../assets/pictures/iu-3.jpeg",
+    "title": "Image",
+    "author": "author",
+    "cols": 2
+  },
+  {
+    "img": "../../../../assets/pictures/iu-4.jpeg",
+    "title": "Image",
+    "author": "author",
+    "cols": 2
+  },
+  {
+    "img": "../../../../assets/pictures/iu-5.jpeg",
+    "title": "Image",
+    "author": "author",
+    "cols": 2
+  },
+  {
+    "img": "../../../../assets/pictures/iu.jpeg",
+    "title": "Image",
+    "author": "author",
+    "cols": 2
+  },
+  {
+    "img": "../../../../assets/pictures/iu-6.jpeg",
+    "title": "Image",
+    "author": "author",
+    "cols": 2
+  },
+  {
+    "img": "../../../../assets/pictures/iu-7.jpeg",
+    "title": "Image",
+    "author": "author",
+    "cols": 2
+  }
+]

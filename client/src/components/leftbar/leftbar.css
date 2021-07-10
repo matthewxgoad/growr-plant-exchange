@@ -12,9 +12,10 @@ h2 {
 }
 
 .sidebar {
-  flex: 2;
-  position: sticky;
+  /* flex: 2; */
+  /* position: sticky; */
   background-color: rgb(238, 245, 241);
+  /* height: 100%; */
 }
 
 .sidebarWrapper {

@@ -10,6 +10,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import grey from '@material-ui/core/colors/grey';
 import Link from '@material-ui/core/Link';
+import { Grid } from "@material-ui/core";
 
 const drawerColor = grey[800]; 
 
@@ -112,24 +113,26 @@ export default function TemporaryDrawer() {
   );
 
   return (
-    <div className="rightbar">
-      <div className="menu-btn">
-        {['right'].map((anchor) => (
-          <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>
-              
-                <img alt="menu-tab" src="./assets/plant5.png" />
-              </Button>
-            <Drawer 
-            anchor={anchor} 
-            open={state[anchor]} 
-            onClose={toggleDrawer(anchor, false)}
-            classes={{ paper: classes.paper }}>
-              {list(anchor)}
-            </Drawer>
-          </React.Fragment>
-        ))}
+    <Grid item xs>
+      <div className="rightbar">
+        <div className="menu-btn">
+          {['right'].map((anchor) => (
+            <React.Fragment key={anchor}>
+              <Button onClick={toggleDrawer(anchor, true)}>
+      
+                  <img alt="menu-tab" src="./assets/plant5.png" />
+                </Button>
+              <Drawer
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+              classes={{ paper: classes.paper }}>
+                {list(anchor)}
+              </Drawer>
+            </React.Fragment>
+          ))}
+        </div>
       </div>
-    </div>
+    </Grid>
   );
 }

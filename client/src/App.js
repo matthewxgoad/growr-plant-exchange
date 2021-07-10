@@ -9,6 +9,7 @@ import Inbox from "./pages/inbox/Inbox";
 import Add from "./pages/add/add";
 import Root from "./pages/root/Root";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
