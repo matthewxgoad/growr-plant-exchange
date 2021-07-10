@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Gallery() {
+export default function Gallery(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        
+        {props.children}
       </Grid>
     </div>
   );
