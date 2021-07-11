@@ -2,6 +2,7 @@ const fs = require('fs');
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const mongoose = require("mongoose");
 // const routes = require("./routes");
@@ -16,6 +17,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+var cors = require('cors')
 app.use(bodyParser.json());
 
 // Define middleware here
@@ -25,6 +27,8 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+app.use(cors())
 
 // Static images
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
