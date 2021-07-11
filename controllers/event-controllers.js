@@ -55,18 +55,35 @@ const createEvent = async (req, res, next) => {
 
   const { title, description, address, creator, date, time } = req.body;
 
-  let coordinates;
-  try {
-    coordinates = await getCoordsForAddress(address);
-  } catch (error) {
-    return next(error);
-  }
+  // let coordinates;
+  // try {
+  //   coordinates = await getCoordsForAddress(address);
+  // } catch (error) {
+  //   return next(error);
+  // }
+
+    ////// editing code block 58 - 63
+
+    let coords;
+    let coordsArray;
+    try {
+      coords = await getCoordsForAddress(address);
+      coordsArray = Object.values(coords)
+      let temp = coordsArray[0];
+      coordsArray[0]=coordsArray[1];
+      coordsArray[1]=temp;
+      console.log(coordsArray)
+    } catch (error) {
+      return next(error);
+    }
+  
+    ////// end of edit code block 58 - 63
 
   const createdEvent = new Event({
     title,
     description,
     address,
-    location: coordinates,
+    location: {type: 'Point', coordinates: coordsArray},
     image: req.file.path,
     creator,
     date,

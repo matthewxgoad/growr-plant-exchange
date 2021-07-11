@@ -61,7 +61,8 @@ mongoose.connect("mongodb://localhost/grower",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
   }
 );
 
