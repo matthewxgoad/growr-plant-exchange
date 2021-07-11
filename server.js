@@ -10,6 +10,9 @@ const placeRoutes = require('./routes/api/place-routes');
 const tradeRoutes = require('./routes/api/trade-routes');
 const eventRoutes = require('./routes/api/event-routes');
 const commentRoutes = require('./routes/api/comment-routes');
+const conversationRoutes = require('./routes/api/conversation-routes');
+const messageRoutes = require('./routes/api/message-routes');
+
 
 const HttpError = require('./models/http-error');
 const path = require('path');
@@ -35,6 +38,8 @@ app.use('/api/places', placeRoutes);
 app.use('/api/trades', tradeRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/comments', commentRoutes);
+app.use('/api/conversations', conversationRoutes);
+app.use('/api/messages', messageRoutes);
 
 // Error handler
 app.use((req, res, next) => {
