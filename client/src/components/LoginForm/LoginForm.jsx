@@ -1,13 +1,12 @@
-import React from 'react';
+import { React, useState }from 'react';
+import axios from 'axios';
 import './LoginForm.css';
-import { Grid,Paper, TextField, Button, OutlinedInput } from '@material-ui/core';
+import { Grid,Paper, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 import Link from "@material-ui/core/Link";
 
-
 const headerColor = green[600];
-
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -39,15 +38,58 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUpForm() {
     const classes = useStyles();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    // let axiosConfig = {
+    //     headers: {
+    //         'Content-Type': 'application/json;charset=UTF-8',
+    //         "Access-Control-Allow-Origin": "*",
+    //     }
+    //   };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log('button clicked')
+    
+          const user = {
+            email: email,
+            password: password,
+          };
+    
+          console.log(user)
+
+          try {
+            await axios.post("http://localhost:3000/api/users/login", user);
+          } catch (err) {
+            console.log(err);
+          }
+      };
+
+    const handleEmailInput = (event) =>{
+    setEmail(event.target.value)
+    }
+
+    const handlePasswordInput = (event) =>{
+    setPassword(event.target.value)
+    }
+
     return (
         <Grid>
             <Paper elevation={20} className={classes.paper}>
                 <Grid align='center'>
                     <h2 className={classes.header}>growr</h2>
                 </Grid>
-                <form>
-                    <TextField size='small' className={classes.textField} variant='outlined' required fullWidth label='Email' placeholder='Enter your email'/>
-                    <TextField size='small' className={classes.textField} variant='outlined' type='password' required fullWidth label='Password'placeholder='Enter your password'/>
+                <form onSubmit={handleSubmit}>
+                    <TextField 
+                        value={email}
+                        onChange={handleEmailInput}
+                        size='small' className={classes.textField} variant='outlined' required fullWidth label='Email' placeholder='Enter your email'/>
+                    <TextField 
+                        value={password}
+                        onChange={handlePasswordInput} 
+                        size='small' className={classes.textField} variant='outlined' type='password' required fullWidth label='Password'placeholder='Enter your password'/>
                     <div className={classes.loginBtn}>
                         <Button type='submit' variant='contained' color='primary'>Log In</Button>
                     </div>
