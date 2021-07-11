@@ -1,16 +1,19 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Grid } from "@material-ui/core";
-import './TradeCard.css';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    width: 300,
+  },
+  media: {
+    height: 250,
   },
   bullet: {
     display: "inline-block",
@@ -18,44 +21,54 @@ const useStyles = makeStyles({
     transform: "scale(0.8)",
   },
   title: {
-    fontSize: 14,
+    fontSize: "1.5rem",
+    fontFamily: "Oswald",
+  },
+  subtitle: {
+    fontSize: "1rem",
+  },
+  timeStamp: {
+    fontSize: ".75rem",
   },
   pos: {
     marginBottom: 12,
   },
 });
 
-export default function TradeCard() {
+export default function TradeCard({ trade }) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Grid item xs={12}>
-      <Card className={classes.root}>
+    <Card className={classes.root} variant="outlined">
+      <CardActionArea>
+        {/* trade Photo */}
+        <CardMedia
+          className={classes.media}
+          image={trade.photo}
+          title={trade.description}
+        />
+
         <CardContent>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            Word of the Day
+          {/* trade Title */}
+          <Typography className={classes.title}>{trade.title}</Typography>
+
+          <Typography gutterBottom variant="caption" color="textSecondary">
+            {trade.description}
           </Typography>
-          <Typography variant="h5" component="h2">
-            be{bull}nev{bull}o{bull}lent
+
+          <Typography gutterBottom className={classes.timeStamp}>
+            {trade.timeStamp}
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography variant="body2" component="p">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
-          </Typography>
+          
         </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-    </Grid>
+      </CardActionArea>
+
+      <CardActions>
+        {/* Button click initiates either email or messaging */}
+        <Button size="small" color="secondary">
+          {trade.tradeType}
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
