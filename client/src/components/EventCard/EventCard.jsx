@@ -10,14 +10,15 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: 200,
+    height: 400,
   },
   media: {
-    height: 140,
+    height: 150,
   },
 });
 
-export default function EventCard() {
+export default function EventCard( {event} ) {
   const classes = useStyles();
 
   return (
@@ -25,24 +26,25 @@ export default function EventCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="./assets/pictures/iu-7.jpeg"
-          title="Contemplative Reptile"
+          image={event.photo}
+          title={event.description}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Succulent Swap
+          <Typography gutterBottom variant="h6">
+            {event.title}
           </Typography>
-          <Typography gutterBottom variant="h5" component="h2">
-            Tower Grove Stone Pavillion
+          <Typography gutterBottom variant="subtitle1">
+            {event.date} {event.time}<br/>
+            {event.address.street}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Come trade your favorite plant babies in Tower Grove at the Stone Pavillion.
+          <Typography variant="caption" color="textSecondary">
+            {event.description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          website
+          {event.website}
         </Button>
       </CardActions>
     </Card>

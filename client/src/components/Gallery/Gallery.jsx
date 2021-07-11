@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import { Grid, Container } from '@material-ui/core';
 import './Gallery.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,10 +18,12 @@ export default function Gallery(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-        {props.children}
-      </Grid>
-    </div>
+    <Container>
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          {props.children}
+        </Grid>
+      </div>
+    </Container>
   );
 }
