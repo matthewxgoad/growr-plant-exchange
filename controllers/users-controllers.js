@@ -18,6 +18,26 @@ const getUsers = async (req, res, next) => {
   res.json({users: users.map(user => user.toObject({ getters: true }))});
 };
 
+const getUsersWithin = async (req, res, next) => {
+  const sourceUser = User.findOne({_id: '60ea461fb7f9902e932b2d1e'});
+  const {location: {coordinates}} = (await sourceUser).toObject();
+  console.log(coordinates);
+
+  let result = await User.find({
+    location: {
+      $near: {
+        $geometry: {
+          type: "Point",
+          coordinates: coordinates,
+        },
+        $maxDistance: 2000,
+      },
+    },
+  });
+  res.send(result)
+}
+
+
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -39,12 +59,31 @@ const signup = async (req, res, next) => {
     return next(error);
   }
   
-  let coordinates;
+  // let coordinates;
+  // try {
+  //   coordinates = await getCoordsForAddress(address);
+  // } catch (error) {
+  //   return next(error);
+  // }
+
+  ////// editing code block 42 - 47
+
+  let coords;
+  let coordsArray;
   try {
-    coordinates = await getCoordsForAddress(address);
+    coords = await getCoordsForAddress(address);
+    coordsArray = Object.values(coords)
+    let temp = coordsArray[0];
+    coordsArray[0]=coordsArray[1];
+    coordsArray[1]=temp;
+    console.log(coordsArray)
   } catch (error) {
     return next(error);
   }
+
+  ////// end of edit code block 42 - 47
+
+
 
   let hashedPassword;
   try {
@@ -63,7 +102,7 @@ const signup = async (req, res, next) => {
     password: hashedPassword,
     image: req.file.path,
     address,
-    location: coordinates,
+    location: {type: 'Point', coordinates: coordsArray},
     places: []
   });
 
@@ -114,5 +153,6 @@ const login = async (req, res, next) => {
 };
 
 exports.getUsers = getUsers;
+exports.getUsersWithin = getUsersWithin;
 exports.signup = signup;
 exports.login = login;
