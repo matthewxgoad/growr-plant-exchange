@@ -1,11 +1,3 @@
-import React from "react";
-import "./style.css";
+import EventCard from "./EventCard";
 
-function eventCard() {
-  return (
-    <>
-    </>
-  );
-}
-
-export default eventCard;
+export default EventCard;

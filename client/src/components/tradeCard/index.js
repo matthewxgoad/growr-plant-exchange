@@ -1,11 +1,4 @@
-import React from "react";
-import "./style.css";
+import TradeCard from "./TradeCard";
 
-function tradeCard() {
-  return (
-    <>
-    </>
-  );
-}
+export default TradeCard;
 
-export default tradeCard;
