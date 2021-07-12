@@ -1,11 +1,3 @@
-import React from "react";
-import "./style.css";
+import ProfileCard from "./ProfileCard";
 
-function profileCard() {
-  return (
-    <>
-    </>
-  );
-}
-
-export default profileCard;
+export default ProfileCard;

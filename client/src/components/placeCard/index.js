@@ -1,11 +1,3 @@
-import React from "react";
-import "./style.css";
+import PlaceCard from "./PlaceCard";
 
-function placeCard() {
-  return (
-    <>
-    </>
-  );
-}
-
-export default placeCard;
+export default PlaceCard;
