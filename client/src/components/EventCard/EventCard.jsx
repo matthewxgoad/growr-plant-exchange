@@ -68,7 +68,6 @@ export default function EventCard({ event }) {
           <Typography gutterBottom className={classes.distance}>
             {event.distance} away
           </Typography>
-          
         </CardContent>
       </CardActionArea>
 
