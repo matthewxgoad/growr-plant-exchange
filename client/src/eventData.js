@@ -35,7 +35,7 @@ const events = [
     },
     {
         id: 3,
-        title: 'Farmers Market Creve Coer',
+        title: 'Farmers Market Creve Coeur',
         description: 'The best market in town.',
         photo: 'https://www.sonomacounty.com/sites/default/files/2019-07/farmers_markets_petaluma_by_sierra_downey_sonoma_county_1920x968.jpg',
         eventDate: '09-30-2021',

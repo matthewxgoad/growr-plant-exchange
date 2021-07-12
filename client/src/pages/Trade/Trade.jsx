@@ -1,23 +1,26 @@
-import NavBar from "../../components/NavBar";
-import Gallery from "../../components/Gallery/Gallery";
-import TradeCard from "../../components/TradeCard/TradeCard";
-import { Grid } from "@material-ui/core";
-import "./Trade.css";
+import TradeCard from '../../components/TradeCard';
+import NavBar from '../../components/NavBar';
+import Gallery from '../../components/Gallery';
+import tradeData from '../../tradeData';
+import { Grid } from '@material-ui/core';
+import { useState } from 'react';
+import "./Trade.css"
 
-export default function Trade() {
+export default function Places() {
+  const [ tradeDataState, setTradeDataState ] = useState(tradeData);
+  
   return (
     <>
-    <NavBar />
-    <Grid 
-      container
-      direction="row"
-      justifyContent="space-between"
-      alignItems="flex-start"
-      >
+      <NavBar />
       <Gallery>
-        <TradeCard />
+      {tradeDataState.map(trade => {
+        return (
+          <Grid item xs>
+            <TradeCard trade={trade}/>
+          </Grid>
+        )
+      })}
       </Gallery>
-    </Grid>
     </>
   );
 }
