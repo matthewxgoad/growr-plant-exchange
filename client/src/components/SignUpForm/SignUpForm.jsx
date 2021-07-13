@@ -59,6 +59,7 @@ export default function SignUpForm() {
       console.log(user)
 
       try {
+        console.log('>>>>>making a call<<<<<<<', user)
         await axios.post("http://localhost:3000/api/users/signup", user);
       } catch (err) {
         console.log(err);
@@ -82,7 +83,7 @@ export default function SignUpForm() {
     }
 
     const handleFileInput = (event) =>{
-      setSelectedFile(event.target.value)
+      setSelectedFile(event.target.files[0])
     }
 
   return (
@@ -110,8 +111,9 @@ export default function SignUpForm() {
                     type='password' required fullWidth label='Password'placeholder='Create a password'/>
                   <h5 className={classes.uploadCaption}>Upload a Profile Picture</h5>
                   <input 
-                    value={selectedFile}
+                    // value={selectedFile}
                     onChange={handleFileInput}
+                    encType = 'multipart/form-data'
                     required accept="image/*" type="file"/> 
                   <br/>
                   <div className={classes.submitBtn}>
