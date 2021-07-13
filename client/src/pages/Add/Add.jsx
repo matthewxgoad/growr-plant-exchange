@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Add() {
+export default function Add(props) {
 
   const classes = useStyles();
 
@@ -45,7 +45,7 @@ export default function Add() {
 
   return (
     <>
-      <NavBar />
+      <NavBar page="add"/>
       <Container>
         <Box>
           <form className={classes.root} noValidate autoComplete="off">

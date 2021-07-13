@@ -47,9 +47,13 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: "white",
   },
+  pageName: {
+    fontFamily: 'Oswald',
+    fontSize: '1.25rem',
+  }
 }));
 
-export default function NavBar() {
+export default function NavBar( {page} ) {
 
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -131,8 +135,8 @@ export default function NavBar() {
               </React.Fragment>
             ))}
           </div>
-          <Typography variant="h6" className={classes.title}>
-            growr
+          <Typography variant="h4" className={classes.title}>
+            growr <span className={classes.pageName}>{page}</span>
           </Typography>
           <Button color="inherit">
             <Link component={Link} className={classes.links} href="/login">

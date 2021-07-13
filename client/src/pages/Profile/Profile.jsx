@@ -16,14 +16,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Profile() {
+export default function Profile(props) {
   const classes = useStyles();
 
   const [tradeDataState, setTradeDataState] = useState(tradeData);
 
   return (
     <>
-      <NavBar />
+      <NavBar page="profile"/>
 
       <Grid container className={classes.root}>
         
