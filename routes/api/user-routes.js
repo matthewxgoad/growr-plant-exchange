@@ -12,7 +12,7 @@ router.get('/radius/trades/:uid', usersController.getUsersTradesWithin);
 router.get('/radius/places/:uid', usersController.getUsersPlacesWithin);
 router.get('/radius/events/:uid', usersController.getUsersEventsWithin);
 
-router.post('/signup', fileUpload.single('image'),
+router.post('/signup', //fileUpload.single('image'),
   [
     check('name').not().isEmpty(),
     check('email').normalizeEmail().isEmail(),
