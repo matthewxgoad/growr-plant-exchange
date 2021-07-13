@@ -57,11 +57,13 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
+  console.log('>>>>>>>>>>>>', req.file)
+
   const createdUser = new User({
     name,
     email,
     password: hashedPassword,
-    image: req.file.path,
+    // image: req.file.path,
     address,
     location: coordinates,
     places: []
