@@ -44,27 +44,48 @@ export default function SignUpForm() {
 
   const classes = useStyles();
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log('button clicked')
+
+  //     const user = {
+  //       name: name,
+  //       email: email,
+  //       address: address,
+  //       password: password,
+  //       image: selectedFile
+  //     };
+
+  //     console.log(user)
+
+  //     try {
+  //       console.log('>>>>>making a call<<<<<<<', user)
+  //       await axios.post("http://localhost:3000/api/users/signup", user);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('button clicked')
 
-      const user = {
-        name: name,
-        email: email,
-        address: address,
-        password: password,
-        image: selectedFile
-      };
+    const formData = new FormData()
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('address', address);
+    formData.append('password', password);
+    formData.append('image', selectedFile);
 
-      console.log(user)
 
-      try {
-        console.log('>>>>>making a call<<<<<<<', user)
-        await axios.post("http://localhost:3000/api/users/signup", user);
-      } catch (err) {
-        console.log(err);
-      }
-  };
+    try {
+      console.log('>>>>>making a call<<<<<<<', formData)
+      await axios.post("http://localhost:3000/api/users/signup", formData);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
     const handleNameInput = (event) =>{
       setName(event.target.value)
