@@ -9,7 +9,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import grey from "@material-ui/core/colors/grey";
-import green from "@material-ui/core/colors/green";
+import teal from "@material-ui/core/colors/teal";
 import Link from "@material-ui/core/Link";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
@@ -17,7 +17,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
 
 const drawerColor = grey[800];
-const navColor = green[600];
+const navColor = teal[600];
 
 const useStyles = makeStyles((theme) => ({
   paper: {
