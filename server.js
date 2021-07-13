@@ -30,6 +30,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.use(cors())
+
 // Static images
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
