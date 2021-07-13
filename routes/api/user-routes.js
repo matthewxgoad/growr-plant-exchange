@@ -8,7 +8,9 @@ const router = express.Router();
 
 router.get('/', usersController.getUsers);
 
-router.get('/radius', usersController.getUsersWithin);
+router.get('/radius/trades/:uid', usersController.getUsersTradesWithin);
+router.get('/radius/places/:uid', usersController.getUsersPlacesWithin);
+router.get('/radius/events/:uid', usersController.getUsersEventsWithin);
 
 router.post('/signup', fileUpload.single('image'),
   [

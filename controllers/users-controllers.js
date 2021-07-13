@@ -1,8 +1,6 @@
 const { validationResult } = require('express-validator');
-
 const bcrypt = require("bcryptjs");
 // const jwt = require("jsonwebtoken");
-
 const HttpError = require('../models/http-error');
 const User = require('../models/user');
 const getCoordsForAddress = require('../util/location');
@@ -18,8 +16,9 @@ const getUsers = async (req, res, next) => {
   res.json({users: users.map(user => user.toObject({ getters: true }))});
 };
 
-const getUsersWithin = async (req, res, next) => {
-  const sourceUser = User.findOne({_id: '60ea461fb7f9902e932b2d1e'});
+const getUsersTradesWithin = async (req, res, next) => {
+  const userId = req.params.uid;
+  const sourceUser = User.findById(userId);
   const {location: {coordinates}} = (await sourceUser).toObject();
   console.log(coordinates);
 
@@ -34,6 +33,48 @@ const getUsersWithin = async (req, res, next) => {
       },
     },
   }).populate("trades")
+
+  res.send(result)
+}
+
+const getUsersPlacesWithin = async (req, res, next) => {
+  const userId = req.params.uid;
+  const sourceUser = User.findById(userId);
+  const {location: {coordinates}} = (await sourceUser).toObject();
+  console.log(coordinates);
+
+  let result = await User.find({
+    location: {
+      $near: {
+        $geometry: {
+          type: "Point",
+          coordinates: coordinates,
+        },
+        $maxDistance: 2000,
+      },
+    },
+  }).populate("places")
+
+  res.send(result)
+}
+
+const getUsersEventsWithin = async (req, res, next) => {
+  const userId = req.params.uid;
+  const sourceUser = User.findById(userId);
+  const {location: {coordinates}} = (await sourceUser).toObject();
+  console.log(coordinates);
+
+  let result = await User.find({
+    location: {
+      $near: {
+        $geometry: {
+          type: "Point",
+          coordinates: coordinates,
+        },
+        $maxDistance: 2000,
+      },
+    },
+  }).populate("events")
 
   res.send(result)
 }
@@ -154,6 +195,8 @@ const login = async (req, res, next) => {
 };
 
 exports.getUsers = getUsers;
-exports.getUsersWithin = getUsersWithin;
+exports.getUsersTradesWithin = getUsersTradesWithin;
+exports.getUsersPlacesWithin = getUsersPlacesWithin;
+exports.getUsersEventsWithin = getUsersEventsWithin;
 exports.signup = signup;
 exports.login = login;
