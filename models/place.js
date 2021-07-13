@@ -20,8 +20,19 @@ const placeSchema = new Schema({
         required: true 
     },
     location: {
-        lat: { type: Number, required: true },
-        lng: { type: Number, required: true },
+        // testing geoJSON format into schema
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+
+        // lat: { type: Number, required: true },
+        // lng: { type: Number, required: true },
     },
     website: String,
     creator: { type: mongoose.Types.ObjectId, required: true, ref: 'User'}

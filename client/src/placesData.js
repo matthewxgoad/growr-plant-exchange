@@ -40,7 +40,91 @@ const places = [
         } ,
         website: "https://soulardmarket.one/",
         distance: "15 miles",
-    }
+    },
+    {
+        id: 4,
+        title: "Creve Coeur Farmers Market",
+        description: "Farmers' market in Creve Coeur, Missouri",
+        photo: "https://www.tripsavvy.com/thmb/_5GQ6qUHicUJa77D4DsSMgtavSo=/2125x1411/filters:fill(auto,1)/GettyImages-524148133-5b073eb2a474be00378c82bf.jpg",
+        address: {
+            street: '934 E Rue De La Banque',
+            city: 'Creve Coeur',
+            state: 'MO',
+            zip: 63141
+        },
+        website: 'no website availible',
+        distance: '10 mile',
+    },
+    {
+        id: 5,
+        title: "Creve Coeur Farmers Market",
+        description: "Farmers' market in Creve Coeur, Missouri",
+        photo: "https://www.tripsavvy.com/thmb/_5GQ6qUHicUJa77D4DsSMgtavSo=/2125x1411/filters:fill(auto,1)/GettyImages-524148133-5b073eb2a474be00378c82bf.jpg",
+        address: {
+            street: '934 E Rue De La Banque',
+            city: 'Creve Coeur',
+            state: 'MO',
+            zip: 63141
+        },
+        website: 'no website availible',
+        distance: '10 mile',
+    },
+    {
+        id: 6,
+        title: "Creve Coeur Farmers Market",
+        description: "Farmers' market in Creve Coeur, Missouri",
+        photo: "https://www.tripsavvy.com/thmb/_5GQ6qUHicUJa77D4DsSMgtavSo=/2125x1411/filters:fill(auto,1)/GettyImages-524148133-5b073eb2a474be00378c82bf.jpg",
+        address: {
+            street: '934 E Rue De La Banque',
+            city: 'Creve Coeur',
+            state: 'MO',
+            zip: 63141
+        },
+        website: 'no website availible',
+        distance: '10 mile',
+    },
+    {
+        id: 7,
+        title: "Creve Coeur Farmers Market",
+        description: "Farmers' market in Creve Coeur, Missouri",
+        photo: "https://www.tripsavvy.com/thmb/_5GQ6qUHicUJa77D4DsSMgtavSo=/2125x1411/filters:fill(auto,1)/GettyImages-524148133-5b073eb2a474be00378c82bf.jpg",
+        address: {
+            street: '934 E Rue De La Banque',
+            city: 'Creve Coeur',
+            state: 'MO',
+            zip: 63141
+        },
+        website: 'no website availible',
+        distance: '10 mile',
+    },
+    {
+        id: 8,
+        title: "Creve Coeur Farmers Market",
+        description: "Farmers' market in Creve Coeur, Missouri",
+        photo: "https://www.tripsavvy.com/thmb/_5GQ6qUHicUJa77D4DsSMgtavSo=/2125x1411/filters:fill(auto,1)/GettyImages-524148133-5b073eb2a474be00378c82bf.jpg",
+        address: {
+            street: '934 E Rue De La Banque',
+            city: 'Creve Coeur',
+            state: 'MO',
+            zip: 63141
+        },
+        website: 'no website availible',
+        distance: '10 mile',
+    },
+    {
+        id: 9,
+        title: "Creve Coeur Farmers Market",
+        description: "Farmers' market in Creve Coeur, Missouri",
+        photo: "https://www.tripsavvy.com/thmb/_5GQ6qUHicUJa77D4DsSMgtavSo=/2125x1411/filters:fill(auto,1)/GettyImages-524148133-5b073eb2a474be00378c82bf.jpg",
+        address: {
+            street: '934 E Rue De La Banque',
+            city: 'Creve Coeur',
+            state: 'MO',
+            zip: 63141
+        },
+        website: 'no website availible',
+        distance: '10 mile',
+    },
 
     
   ];

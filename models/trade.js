@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-const tradeSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.objectId,
+const Schema = mongoose.Schema;
+
+const tradeSchema = new Schema({
     title: {
         type: String, 
         required: true
@@ -9,21 +10,24 @@ const tradeSchema = mongoose.Schema({
     description: {
         type: String, 
         required: true,
-        maxlength: 200
+    },
+    image: { 
+        type: String, 
+        required: true 
     },
     tradeCreated: {
         type: Date,
         default: Date.now
     },
-    tradeImage: { 
-        type: String, 
-        required: true 
-    },
     tradeType: { 
-        type: String, 
-        enum: ['Free', 'Swap', 'Request'], 
+        type: String,
         default: 'Free' 
     },
+    creator: { 
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        ref: 'User'
+    }
 });
 
 module.exports = mongoose.model('Trade', tradeSchema);

@@ -20,15 +20,26 @@ const userSchema = new Schema({
     },
     image: { 
         type: String, 
-        required: true 
+        required: false 
     },
     address: { 
         type: String, 
         required: true 
     },
     location: {
-        lat: { type: Number, required: true },
-        lng: { type: Number, required: true },
+        // testing geoJSON format into schema
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+
+        // lat: { type: Number, required: true },
+        // lng: { type: Number, required: true },
     },
     userCreated: {
         type: Date,
@@ -39,9 +50,30 @@ const userSchema = new Schema({
         type: mongoose.Types.ObjectId, 
         required: true, 
         ref: 'Place'
-    }]
+    }],
+    trades: [
+        { 
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        ref: 'Trade'
+    }],
+    events: [
+        { 
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        ref: 'Event'
+    }],
+    comments: [
+        { 
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        ref: 'Comment'
+    }],
 });
 
 userSchema.plugin(uniqueValidator);
+
+// setting index 2dsphere to use $geoWithin or $near
+userSchema.index({ location: '2dsphere'});
 
 module.exports = mongoose.model('User', userSchema);
