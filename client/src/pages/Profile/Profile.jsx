@@ -12,36 +12,28 @@ import "./Profile.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    margin: '2rem',
+    margin: "2rem",
   },
-
 }));
 
-export default function Profile() {
-
+export default function Profile(props) {
   const classes = useStyles();
-
 
   const [tradeDataState, setTradeDataState] = useState(tradeData);
 
   return (
     <>
-      <NavBar />
+      <NavBar page="profile"/>
+
       <Grid container className={classes.root}>
-        <Grid item xs>
-          <ProfileCard />
-        </Grid>
-        <Grid item xs={8}>
+        
           <Gallery>
+          <ProfileCard />
             {tradeDataState.map((trade) => {
-              return (
-                <Grid item xs={5}>
-                  <TradeCard trade={trade} />
-                </Grid>
-              );
+              return <TradeCard trade={trade} />;
             })}
           </Gallery>
-        </Grid>
+        
       </Grid>
     </>
   );

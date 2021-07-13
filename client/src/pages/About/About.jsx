@@ -1,10 +1,10 @@
 import NavBar from '../../components/NavBar';
 import "./About.css"
 
-export default function About() {
+export default function About(props) {
   return (
     <>
-      <NavBar />
+      <NavBar page="about"/>
       <div>About</div>
     </>
   );

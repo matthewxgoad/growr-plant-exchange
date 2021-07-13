@@ -11,14 +11,10 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   root: {
     width: 300,
+    margin: "10px",
   },
   media: {
     height: 250,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
   },
   title: {
     fontSize: "1.5rem",
@@ -29,9 +25,6 @@ const useStyles = makeStyles({
   },
   timeStamp: {
     fontSize: ".75rem",
-  },
-  pos: {
-    marginBottom: 12,
   },
 });
 

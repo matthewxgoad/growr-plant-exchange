@@ -6,18 +6,18 @@ import { Grid } from '@material-ui/core';
 import { useState } from 'react';
 import "./Events.css"
 
-export default function Events() {
+export default function Events(props) {
   const [ eventDataState, setEventDataState ] = useState(eventData);
   
   return (
     <>
-      <NavBar />
+      <NavBar page="events"/>
       <Gallery>
       {eventDataState.map(event => {
         return (
-          <Grid item xs>
+
           <EventCard event={event}/>
-          </Grid>
+          
         )
       })}
       </Gallery>

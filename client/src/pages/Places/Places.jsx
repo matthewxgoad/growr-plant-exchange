@@ -6,18 +6,18 @@ import { Grid } from '@material-ui/core';
 import { useState } from 'react';
 import "./Places.css"
 
-export default function Places() {
+export default function Places(props) {
   const [ placeDataState, setPlaceDataState ] = useState(placesData);
   
   return (
     <>
-      <NavBar />
+      <NavBar page="places"/>
       <Gallery>
       {placeDataState.map(place => {
         return (
-          <Grid item xs>
+
             <PlaceCard place={place}/>
-          </Grid>
+          
         )
       })}
       </Gallery>

@@ -2,22 +2,21 @@ import TradeCard from '../../components/TradeCard';
 import NavBar from '../../components/NavBar';
 import Gallery from '../../components/Gallery';
 import tradeData from '../../tradeData';
-import { Grid } from '@material-ui/core';
 import { useState } from 'react';
 import "./Trade.css"
 
-export default function Places() {
+export default function Places(props) {
   const [ tradeDataState, setTradeDataState ] = useState(tradeData);
   
   return (
     <>
-      <NavBar />
+      <NavBar page="trade"/>
       <Gallery>
       {tradeDataState.map(trade => {
         return (
-          <Grid item xs>
+          
             <TradeCard trade={trade}/>
-          </Grid>
+          
         )
       })}
       </Gallery>
