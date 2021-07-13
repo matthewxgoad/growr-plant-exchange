@@ -25,7 +25,61 @@ const trades = [
         tradeType: "Free",
         timeStamp: "posted 2 days ago",
         username: "plantdaddy"
-    }
+    },
+    {
+        id: 4,
+        title: 'Fiddle Leaf Fig',
+        description: 'Fiddle Leaf Fig potted',
+        photo: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1603654887-1427228256-chinese-evergreen-plants-little-water.jpg',
+        tradeType: 'request',
+        timeStamp: 'posted 2 hours ago',
+        username: 'mariaF'
+    },
+    {
+        id: 5,
+        title: 'Fiddle Leaf Fig',
+        description: 'Fiddle Leaf Fig potted',
+        photo: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1603654887-1427228256-chinese-evergreen-plants-little-water.jpg',
+        tradeType: 'request',
+        timeStamp: 'posted 2 hours ago',
+        username: 'mariaF'
+    },
+    {
+        id: 6,
+        title: 'Fiddle Leaf Fig',
+        description: 'Fiddle Leaf Fig potted',
+        photo: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1603654887-1427228256-chinese-evergreen-plants-little-water.jpg',
+        tradeType: 'request',
+        timeStamp: 'posted 2 hours ago',
+        username: 'mariaF'
+    },
+    {
+        id: 7,
+        title: 'Fiddle Leaf Fig',
+        description: 'Fiddle Leaf Fig potted',
+        photo: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1603654887-1427228256-chinese-evergreen-plants-little-water.jpg',
+        tradeType: 'request',
+        timeStamp: 'posted 2 hours ago',
+        username: 'mariaF'
+    },
+    {
+        id: 8,
+        title: 'Fiddle Leaf Fig',
+        description: 'Fiddle Leaf Fig potted',
+        photo: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1603654887-1427228256-chinese-evergreen-plants-little-water.jpg',
+        tradeType: 'request',
+        timeStamp: 'posted 2 hours ago',
+        username: 'mariaF'
+    },
+    {
+        id: 9,
+        title: 'Fiddle Leaf Fig',
+        description: 'Fiddle Leaf Fig potted',
+        photo: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1603654887-1427228256-chinese-evergreen-plants-little-water.jpg',
+        tradeType: 'request',
+        timeStamp: 'posted 2 hours ago',
+        username: 'mariaF'
+    },
   ];
   
   export default trades;
