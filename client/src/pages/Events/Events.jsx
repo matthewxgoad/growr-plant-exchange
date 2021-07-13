@@ -15,9 +15,9 @@ export default function Events() {
       <Gallery>
       {eventDataState.map(event => {
         return (
-          <Grid item xs>
+
           <EventCard event={event}/>
-          </Grid>
+          
         )
       })}
       </Gallery>

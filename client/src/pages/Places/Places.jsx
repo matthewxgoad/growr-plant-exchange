@@ -15,9 +15,9 @@ export default function Places() {
       <Gallery>
       {placeDataState.map(place => {
         return (
-          <Grid item xs>
+
             <PlaceCard place={place}/>
-          </Grid>
+          
         )
       })}
       </Gallery>

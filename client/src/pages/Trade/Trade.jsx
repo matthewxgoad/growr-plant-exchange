@@ -15,9 +15,9 @@ export default function Places() {
       <Gallery>
       {tradeDataState.map(trade => {
         return (
-          <Grid item xs>
+          
             <TradeCard trade={trade}/>
-          </Grid>
+          
         )
       })}
       </Gallery>
