@@ -33,7 +33,8 @@ const getUsersWithin = async (req, res, next) => {
         $maxDistance: 2000,
       },
     },
-  });
+  }).populate("trades")
+
   res.send(result)
 }
 
