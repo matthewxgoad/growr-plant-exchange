@@ -39,6 +39,14 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: "none",
       fontWeight: 'bolder',
     },
+    inputBox: {
+        marginTop: '20px',
+        marginBottom: '20px',
+    },
+    firstInputBox: {
+        marginTop: '30px',
+        marginBottom: '20px',
+    }
   }));
 
 export default function AddForm() {
@@ -89,7 +97,7 @@ export default function AddForm() {
   }
 
 
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -108,8 +116,6 @@ export default function AddForm() {
                   <FormControl component="fieldset">
                     <RadioGroup aria-label="add-choice" name="add-choice" value={value} onChange={handleChange}>
                         <FormControlLabel value="trade" control={<Radio />} label="Trade" />
-                        {/* <FormControlLabel value="free" control={<Radio />} label="Free Item" /> */}
-                        {/* <FormControlLabel value="request" control={<Radio />} label="Request" /> */}
                         <FormControlLabel value="event" control={<Radio />} label="Event" />
                         <FormControlLabel value="place" control={<Radio />} label="Place" />
                     </RadioGroup>
@@ -123,7 +129,7 @@ export default function AddForm() {
           </Paper>
       </Grid>
 
-    {/* Trade Form */}
+    {/*----------------------Trade Form----------------------------*/}
     <Grid align='center'>
         <Paper elevation={20} className={classes.paper}>
             <Grid align='center'>
@@ -131,25 +137,35 @@ export default function AddForm() {
             </Grid>
                 <form onSubmit={handleTradeSubmit}>
                     <FormControl component="fieldset">
-                        <RadioGroup style={{display:'initial'}} aria-label="add-choice" name="add-choice" value={value} onChange={handleChange}>
-                            <FormControlLabel value="trade" control={<Radio />} label="Trade" />
-                            <FormControlLabel value="request" control={<Radio />} label="Request" />
-                            <FormControlLabel value="free" control={<Radio />} label="Free" />
+                        <h5 className={classes.uploadCaption} style={{marginTop:'30px'}}>Choose a category:</h5>
+                        <RadioGroup
+                            required
+                            style={{display:'initial'}} 
+                            aria-label="add-choice"
+                            name="add-choice" 
+                            value={value} 
+                            onChange={handleChange}>
+                                <FormControlLabel value="trade" control={<Radio />} label="Trade" />
+                                <FormControlLabel value="request" control={<Radio />} label="Request" />
+                                <FormControlLabel value="free" control={<Radio />} label="Free" />
                         </RadioGroup>
                     </FormControl>
                     <br/>
                     <TextField 
                         //value={name}
                         //onChange={handleTradeNameInput}
-                        variant='outlined' size='small'
+                        fullWidth className={classes.inputBox}
+                         size='small'
                         required label='Trade Item Name' placeholder='Trade Item Name'
                     />
                     <br/>
                     <TextField
+                            className={classes.inputBox}
                             id="outlined-multiline-static"
                             label="Description"
+                            fullWidth
                             multiline
-                            rows={3}
+                            rows={4}
                             variant="outlined"
                             required
                     />
@@ -159,8 +175,10 @@ export default function AddForm() {
                     // value={selectedFile}
                     onChange={handleFileInput}
                     encType = 'multipart/form-data'
-                    required accept="image/*" type="file"/> 
-                  <br/>
+                    required accept="image/*" type="file"
+                    style={{marginBottom:'30px'}}
+                    /> 
+                    <br/>
                     <div className={classes.submitBtn}>
                         <Button type='submit' variant='contained' color='primary'>
                             Add Trade
@@ -170,7 +188,7 @@ export default function AddForm() {
         </Paper>
     </Grid>
 
-    {/* Event Form */}
+    {/*---------------------------Event Form--------------------------*/}
     <Grid align='center'>
         <Paper elevation={20} className={classes.paper}>
             <Grid align='center'>
@@ -180,47 +198,52 @@ export default function AddForm() {
                 <TextField 
                     //value={name}
                     //onChange={handleTradeNameInput}
-                    variant='outlined' size='small'
-                    required fullWidth label='Event Name' placeholder='Event Name'/>
+                    className={classes.firstInputBox}
+                    size='small'
+                    required fullWidth label='Event Name' placeholder='Event Name'
+                />
+                <br/>
+                <TextField
+                    className={classes.inputBox}
+                    id="outlined-multiline-static"
+                    label="Address"
+                    required
+                    fullWidth
+                />
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <Grid container justifyContent="space-around">
+                    <h5 className={classes.uploadCaption}>Select a Date:</h5>
                         <KeyboardDatePicker
+                            required
                             margin="normal"
                             id="date-picker-dialog"
-                            label="Date"
-                            format="MM/dd/yyyy"
+                            // label="Date"
+                            format="cccc LLLL d, yyyy"
                             value={selectedDate}
                             onChange={handleDateChange}
                             KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                            }}
+                                'aria-label': 'change date'}}
                         />
+                        <h5 className={classes.uploadCaption}>Select a Time:</h5>
                         <KeyboardTimePicker
+                            required
                             margin="normal"
                             id="time-picker"
-                            label="Time"
+                            // label="Time"
                             value={selectedDate}
                             onChange={handleDateChange}
                             KeyboardButtonProps={{
-                                'aria-label': 'change time',
-                            }}
+                                'aria-label': 'change time'}}
+                            style={{marginBottom:'20px'}}
                         />
                     </Grid>
                 </MuiPickersUtilsProvider>
                 <TextField
-                    id="outlined-multiline-static"
-                    label="Address"
-                    multiline
-                    rows={2}
-                    variant="outlined"
-                    required
-                />
-                <br/>
-                <TextField
+                    className={classes.inputBox}
                     id="outlined-multiline-static"
                     label="Description"
-                    multiline
-                    rows={3}
+                    multiline fullWidth
+                    rows={4}
                     variant="outlined"
                     required
                 />
@@ -230,7 +253,9 @@ export default function AddForm() {
                     // value={selectedFile}
                     onChange={handleFileInput}
                     encType = 'multipart/form-data'
-                    required accept="image/*" type="file"/> 
+                    required accept="image/*" type="file"
+                    style={{marginBottom:'30px'}}
+                /> 
                 <br/>
                 <div className={classes.submitBtn}>
                 <Button type='submit' variant='contained' color='primary'>
@@ -241,7 +266,7 @@ export default function AddForm() {
         </Paper>
     </Grid>
 
-    {/* Place Form */}
+    {/*------------------------Place Form--------------------- */}
     <Grid align='center'>
         <Paper elevation={20} className={classes.paper}>
             <Grid align='center'>
@@ -251,33 +276,35 @@ export default function AddForm() {
                 <TextField 
                     //value={name}
                     //onChange={handleTradeNameInput}
-                    variant='outlined' size='small'
+                    className={classes.firstInputBox}
+                    fullWidth size='small'
                     required label='Place Name' placeholder='Place Name'
                 />
                 <br/>
                 <TextField
+                    className={classes.inputBox}
                     id="outlined-multiline-static"
                     label="Address"
-                    multiline
-                    rows={2}
-                    variant="outlined"
-                    required
-                />
-                <br/>
-                <TextField
-                    id="outlined-multiline-static"
-                    label="Description"
-                    multiline
-                    rows={3}
-                    variant="outlined"
+                    fullWidth
                     required
                 />
                 <br/>
                 <TextField 
                     //value={name}
                     //onChange={handleTradeNameInput}
-                    variant='outlined' size='small'
+                    className={classes.inputBox}
+                    fullWidth size='small'
                     required label='Website' placeholder='Website'
+                />
+                <br/>
+                <TextField
+                    className={classes.inputBox}
+                    id="outlined-multiline-static"
+                    label="Description"
+                    multiline fullWidth
+                    rows={4}
+                    variant="outlined"
+                    required
                 />
                 <br/>
                 <h5 className={classes.uploadCaption}>Upload Place Photo</h5>
@@ -285,7 +312,9 @@ export default function AddForm() {
                     // value={selectedFile}
                     onChange={handleFileInput}
                     encType = 'multipart/form-data'
-                    required accept="image/*" type="file"/> 
+                    required accept="image/*" type="file"
+                    style={{marginBottom:'30px'}}
+                /> 
                 <br/>
                 <div className={classes.submitBtn}>
                 <Button type='submit' variant='contained' color='primary'>
