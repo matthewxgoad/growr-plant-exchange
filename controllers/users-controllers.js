@@ -16,6 +16,25 @@ const getUsers = async (req, res, next) => {
   res.json({users: users.map(user => user.toObject({ getters: true }))});
 };
 
+const getUserById = async (req, res, next) => {
+  const userId = req.params.uid;
+
+  let user;
+  try {
+    user = await User.findById(userId);
+  } catch (err) {
+    const error = new HttpError('Something went wrong, could not find user.', 500);
+    return next(error);
+  }
+
+  if (!user) {
+    const error = new HttpError('Could not find a user for the provided id.', 404);
+    return next(error);
+  }
+
+  res.json({ user: user.toObject({ getters: true }) });
+};
+
 const getUsersTradesWithin = async (req, res, next) => {
   const userId = req.params.uid;
   const sourceUser = User.findById(userId);
@@ -197,6 +216,7 @@ const login = async (req, res, next) => {
 };
 
 exports.getUsers = getUsers;
+exports.getUserById = getUserById;
 exports.getUsersTradesWithin = getUsersTradesWithin;
 exports.getUsersPlacesWithin = getUsersPlacesWithin;
 exports.getUsersEventsWithin = getUsersEventsWithin;
