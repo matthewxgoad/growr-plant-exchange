@@ -1,13 +1,13 @@
 import "./messenger.css"
-// import Topbar from "../../components/topbar/Topbar"
-import Conversation from "../../components/conversations/Conversation"
+import NavBar from "../../components/NavBar/NavBar"
+import Conversation from "../../components/Conversation"
 import Message from "../../components/message/Message"
 import ChatOnline from "../../components/chatOnline/ChatOnline"
 
 export default function Messenger() {
     return (
         <>
-            
+            <NavBar/>
             <div className="messenger">
                 <div className="chatMenu">
                     <div className="chatMenuWrapper">
@@ -24,11 +24,11 @@ export default function Messenger() {
                             <Message />
                             <Message own={true}/>
                             <Message />
+                            <Message own={true}/>
                             <Message />
                             <Message />
                             <Message />
-                            <Message />
-                            <Message />
+                            <Message own={true}/>
                             <Message />
 
                         </div>
