@@ -3,7 +3,7 @@ import Events from "./pages/Events";
 import Places from "./pages/Places";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import SignUp from "./pages/Signup";
+import SignUp from "./pages/SignUp";
 import About from "./pages/About";
 import Inbox from "./pages/Inbox";
 import Add from "./pages/Add";
