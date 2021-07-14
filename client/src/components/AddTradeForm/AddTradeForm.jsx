@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './AddTradeForm.css';
 import { Grid,Paper, TextField, Button, FormControl, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
@@ -37,23 +38,50 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddTradeForm() { 
 
-  const classes = useStyles();
+  const classes = useStyles(); 
 
-  const [value, setValue] = React.useState('');
+  const [title, setTitle] = React.useState("");
+  const [desc, setDesc] = React.useState("");
+  const [tradeType, setTradeType] = React.useState("");
   const [selectedFile, setSelectedFile] = React.useState("");
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  //hard-coded user id
+  const creator = '60ef16f6dc30ae326495264f'
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('button clicked');
-  };
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      const formData = new FormData()
+      formData.append('title', title);
+      formData.append('description', desc);
+      // formData.append('tradeType', tradeType);
+      formData.append('creator', creator);
+      formData.append('image', selectedFile);
+  
+      try {
+        console.log('>>>>>making a call<<<<<<<', formData);
+        await axios.post("http://localhost:3000/api/trades", formData);
+      } catch (err) {
+        console.log(err);
+      }
+  }
+
+  const handleTitleInput = (event) =>{
+      setTitle(event.target.value)
+  }
+
+  const handleDescInput = (event) =>{
+      setDesc(event.target.value)
+  }
 
   const handleFileInput = (event) =>{
-    setSelectedFile(event.target.files[0])
+  setSelectedFile(event.target.files[0])
   }
+
+  //radio button selection
+  const handleRadioBtn = (event) => {
+    setTradeType(event.target.value);
+  };
 
   return (
     <Grid align='center'>
@@ -69,8 +97,8 @@ export default function AddTradeForm() {
                             style={{display:'initial'}} 
                             aria-label="add-choice"
                             name="add-choice" 
-                            value={value} 
-                            onChange={handleChange}>
+                            value={tradeType} 
+                            onChange={handleRadioBtn}>
                               <FormControlLabel value="trade" control={<Radio />} label="Trade" />
                               <FormControlLabel value="request" control={<Radio />} label="Request" />
                               <FormControlLabel value="free" control={<Radio />} label="Free" />
@@ -78,14 +106,16 @@ export default function AddTradeForm() {
                     </FormControl>
                     <br/>
                     <TextField 
-                      //value={name}
-                      //onChange={handleTradeNameInput}
+                      value={title}
+                      onChange={handleTitleInput}
                       fullWidth className={classes.inputBox}
                       size='small'
-                      required label='Trade Item Name' placeholder='Trade Item Name'
+                      required label='Trade Item Title' placeholder='Trade Item Title'
                     />
                     <br/>
                     <TextField
+                      value={desc}
+                      onChange={handleDescInput}
                       className={classes.inputBox}
                       id="outlined-multiline-static"
                       label="Description"
@@ -98,7 +128,6 @@ export default function AddTradeForm() {
                     <br/>
                     <h5 className={classes.uploadCaption}>Upload Trade Item Photo</h5>
                     <input 
-                      // value={selectedFile}
                       onChange={handleFileInput}
                       encType = 'multipart/form-data'
                       required accept="image/*" type="file"
