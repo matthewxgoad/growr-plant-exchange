@@ -6,7 +6,6 @@ import Profile from "./pages/Profile";
 import SignUp from "./pages/Signup";
 import About from "./pages/About";
 import Inbox from "./pages/Inbox";
-import Messenger from "./pages/Messenger/Messenger";
 import Add from "./pages/Add";
 import Root from "./pages/Root";
 import {
@@ -62,10 +61,6 @@ function App() {
         <Route path="/inbox">
           {/* {user ? <Inbox /> : <SignUp />} */}
           {<Inbox />}
-        </Route>
-        <Route path="/messenger">
-          {/* {user ? <Messenger /> : <SignUp />} */}
-          {<Messenger />}
         </Route>
 
       </Switch>
