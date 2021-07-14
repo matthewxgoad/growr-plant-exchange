@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './AddEventForm.css';
 import { Grid,Paper, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
@@ -45,22 +46,60 @@ export default function AddEventForm() {
 
     const classes = useStyles(); 
 
+    const [title, setTitle] = React.useState("");
+    const [address, setAddress] = React.useState("");
+    const [desc, setDesc] = React.useState("");
+    const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const [selectedTime, setSelectedTime] = React.useState(new Date());
     const [selectedFile, setSelectedFile] = React.useState("");
+
+    //hard-coded user id
+    const creator = '60ef16f6dc30ae326495264f'
   
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('button clicked')
-    }    
+    
+        const formData = new FormData()
+        formData.append('title', title);
+        formData.append('description', desc);
+        formData.append('address', address);
+        formData.append('date', selectedDate);
+        formData.append('time', selectedTime);
+        formData.append('creator', creator);
+        formData.append('image', selectedFile);
+    
+    
+        try {
+          console.log('>>>>>making a call<<<<<<<', formData);
+          await axios.post("http://localhost:3000/api/events", formData);
+        } catch (err) {
+          console.log(err);
+        }
+    }
+
+    const handleTitleInput = (event) =>{
+        setTitle(event.target.value)
+    }
+
+    const handleDescInput = (event) =>{
+        setDesc(event.target.value)
+    }
+
+    const handleAddressInput = (event) =>{
+        setAddress(event.target.value)
+    } 
 
     const handleFileInput = (event) =>{
     setSelectedFile(event.target.files[0])
     }
 
-    const [selectedDate, setSelectedDate] = React.useState(new Date());
-
     const handleDateChange = (date) => {
     setSelectedDate(date);
     };
+
+    const handleTimeChange = (time) => {
+        setSelectedTime(time);
+        };
     
     return (
         <Grid align='center'>
@@ -70,14 +109,16 @@ export default function AddEventForm() {
             </Grid>
             <form onSubmit={handleSubmit}>
                 <TextField 
-                    //value={name}
-                    //onChange={handleTradeNameInput}
+                    value={title}
+                    onChange={handleTitleInput}
                     className={classes.firstInputBox}
                     size='small'
-                    required fullWidth label='Event Name' placeholder='Event Name'
+                    required fullWidth label='Event Title' placeholder='Event Title'
                 />
                 <br/>
                 <TextField
+                    value={address}
+                    onChange={handleAddressInput}
                     className={classes.inputBox}
                     id="outlined-multiline-static"
                     label="Address"
@@ -91,7 +132,6 @@ export default function AddEventForm() {
                             required
                             margin="normal"
                             id="date-picker-dialog"
-                            // label="Date"
                             format="cccc LLLL d, yyyy"
                             value={selectedDate}
                             onChange={handleDateChange}
@@ -103,9 +143,8 @@ export default function AddEventForm() {
                             required
                             margin="normal"
                             id="time-picker"
-                            // label="Time"
-                            value={selectedDate}
-                            onChange={handleDateChange}
+                            value={selectedTime}
+                            onChange={handleTimeChange}
                             KeyboardButtonProps={{
                                 'aria-label': 'change time'}}
                             style={{marginBottom:'20px'}}
@@ -113,6 +152,8 @@ export default function AddEventForm() {
                     </Grid>
                 </MuiPickersUtilsProvider>
                 <TextField
+                    value={desc}
+                    onChange={handleDescInput}
                     className={classes.inputBox}
                     id="outlined-multiline-static"
                     label="Description"
@@ -124,7 +165,6 @@ export default function AddEventForm() {
                 <br/>
                 <h5 className={classes.uploadCaption}>Upload Event Photo</h5>
                 <input 
-                    // value={selectedFile}
                     onChange={handleFileInput}
                     encType = 'multipart/form-data'
                     required accept="image/*" type="file"
