@@ -43,29 +43,7 @@ export default function SignUpForm() {
   const [password, setPassword] = useState("");
 
   const classes = useStyles();
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log('button clicked')
-
-  //     const user = {
-  //       name: name,
-  //       email: email,
-  //       address: address,
-  //       password: password,
-  //       image: selectedFile
-  //     };
-
-  //     console.log(user)
-
-  //     try {
-  //       console.log('>>>>>making a call<<<<<<<', user)
-  //       await axios.post("http://localhost:3000/api/users/signup", user);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  // };
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('button clicked')
@@ -132,7 +110,6 @@ export default function SignUpForm() {
                     type='password' required fullWidth label='Password'placeholder='Create a password'/>
                   <h5 className={classes.uploadCaption}>Upload a Profile Picture</h5>
                   <input 
-                    // value={selectedFile}
                     onChange={handleFileInput}
                     encType = 'multipart/form-data'
                     required accept="image/*" type="file"/> 
