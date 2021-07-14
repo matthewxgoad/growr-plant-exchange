@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 import Link from "@material-ui/core/Link";
 import { useState } from "react";
-import Conversation from "../../components/Conversation";
+import InboxItem from "../../components/InboxItem";
 
 const headerColor = green[600];
 
@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
       },
       paper: {
         padding: theme.spacing(2),
-        marginTop: '10px',
         textAlign: 'center',
         height: '100%',
       },
@@ -47,17 +46,14 @@ export default function InboxMenu() {
         <div className={classes.root}>
             <Grid container spacing={2}>
                 <Grid item xs={12} align="center">
-                    <h2 className={classes.header}>Conversations</h2>
+                    <h2 className={classes.header}>Inbox</h2>
                 </Grid>
-            </Grid>
-            <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Paper elevation={20} className={classes.paper}>
                     <div>
-                        <Conversation />
-                        <Conversation />
-                        <Conversation />
-                        <Conversation />
+                        <InboxItem/>
+                        {/* should be only one compoenent > hardcoded to show example */}
+                        <InboxItem/>
                     </div>
                     </Paper>
                 </Grid>
