@@ -7,6 +7,7 @@ const fileUpload = require('../../util/file-upload');
 const router = express.Router();
 
 router.get('/', usersController.getUsers);
+router.get('/:uid', usersController.getUserById);
 
 router.get('/radius/trades/:uid', usersController.getUsersTradesWithin);
 router.get('/radius/places/:uid', usersController.getUsersPlacesWithin);
