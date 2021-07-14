@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './AddPlaceForm.css';
 import { Grid,Paper, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
@@ -37,15 +38,53 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddPlaceForm() { 
 
-    const classes = useStyles();
+    const classes = useStyles(); 
 
+    const [title, setTitle] = React.useState("");
+    const [address, setAddress] = React.useState("");
+    const [desc, setDesc] = React.useState("");
+    const [website, setWebsite] = React.useState("");
     const [selectedFile, setSelectedFile] = React.useState("");
+
+    //hard-coded user id
+    const creator = '60ef16f6dc30ae326495264f'
   
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('button clicked')
-      }    
     
+        const formData = new FormData()
+        formData.append('title', title);
+        formData.append('description', desc);
+        formData.append('address', address);
+        formData.append('website', website);
+        formData.append('creator', creator);
+        formData.append('image', selectedFile);
+    
+    
+        try {
+          console.log('>>>>>making a call<<<<<<<', formData);
+          await axios.post("http://localhost:3000/api/places", formData);
+        } catch (err) {
+          console.log(err);
+        }
+    }
+
+    const handleTitleInput = (event) =>{
+        setTitle(event.target.value)
+    }
+
+    const handleDescInput = (event) =>{
+        setDesc(event.target.value)
+    }
+
+    const handleAddressInput = (event) =>{
+        setAddress(event.target.value)
+    } 
+
+    const handleWebsiteInput = (event) =>{
+        setWebsite(event.target.value)
+    } 
+
     const handleFileInput = (event) =>{
     setSelectedFile(event.target.files[0])
     }
@@ -58,14 +97,16 @@ export default function AddPlaceForm() {
                 </Grid>
                 <form onSubmit={handleSubmit}>
                     <TextField 
-                        //value={name}
-                        //onChange={handleTradeNameInput}
+                        value={title}
+                        onChange={handleTitleInput}
                         className={classes.firstInputBox}
                         fullWidth size='small'
-                        required label='Place Name' placeholder='Place Name'
+                        required label='Place Title' placeholder='Place Title'
                     />
                     <br/>
                     <TextField
+                        value={address}
+                        onChange={handleAddressInput}
                         className={classes.inputBox}
                         id="outlined-multiline-static"
                         label="Address"
@@ -74,14 +115,16 @@ export default function AddPlaceForm() {
                     />
                     <br/>
                     <TextField 
-                        //value={name}
-                        //onChange={handleTradeNameInput}
+                        value={website}
+                        onChange={handleWebsiteInput}
                         className={classes.inputBox}
                         fullWidth size='small'
                         required label='Website' placeholder='Website'
                     />
                     <br/>
                     <TextField
+                        value={desc}
+                        onChange={handleDescInput}
                         className={classes.inputBox}
                         id="outlined-multiline-static"
                         label="Description"
@@ -93,7 +136,6 @@ export default function AddPlaceForm() {
                     <br/>
                     <h5 className={classes.uploadCaption}>Upload Place Photo</h5>
                     <input 
-                        // value={selectedFile}
                         onChange={handleFileInput}
                         encType = 'multipart/form-data'
                         required accept="image/*" type="file"
