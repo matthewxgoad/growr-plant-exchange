@@ -3,10 +3,10 @@ import Events from "./pages/Events";
 import Places from "./pages/Places";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/Signup";
 import About from "./pages/About";
 import Inbox from "./pages/Inbox";
-import Messenger from "./pages/messenger/Messenger";
+import Messenger from "./pages/Messenger/Messenger";
 import Add from "./pages/Add";
 import Root from "./pages/Root";
 import {
