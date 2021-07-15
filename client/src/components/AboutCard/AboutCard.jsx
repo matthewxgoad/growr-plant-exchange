@@ -5,12 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import IconButton from "@material-ui/core/IconButton";
-import Link from "@material-ui/core/Link";
-import Button from "@material-ui/core/Button";
-import indigo from "@material-ui/core/colors/indigo";
 import "./AboutCard.css";
 
-const blue = indigo[900];
 
 const useStyles = makeStyles((theme) => ({
   root: {

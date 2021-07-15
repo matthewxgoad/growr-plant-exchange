@@ -2,7 +2,7 @@ import EventCard from '../../components/EventCard';
 import NavBar from '../../components/NavBar';
 import Gallery from '../../components/Gallery';
 import eventData from '../../eventData';
-import { Grid } from '@material-ui/core';
+
 import { useState } from 'react';
 import "./Events.css"
 
