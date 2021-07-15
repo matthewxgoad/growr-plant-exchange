@@ -106,7 +106,7 @@ const signup = async (req, res, next) => {
     return next(new HttpError('Invalid inputs passed, please check your data.', 422));
   }
   console.log("req body", req.body)
-  const { name, email, password, address, selectedFile } = req.body;
+  const { name, email, password, address} = req.body;
 
   let existingUser
   try {
@@ -144,13 +144,13 @@ const signup = async (req, res, next) => {
     );
     return next(error);
   }
-  console.log("req file", selectedFile)
+  console.log("req file", req.file)
 
   const createdUser = new User({
     name,
     email,
     password: hashedPassword,
-    image: selectedFile,
+    image: req.file.location,
     address,
     location: {type: 'Point', coordinates: coordsArray},
     places: []
