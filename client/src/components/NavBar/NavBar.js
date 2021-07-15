@@ -16,6 +16,9 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
 
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+
 const drawerColor = grey[800];
 const navColor = teal[600];
 
@@ -54,6 +57,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar( {page} ) {
+
+  const { user } = useContext(AuthContext);
 
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -115,10 +120,15 @@ export default function NavBar( {page} ) {
     </div>
   );
   return (
+    
     <div className={classes.root}>
       <AppBar position="static" className={classes.nav}>
         <Toolbar>
-          <div className="menu-btn">
+          
+          
+          {user ? //is user logged in?
+            <>
+            <div className="menu-btn">
             {["left"].map((anchor) => (
               <React.Fragment key={anchor}>
                 <IconButton onClick={toggleDrawer(anchor, true)}>
@@ -138,26 +148,31 @@ export default function NavBar( {page} ) {
           <Typography variant="h4" className={classes.title}>
             growr <span className={classes.pageName}>{page}</span>
           </Typography>
-          <Button color="inherit">
-            <Link component={Link} className={classes.links} href="/login">
-              Log In
-            </Link>
-          </Button>
-          <Button color="inherit">
-            <Link component={Link} className={classes.links} href="/signup">
-              Sign Up
-            </Link>
-          </Button>
-          <Button color="inherit">
-            <Link component={Link} className={classes.links} href="/profile">
-              Profile
-            </Link>
-          </Button>
-          <Button color="inherit">
-            <Link component={Link} className={classes.links} href="/logout">
-              Logout
-            </Link>
-          </Button>
+              <Button color="inherit">
+                <Link component={Link} className={classes.links} href="/profile">
+                  Profile
+                </Link>
+              </Button>
+              <Button color="inherit">
+                <Link component={Link} className={classes.links} href="/logout">
+                Logout
+                </Link>
+              </Button>
+            </> 
+            : 
+            <>
+              <Button color="inherit">
+                <Link component={Link} className={classes.links} href="/login">
+                  Log In
+                </Link>
+              </Button>
+              <Button color="inherit">
+                <Link component={Link} className={classes.links} href="/signup">
+                  Sign Up
+                </Link>
+              </Button>
+            </>
+          }
         </Toolbar>
       </AppBar>
     </div>
