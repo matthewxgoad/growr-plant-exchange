@@ -1,23 +1,11 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import { React, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import grey from "@material-ui/core/colors/grey";
 import teal from "@material-ui/core/colors/teal";
-import Link from "@material-ui/core/Link";
-import Drawer from "@material-ui/core/Drawer";
-import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
-
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { makeStyles, AppBar, Toolbar, Typography, Button, Link, List, 
+  Divider, ListItem, ListItemText, Drawer, IconButton } from "@material-ui/core";
 
 const drawerColor = grey[800];
 const navColor = teal[600];
@@ -35,9 +23,6 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
@@ -124,8 +109,6 @@ export default function NavBar( {page} ) {
     <div className={classes.root}>
       <AppBar position="static" className={classes.nav}>
         <Toolbar>
-          
-          
           {user ? //is user logged in?
             <>
             <div className="menu-btn">
