@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator');
 const bcrypt = require("bcryptjs");
 // const jwt = require("jsonwebtoken");
 const HttpError = require('../models/http-error');
-const User = require('../models/user');
+const {User} = require('../models');
 const getCoordsForAddress = require('../util/location');
 
 const getUsers = async (req, res, next) => {
@@ -14,6 +14,25 @@ const getUsers = async (req, res, next) => {
     return next(error);
   }
   res.json({users: users.map(user => user.toObject({ getters: true }))});
+};
+
+const getUserById = async (req, res, next) => {
+  const userId = req.params.uid;
+
+  let user;
+  try {
+    user = await User.findById(userId);
+  } catch (err) {
+    const error = new HttpError('Something went wrong, could not find user.', 500);
+    return next(error);
+  }
+
+  if (!user) {
+    const error = new HttpError('Could not find a user for the provided id.', 404);
+    return next(error);
+  }
+
+  res.json({ user: user.toObject({ getters: true }) });
 };
 
 const getUsersTradesWithin = async (req, res, next) => {
@@ -86,15 +105,16 @@ const signup = async (req, res, next) => {
 
     return next(new HttpError('Invalid inputs passed, please check your data.', 422));
   }
-  const { name, email, password, address } = req.body;
+  console.log("req body", req.body)
+  const { name, email, password, address, selectedFile } = req.body;
 
   let existingUser
-  try {
+  // try {
     existingUser = await User.findOne({ email: email })
-  } catch (err) {
-    const error = new HttpError('Signing up failed, please try again later.', 500);
-    return next(error);
-  }
+  // } catch (err) {
+  //   const error = new HttpError('Signing up failed, please try again later.', 500);
+  //   return next(error);
+  // }
   
   if (existingUser) {
     const error = new HttpError('User exists already, please login instead.', 422);
@@ -112,48 +132,49 @@ const signup = async (req, res, next) => {
 
   let coords;
   let coordsArray;
-  try {
+  // try {
     coords = await getCoordsForAddress(address);
     coordsArray = Object.values(coords)
     let temp = coordsArray[0];
     coordsArray[0]=coordsArray[1];
     coordsArray[1]=temp;
     console.log(coordsArray)
-  } catch (error) {
-    return next(error);
-  }
+  // } catch (error) {
+  //   return next(error);
+  // }
 
   ////// end of edit code block 42 - 47
 
 
 
   let hashedPassword;
-  try {
+  // try {
     hashedPassword = await bcrypt.hash(password, 12);
-  } catch (err) {
-    const error = new HttpError(
-      'Could not create user, please try again.',
-      500
-    );
-    return next(error);
-  }
+  // } catch (err) {
+  //   const error = new HttpError(
+  //     'Could not create user, please try again.',
+  //     500
+  //   );
+  //   return next(error);
+  // }
+  console.log("req file", selectedFile)
 
   const createdUser = new User({
     name,
     email,
     password: hashedPassword,
-    image: req.file.path,
+    image: selectedFile,
     address,
     location: {type: 'Point', coordinates: coordsArray},
     places: []
   });
-
-  try {
-    await createdUser.save();
-  } catch (err) {
-    const error = new HttpError('Signing up failed, please try again.', 500);
-    return next(error);
-  }
+          console.log(`>>createdUser`, createdUser)
+  // try {
+     await createdUser.save();
+  // } catch (err) {
+  //   const error = new HttpError('Signing up failed, please try again.', 500);
+  //   return next(error);
+  // }
 
   res.status(201).json({user: createdUser.toObject({ getters: true })});
 };
@@ -195,6 +216,7 @@ const login = async (req, res, next) => {
 };
 
 exports.getUsers = getUsers;
+exports.getUserById = getUserById;
 exports.getUsersTradesWithin = getUsersTradesWithin;
 exports.getUsersPlacesWithin = getUsersPlacesWithin;
 exports.getUsersEventsWithin = getUsersEventsWithin;

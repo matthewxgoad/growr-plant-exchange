@@ -48,17 +48,17 @@ export default function SignUpForm() {
     e.preventDefault();
     console.log('button clicked')
 
-    const formData = new FormData()
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('address', address);
-    formData.append('password', password);
-    formData.append('image', selectedFile);
+    const formData = {}
+    formData.name =  name;
+    formData.email = email;
+    formData.address = address;
+    formData.password = password;
+    formData.selectedFile = selectedFile.name;
 
 
     try {
       console.log('>>>>>making a call<<<<<<<', formData)
-      await axios.post("http://localhost:3000/api/users/signup", formData);
+      await axios.post("/api/users/signup", formData);
     } catch (err) {
       console.log(err);
     }
