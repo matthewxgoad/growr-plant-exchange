@@ -109,54 +109,41 @@ const signup = async (req, res, next) => {
   const { name, email, password, address, selectedFile } = req.body;
 
   let existingUser
-  // try {
+  try {
     existingUser = await User.findOne({ email: email })
-  // } catch (err) {
-  //   const error = new HttpError('Signing up failed, please try again later.', 500);
-  //   return next(error);
-  // }
+  } catch (err) {
+    const error = new HttpError('Signing up failed, please try again later.', 500);
+    return next(error);
+  }
   
   if (existingUser) {
     const error = new HttpError('User exists already, please login instead.', 422);
     return next(error);
   }
-  
-  // let coordinates;
-  // try {
-  //   coordinates = await getCoordsForAddress(address);
-  // } catch (error) {
-  //   return next(error);
-  // }
-
-  ////// editing code block 42 - 47
 
   let coords;
   let coordsArray;
-  // try {
+  try {
     coords = await getCoordsForAddress(address);
     coordsArray = Object.values(coords)
     let temp = coordsArray[0];
     coordsArray[0]=coordsArray[1];
     coordsArray[1]=temp;
     console.log(coordsArray)
-  // } catch (error) {
-  //   return next(error);
-  // }
-
-  ////// end of edit code block 42 - 47
-
-
+  } catch (error) {
+    return next(error);
+  }
 
   let hashedPassword;
-  // try {
+  try {
     hashedPassword = await bcrypt.hash(password, 12);
-  // } catch (err) {
-  //   const error = new HttpError(
-  //     'Could not create user, please try again.',
-  //     500
-  //   );
-  //   return next(error);
-  // }
+  } catch (err) {
+    const error = new HttpError(
+      'Could not create user, please try again.',
+      500
+    );
+    return next(error);
+  }
   console.log("req file", selectedFile)
 
   const createdUser = new User({
@@ -169,12 +156,12 @@ const signup = async (req, res, next) => {
     places: []
   });
           console.log(`>>createdUser`, createdUser)
-  // try {
+  try {
      await createdUser.save();
-  // } catch (err) {
-  //   const error = new HttpError('Signing up failed, please try again.', 500);
-  //   return next(error);
-  // }
+  } catch (err) {
+    const error = new HttpError('Signing up failed, please try again.', 500);
+    return next(error);
+  }
 
   res.status(201).json({user: createdUser.toObject({ getters: true })});
 };
