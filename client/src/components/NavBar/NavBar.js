@@ -43,10 +43,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar( {page} ) {
-
+  const classes = useStyles();
   const { user } = useContext(AuthContext);
 
-  const classes = useStyles();
+  function handleLogout() {
+    localStorage.clear();
+  }
+
   const [state, setState] = useState({
     right: false,
   });
@@ -137,8 +140,8 @@ export default function NavBar( {page} ) {
                   Profile
                 </Link>
               </Button>
-              <Button color="inherit">
-                <Link component={Link} className={classes.links} href="/logout">
+              <Button onClick={handleLogout} color="inherit">
+                <Link component={Link} className={classes.links} href="/">
                 Logout
                 </Link>
               </Button>
