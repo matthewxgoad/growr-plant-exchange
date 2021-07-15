@@ -11,10 +11,7 @@ aws.config.update({
     region:process.env.REGION
 })
 const s3 = new aws.S3()
-// let params = {
-//     ACL: "public-read",
-//     Bucket: process.env.BUCKET
-// }
+
 let upload = multer({
   storage: multerS3({
     s3: s3,
