@@ -30,41 +30,34 @@ function App() {
         </Route>
         <Route path="/login">
           {user ? <Redirect to="/profile" /> : <Login />}
-          {/* {<Login />} */}
         </Route>
         <Route path="/signup">
-          {/* {user ? <Redirect to="/profile" /> : <SignUp />} */}
-          {<SignUp />}
+          {user ? <Redirect to="/profile" /> : <SignUp />}
         </Route>
         <Route exact path="/about">
           {<About />}
         </Route>
         <Route exact path="/add">
-          {/* {user ? <Add /> : <SignUp />} */}
-          {<Add />}
+          {user ? <Add /> : <SignUp />}
         </Route>
         <Route exact path="/trade">
-          {/* {user ? <Trade /> : <SignUp />} */}
-          {<Trade />}
+          {user ? <Trade /> : <SignUp />}
         </Route>
         <Route exact path="/events">
-          {/* {user ? <Events /> : <SignUp />} */}
-          {<Events />}
+          {user ? <Events /> : <SignUp />}
         </Route>
         <Route exact path="/places">
-          {/* {user ? <Places /> : <SignUp />} */}
-          {<Places />}
+          {user ? <Places /> : <SignUp />}
         </Route>
         <Route exact path="/profile">
-          {/* {user ? <Profile /> : <SignUp />} */}
+          {user ? <Profile /> : <SignUp />}
           {<Profile />}
         </Route>
         <Route exact path="/profile/:username">
           {/* {user ? <Profile /> : <SignUp />} */}
         </Route>
         <Route path="/inbox">
-          {/* {user ? <Inbox /> : <SignUp />} */}
-          {<Inbox />}
+          {user ? <Inbox /> : <SignUp />}
         </Route>
 
       </Switch>

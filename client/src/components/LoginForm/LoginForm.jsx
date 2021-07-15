@@ -1,6 +1,6 @@
-import React from 'react';
+import { React, useState } from 'react';
 import './LoginForm.css';
-import { Grid,Paper, TextField, Button } from '@material-ui/core';
+import { Grid,Paper, TextField, Button, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 import Link from "@material-ui/core/Link";
@@ -42,17 +42,31 @@ const useStyles = makeStyles((theme) => ({
 export default function LoginForm() {   
     const classes = useStyles();
 
-    const email = useRef();
-    const password = useRef();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     const { isFetching, dispatch } = useContext(AuthContext);
 
+    const formData = {}
+    formData.email = email;
+    formData.password =  password;
+    
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(email, password)
         loginCall(
-          { email: email.current.value, password: password.current.value },
+          { email: email, password: password },
           dispatch
         );
       };
+
+    const handleEmailInput = (event) =>{
+        setEmail(event.target.value)
+    }
+
+    const handlePasswordInput = (event) =>{
+        setPassword(event.target.value)
+    }
 
     return (
         <Grid>
@@ -60,11 +74,16 @@ export default function LoginForm() {
                 <Grid align='center'>
                     <h2 className={classes.header}>growr</h2>
                 </Grid>
-                <form>
-                    <TextField size='small' className={classes.textField} variant='outlined' required fullWidth label='Email' placeholder='Enter your email'/>
-                    <TextField size='small' className={classes.textField} variant='outlined' type='password' required fullWidth label='Password'placeholder='Enter your password'/>
+                <form onSubmit={handleSubmit}>
+                    <TextField onChange={handleEmailInput} size='small' className={classes.textField} variant='outlined' required fullWidth label='Email' placeholder='Enter your email'/>
+                    <TextField onChange={handlePasswordInput} size='small' className={classes.textField} variant='outlined' type='password' required fullWidth label='Password'placeholder='Enter your password'/>
                     <div className={classes.loginBtn}>
-                        <Button type='submit' variant='contained' color='primary'>Log In</Button>
+                        <Button type='submit' variant='contained' color='primary' disabled={isFetching}>
+                        {isFetching ? (
+                <CircularProgress/>
+              ) : (
+                "Log In"
+              )}</Button>
                     </div>
                 </form>
                 <Grid align='center'>
