@@ -1,10 +1,12 @@
 import React from 'react';
 import './LoginForm.css';
-import { Grid,Paper, TextField, Button, OutlinedInput } from '@material-ui/core';
+import { Grid,Paper, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 import Link from "@material-ui/core/Link";
-
+import { useContext, useRef } from "react";
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
 
 const headerColor = green[600];
 
@@ -37,8 +39,21 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function SignUpForm() {
+export default function LoginForm() {   
     const classes = useStyles();
+
+    const email = useRef();
+    const password = useRef();
+    const { isFetching, dispatch } = useContext(AuthContext);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        loginCall(
+          { email: email.current.value, password: password.current.value },
+          dispatch
+        );
+      };
+
     return (
         <Grid>
             <Paper elevation={20} className={classes.paper}>

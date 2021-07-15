@@ -6,6 +6,9 @@ import green from "@material-ui/core/colors/green";
 import Link from "@material-ui/core/Link";
 import axios from "axios";
 import { useState } from "react";
+import { useHistory } from "react-router";
+
+
 
 const headerColor = green[600];
 
@@ -35,6 +38,8 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function SignUpForm() {
+
+  const history = useHistory();
   
   const [selectedFile, setSelectedFile] = useState("");
   const [name, setName] = useState("");
@@ -59,6 +64,7 @@ export default function SignUpForm() {
     try {
       console.log('>>>>>making a call<<<<<<<', formData)
       await axios.post("/api/users/signup", formData);
+      history.push("/login");
     } catch (err) {
       console.log(err);
     }

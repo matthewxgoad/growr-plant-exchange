@@ -15,9 +15,13 @@ import {
   Redirect,
 } from "react-router-dom";
 
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
+
 import "./App.css";
 
 function App() {
+  const { user } = useContext(AuthContext);
   return (
     <Router>
       <Switch>
@@ -25,8 +29,8 @@ function App() {
           {<Root />}
         </Route>
         <Route path="/login">
-          {/* {user ? <Redirect to="/profile" /> : <Login />} */}
-          {<Login />}
+          {user ? <Redirect to="/profile" /> : <Login />}
+          {/* {<Login />} */}
         </Route>
         <Route path="/signup">
           {/* {user ? <Redirect to="/profile" /> : <SignUp />} */}
