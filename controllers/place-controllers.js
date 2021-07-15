@@ -55,15 +55,6 @@ const createPlace = async (req, res, next) => {
 
   const { title, description, address, creator } = req.body;
 
-  // let coordinates;
-  // try {
-  //   coordinates = await getCoordsForAddress(address);
-  // } catch (error) {
-  //   return next(error);
-  // }
-
-  ////// editing code block 58 - 63
-
   let coords;
   let coordsArray;
   try {
@@ -76,9 +67,6 @@ const createPlace = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
-
-  ////// end of edit code block 58 - 63
-
 
   const createdPlace = new Place({
     title,
