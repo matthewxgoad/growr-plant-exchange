@@ -48,13 +48,23 @@ export default function SignUpForm() {
     e.preventDefault();
     console.log('button clicked')
 
-    const formData = {}
-    formData.name =  name;
-    formData.email = email;
-    formData.address = address;
-    formData.password = password;
-    formData.selectedFile = selectedFile.name;
+    // const formData = {}
+    // formData.name =  name;
+    // formData.email = email;
+    // formData.address = address;
+    // formData.password = password;
+    // formData.selectedFile = selectedFile.name;
 
+    const formData = new FormData()
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('address', address);
+    formData.append('password', password);
+    formData.append('image', selectedFile);
+    // const config = {
+    //   headers: "Content-type: multipart/form-data"
+    // }
+    console.log(selectedFile)
 
     try {
       console.log('>>>>>making a call<<<<<<<', formData)
