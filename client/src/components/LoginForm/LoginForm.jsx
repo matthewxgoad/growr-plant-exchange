@@ -4,12 +4,11 @@ import { Grid,Paper, TextField, Button, CircularProgress } from '@material-ui/co
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 import Link from "@material-ui/core/Link";
-import { useContext, useRef } from "react";
-import { loginCall } from "../../apiCalls";
+import { useContext } from "react";
+import { loginRequest } from "../../loginRequest";
 import { AuthContext } from "../../context/AuthContext";
 
 const headerColor = green[600];
-
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: "none",
       fontWeight: 'bolder',
     },
-  }));
+}));
 
 export default function LoginForm() {   
     const classes = useStyles();
@@ -47,14 +46,9 @@ export default function LoginForm() {
 
     const { isFetching, dispatch } = useContext(AuthContext);
 
-    const formData = {}
-    formData.email = email;
-    formData.password =  password;
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email, password)
-        loginCall(
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        loginRequest(
           { email: email, password: password },
           dispatch
         );
@@ -75,19 +69,43 @@ export default function LoginForm() {
                     <h2 className={classes.header}>growr</h2>
                 </Grid>
                 <form onSubmit={handleSubmit}>
-                    <TextField onChange={handleEmailInput} size='small' className={classes.textField} variant='outlined' required fullWidth label='Email' placeholder='Enter your email'/>
-                    <TextField onChange={handlePasswordInput} size='small' className={classes.textField} variant='outlined' type='password' required fullWidth label='Password'placeholder='Enter your password'/>
+                    <TextField 
+                      onChange={handleEmailInput} 
+                      label='Email'
+                      placeholder='Enter your email'
+                      size='small' 
+                      className={classes.textField} 
+                      variant='outlined' 
+                      required fullWidth 
+                    />
+                    <TextField 
+                      onChange={handlePasswordInput}
+                      label='Password' 
+                      type='password'
+                      placeholder='Enter your password'
+                      size='small' 
+                      className={classes.textField} 
+                      variant='outlined'  
+                      required fullWidth 
+                    />
                     <div className={classes.loginBtn}>
-                        <Button type='submit' variant='contained' color='primary' disabled={isFetching}>
-                        {isFetching ? (
-                <CircularProgress/>
-              ) : (
-                "Log In"
-              )}</Button>
+                        <Button 
+                          type='submit' 
+                          variant='contained' 
+                          color='primary' 
+                          disabled={isFetching}>
+                          {isFetching ?
+                              (<CircularProgress/>) : ( "Log In")}
+                        </Button>
                     </div>
                 </form>
                 <Grid align='center'>
-                    <Link className={classes.link} component={Link} href='/signup'>Don't have an account? Click here to sign up</Link>
+                    <Link 
+                      className={classes.link} 
+                      component={Link} 
+                      href='/signup'>
+                        Don't have an account? Click here to sign up
+                    </Link>
                 </Grid>
             </Paper>
         </Grid>

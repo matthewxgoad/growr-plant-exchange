@@ -38,28 +38,26 @@ function App() {
           {<About />}
         </Route>
         <Route exact path="/add">
-          {user ? <Add /> : <SignUp />}
+          {user ? <Add /> : <Login />}
         </Route>
         <Route exact path="/trade">
-          {user ? <Trade /> : <SignUp />}
+          {user ? <Trade /> : <Login />}
         </Route>
         <Route exact path="/events">
-          {user ? <Events /> : <SignUp />}
+          {user ? <Events /> : <Login />}
         </Route>
         <Route exact path="/places">
-          {user ? <Places /> : <SignUp />}
+          {user ? <Places /> : <Login />}
         </Route>
         <Route exact path="/profile">
-          {user ? <Profile /> : <SignUp />}
-          {<Profile />}
+          {user ? <Profile /> : <Login />}
         </Route>
         <Route exact path="/profile/:username">
           {/* {user ? <Profile /> : <SignUp />} */}
         </Route>
         <Route path="/inbox">
-          {user ? <Inbox /> : <SignUp />}
+          {user ? <Inbox /> : <Login />}
         </Route>
-
       </Switch>
     </Router>
   );
