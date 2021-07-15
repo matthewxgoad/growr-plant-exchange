@@ -1,4 +1,5 @@
-import { React, useContext, useState } from "react";
+import React from 'react';
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import grey from "@material-ui/core/colors/grey";
 import teal from "@material-ui/core/colors/teal";
