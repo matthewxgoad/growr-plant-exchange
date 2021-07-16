@@ -121,7 +121,7 @@ const signup = async (req, res, next) => {
     );
   }
   console.log("req body", req.body);
-  const { name, email, password, address } = req.body;
+  const { name, email, password, address, selectedFile } = req.body;
 
   let existingUser;
   try {
@@ -165,13 +165,13 @@ const signup = async (req, res, next) => {
     );
     return next(error);
   }
-  console.log("req file", req.file);
+  console.log("req file", selectedFile);
 
   const createdUser = new User({
     name,
     email,
     password: hashedPassword,
-    image: req.file.location,
+    image: selectedFile,
     address,
     location: { type: "Point", coordinates: coordsArray },
     places: [],
