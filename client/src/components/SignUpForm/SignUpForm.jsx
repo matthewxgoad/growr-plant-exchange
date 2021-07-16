@@ -1,11 +1,11 @@
 import React from 'react';
-import './SignUpForm.css';
-import { Grid,Paper, TextField, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
-import green from "@material-ui/core/colors/green";
-import Link from "@material-ui/core/Link";
+import { useState, useContext } from "react";
 import axios from "axios";
-import { useState } from "react";
+import './SignUpForm.css';
+import { loginRequest } from "../../loginRequest";
+import { AuthContext } from "../../context/AuthContext";
+import { makeStyles, Grid, Paper, Link, TextField, Button, CircularProgress } from '@material-ui/core';
+import green from "@material-ui/core/colors/green";
 
 const headerColor = green[600];
 
@@ -35,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function SignUpForm() {
+
+  const classes = useStyles();
   
   const [selectedFile, setSelectedFile] = useState("");
   const [name, setName] = useState("");
@@ -42,18 +44,11 @@ export default function SignUpForm() {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
 
-  const classes = useStyles();
- 
+  const { isFetching, dispatch } = useContext(AuthContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('button clicked')
-
-    // const formData = {}
-    // formData.name =  name;
-    // formData.email = email;
-    // formData.address = address;
-    // formData.password = password;
-    // formData.selectedFile = selectedFile.name;
 
     const formData = new FormData()
     formData.append('name', name);
@@ -67,33 +62,43 @@ export default function SignUpForm() {
     console.log(selectedFile)
 
     try {
-      console.log('>>>>>making a call<<<<<<<', formData)
-      await axios.post("/api/users/signup", formData);
+      console.log('>>>>>making 1st call<<<<<<<', formData)
+      await axios.post("/api/users/signup", formData)
+
+    } catch (err) {
+      console.log(err);
+    }
+
+    try {
+      console.log('>>>>>making 2nd call<<<<<<<', formData)
+      loginRequest(
+        { email: email, password: password },
+        dispatch
+      );
     } catch (err) {
       console.log(err);
     }
   }
 
+  const handleNameInput = (event) =>{
+    setName(event.target.value)
+  }
 
-    const handleNameInput = (event) =>{
-      setName(event.target.value)
-    }
+  const handleEmailInput = (event) =>{
+    setEmail(event.target.value)
+  }
 
-    const handleEmailInput = (event) =>{
-      setEmail(event.target.value)
-    }
+  const handleAddressInput = (event) =>{
+    setAddress(event.target.value)
+  }
 
-    const handleAddressInput = (event) =>{
-      setAddress(event.target.value)
-    }
+  const handlePasswordInput = (event) =>{
+    setPassword(event.target.value)
+  }
 
-    const handlePasswordInput = (event) =>{
-      setPassword(event.target.value)
-    }
-
-    const handleFileInput = (event) =>{
-      setSelectedFile(event.target.files[0])
-    }
+  const handleFileInput = (event) =>{
+    setSelectedFile(event.target.files[0])
+  }
 
   return (
       <Grid>
@@ -125,8 +130,9 @@ export default function SignUpForm() {
                     required accept="image/*" type="file"/> 
                   <br/>
                   <div className={classes.submitBtn}>
-                    <Button type='submit' variant='contained' color='primary'>
-                      Create Account
+                    <Button type='submit' variant='contained' color='primary' disabled={isFetching}>
+                      {isFetching ?
+                        (<CircularProgress/>) : ( "Create Account")}
                     </Button>
                   </div>
               </form>
