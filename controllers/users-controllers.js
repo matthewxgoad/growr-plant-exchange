@@ -121,7 +121,7 @@ const signup = async (req, res, next) => {
     );
   }
   console.log("req body", req.body);
-  const { name, email, password, address } = req.body;
+  const { name, email, password, address , selectedFile } = req.body;
 
   let existingUser;
   try {
@@ -171,7 +171,7 @@ const signup = async (req, res, next) => {
     name,
     email,
     password: hashedPassword,
-    image: req.file.location,
+    image: selectedFile,
     address,
     location: { type: "Point", coordinates: coordsArray },
     places: [],
