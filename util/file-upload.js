@@ -1,4 +1,3 @@
-// const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
 
 const MIME_TYPE_MAP = {

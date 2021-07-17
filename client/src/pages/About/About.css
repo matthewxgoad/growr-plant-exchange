@@ -1,9 +1,9 @@
-.homeContainer{
-    display: flex;
-    width: 100%;
+.homeContainer {
+  display: flex;
+  width: 100%;
 }
 
 .temp-filler {
-    flex: 6;
-    background-color: rgb(238, 245, 241)
+  flex: 6;
+  background-color: rgb(238, 245, 241);
 }
