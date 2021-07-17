@@ -17,18 +17,11 @@ export default function AlertDialog() {
     
   const classes = useStyles(); 
 
-  const [open, setOpen] = React.useState(true);
-
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
-
   return (
     <div>
       <Dialog
         align='center'
-        open={open}
-        // onClose={handleClose}
+        open={true}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
