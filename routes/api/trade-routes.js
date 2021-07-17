@@ -2,7 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const tradesControllers = require('../../controllers/trade-controllers');
-const ms3 = require('../../util/multer-s3')
+const ms3 = require('../../util/multer-s3');
 
 
 const router = express.Router();

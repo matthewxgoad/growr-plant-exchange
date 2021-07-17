@@ -61,7 +61,7 @@ export default function AddTradeForm() {
   
       try {
         
-        await axios.post("http://localhost:3000/api/trades", formData);
+        await axios.post("/api/trades", formData);
       } catch (err) {
         console.log(err);
       }

@@ -47,7 +47,8 @@ export default function AddPlaceForm() {
     const [selectedFile, setSelectedFile] = React.useState("");
 
     //hard-coded user id
-    const creator = '60ef16f6dc30ae326495264f'
+    let loggedInUserData = JSON.parse(localStorage.getItem('user'));
+    const creator = loggedInUserData._id;
   
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -62,8 +63,7 @@ export default function AddPlaceForm() {
     
     
         try {
-          console.log('>>>>>making a call<<<<<<<', formData);
-          await axios.post("http://localhost:3000/api/places", formData);
+          await axios.post("/api/places", formData);
         } catch (err) {
           console.log(err);
         }
