@@ -45,9 +45,8 @@ export default function AddTradeForm() {
   const [tradeType, setTradeType] = React.useState("");
   const [selectedFile, setSelectedFile] = React.useState("");
 
-  //hard-coded user id
   let loggedInUserData = JSON.parse(localStorage.getItem('user'));
-  const creator = loggedInUserData._id;
+  const creator = loggedInUserData;
 
   const handleSubmit = async (e) => {
       e.preventDefault();
@@ -60,8 +59,8 @@ export default function AddTradeForm() {
       formData.append('image', selectedFile);
   
       try {
-        console.log('>>>>>making a call<<<<<<<', formData.tradeType);
-        await axios.post("http://localhost:3000/api/trades", formData);
+        
+        await axios.post("/api/trades", formData);
       } catch (err) {
         console.log(err);
       }

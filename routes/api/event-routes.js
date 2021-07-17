@@ -2,7 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const eventsControllers = require('../../controllers/event-controllers');
-const fileUpload = require('../../util/file-upload');
+const ms3 = require('../../util/multer-s3');
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.get('/user/:uid', eventsControllers.getEventsByUserId);
 
 router.delete('/:eid', eventsControllers.deleteEvent);
 
-router.post('/', fileUpload.single('image'),
+router.post('/', ms3.single('image'),
   [
     check('title').not().isEmpty(),
     check('description').isLength({ min: 5 }),

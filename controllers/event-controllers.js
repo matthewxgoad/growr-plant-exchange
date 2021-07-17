@@ -73,7 +73,7 @@ const createEvent = async (req, res, next) => {
     description,
     address,
     location: {type: 'Point', coordinates: coordsArray},
-    image: req.file.path,
+    image: req.file.location,
     creator,
     date,
     time
@@ -91,8 +91,6 @@ const createEvent = async (req, res, next) => {
     const error = new HttpError('Could not find user for provided id', 404);
     return next(error);
   }
-
-  console.log(user);
 
   try {
     await createdEvent.save();
