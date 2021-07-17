@@ -52,7 +52,6 @@ export default function TradeCard({ trade }) {
           <Typography gutterBottom className={classes.timeStamp}>
             {trade.timeStamp}
           </Typography>
-          
         </CardContent>
       </CardActionArea>
 
