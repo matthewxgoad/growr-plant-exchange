@@ -2,7 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const usersController = require('../../controllers/users-controllers');
-const fileUpload = require('../../util/file-upload');
+
 const ms3 = require('../../util/multer-s3')
 
 const router = express.Router();
