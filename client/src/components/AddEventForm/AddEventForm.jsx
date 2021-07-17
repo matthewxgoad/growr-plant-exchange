@@ -15,12 +15,6 @@ import AddModal from '../AddModal';
 const headerColor = green[600];
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        '& > * + *': {
-          marginLeft: theme.spacing(2),
-         }
-    },
     paper: {
         padding:'50px 50px', 
         width:300, 
