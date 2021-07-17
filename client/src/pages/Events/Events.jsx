@@ -1,25 +1,21 @@
-import EventCard from '../../components/EventCard';
-import NavBar from '../../components/NavBar';
-import Gallery from '../../components/Gallery';
-import eventData from '../../eventData';
+import EventCard from "../../components/EventCard";
+import NavBar from "../../components/NavBar";
+import Gallery from "../../components/Gallery";
+import eventData from "../../eventData";
 
-import { useState } from 'react';
-import "./Events.css"
+import { useState } from "react";
+import "./Events.css";
 
 export default function Events(props) {
-  const [ eventDataState, setEventDataState ] = useState(eventData);
-  
+  const [eventDataState, setEventDataState] = useState(eventData);
+
   return (
     <>
-      <NavBar page="events"/>
+      <NavBar page="events" />
       <Gallery>
-      {eventDataState.map(event => {
-        return (
-
-          <EventCard event={event}/>
-          
-        )
-      })}
+        {eventDataState.map((event) => {
+          return <EventCard event={event} />;
+        })}
       </Gallery>
     </>
   );

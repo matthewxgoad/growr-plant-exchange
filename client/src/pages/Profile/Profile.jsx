@@ -29,8 +29,8 @@ export default function Profile(props) {
         
           <Gallery>
           <ProfileCard />
-            {tradeDataState.map((trade) => {
-              return <TradeCard trade={trade} />;
+            {tradeDataState.map( (trade, index) => {
+              return <TradeCard trade={trade} key={index}/>;
             })}
           </Gallery>
         
