@@ -55,12 +55,12 @@ export default function AddTradeForm() {
       const formData = new FormData()
       formData.append('title', title);
       formData.append('description', desc);
-      // formData.append('tradeType', tradeType);
+      formData.append('tradeType', tradeType);
       formData.append('creator', creator);
       formData.append('image', selectedFile);
   
       try {
-        console.log('>>>>>making a call<<<<<<<', formData);
+        console.log('>>>>>making a call<<<<<<<', formData.tradeType);
         await axios.post("http://localhost:3000/api/trades", formData);
       } catch (err) {
         console.log(err);
@@ -81,6 +81,7 @@ export default function AddTradeForm() {
 
   //radio button selection
   const handleRadioBtn = (event) => {
+
     setTradeType(event.target.value);
   };
 

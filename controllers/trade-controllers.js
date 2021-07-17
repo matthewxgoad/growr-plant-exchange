@@ -52,11 +52,12 @@ const createTrade = async (req, res, next) => {
     return next(new HttpError('Invalid inputs passed, please check your data.', 422));
   }
 
-  const { title, description, creator } = req.body;
+  const { title, description, tradeType, creator } = req.body;
 
   const createdTrade = new Trade({
     title,
     description,
+    tradeType,
     image: req.file.location,
     creator
   });
