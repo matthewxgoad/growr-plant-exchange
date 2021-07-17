@@ -189,6 +189,8 @@ const signup = async (req, res, next) => {
   res.status(201).json({ user: createdUser.toObject({ getters: true }) });
 };
 
+// TO DO  deal with all of this
+
 // const login = async (req, res, next) => {
   // const { email, password } = req.body;
 

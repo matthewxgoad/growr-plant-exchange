@@ -60,7 +60,7 @@ export default function AddTradeForm() {
       formData.append('image', selectedFile);
   
       try {
-        console.log('>>>>>making a call<<<<<<<', formData.tradeType);
+        
         await axios.post("http://localhost:3000/api/trades", formData);
       } catch (err) {
         console.log(err);
