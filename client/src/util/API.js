@@ -15,16 +15,8 @@ export default {
   getPlaces: function(id) {
     return axios.get('/api/users/radius/places/'+ id);
   },
-  // Get user info by id
+  // Get logged in user info by id
   getUser: function(id) {
-    return axios.get("/api/users/", id);
+    return axios.get("/api/users/"+ id);
   }
 };
-
-
-// Deletes a book from the database with a given id, then reloads books from the db
-// function getTrades() {
-//   API.getTrades()
-//     .then(res => loadTrades())
-//     .catch(err => console.log(err));
-// }

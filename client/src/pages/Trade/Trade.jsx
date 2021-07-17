@@ -31,7 +31,7 @@ export default function Places(props) {
       <NavBar page="trade" />
       <Gallery>
         {tradeDataState.map( (trade) => {
-          return <TradeCard trade={trade} />;
+          return <TradeCard  trade={trade} />;
         })}
       </Gallery>
     </>
