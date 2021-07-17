@@ -6,6 +6,8 @@ import './Gallery.css';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    padding: theme.spacing(1, 1),
+    margin: theme.spacing(1, 1),
   }
 }));
 

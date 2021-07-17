@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ProfileCard() {
+export default function ProfileCard( {profile} ) {
   const classes = useStyles();
 
   return (
@@ -44,20 +44,24 @@ export default function ProfileCard() {
         {/* Profile Photo */}
         <CardMedia
           className={classes.media}
-          image="https://imagez.tmz.com/image/c0/4by3/2020/07/06/c0b290ca5d1b4cb0a1dbec3509d509d4_md.jpg"
-          title="plantdaddy"
+          image={profile.image}
+          title={profile.name}
         />
 
         <CardContent>
           {/* Profile Username */}
-          <Typography className={classes.title}>plantdaddy</Typography>
+          {console.log(`profile `, profile)}
+          <Typography className={classes.title}>{profile.name}</Typography>
 
           <Typography gutterBottom variant="caption" color="textSecondary">
-            Saint Louis, MO
+            {profile.address}
+            {/* update this to city and state only */}
+            {/* or just use Neighborhood */}
           </Typography>
 
           <Typography gutterBottom className={classes.userSince}>
-            user since 2020
+            user since {profile.userCreated}
+            {/* update this to something human readable */}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -65,7 +69,7 @@ export default function ProfileCard() {
       <CardActions>
         {/* Button click initiates either email or messaging */}
         <Button size="small" color="secondary">
-          Contact
+          {profile.email}
         </Button>
       </CardActions>
     </Card>

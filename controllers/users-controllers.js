@@ -24,7 +24,7 @@ const getUserById = async (req, res, next) => {
 
   let user;
   try {
-    user = await User.findById(userId);
+    user = await User.findById(userId, "-password").populate("trades").populate("places").populate("events");
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not find user.",
