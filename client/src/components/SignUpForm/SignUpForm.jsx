@@ -1,9 +1,12 @@
 import React from "react";
 import { useState, useContext } from "react";
 import axios from "axios";
+// DELETE before deploy
 import "./SignUpForm.css";
 import { loginRequest } from "../../loginRequest";
 import { AuthContext } from "../../context/AuthContext";
+// Update API util before uncommenting
+// import API from '../../util/API';
 import {
   makeStyles,
   Grid,
