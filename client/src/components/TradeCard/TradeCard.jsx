@@ -37,7 +37,7 @@ export default function TradeCard({ trade }) {
         {/* trade Photo */}
         <CardMedia
           className={classes.media}
-          image={trade.photo}
+          image={trade.image}
           title={trade.description}
         />
 
@@ -50,7 +50,7 @@ export default function TradeCard({ trade }) {
           </Typography>
 
           <Typography gutterBottom className={classes.timeStamp}>
-            {trade.timeStamp}
+            {trade.tradeCreated}
           </Typography>
         </CardContent>
       </CardActionArea>
