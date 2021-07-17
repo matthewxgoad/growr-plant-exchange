@@ -45,7 +45,7 @@ export default function EventCard({ event }) {
         {/* Event Photo */}
         <CardMedia
           className={classes.media}
-          image={event.photo}
+          image={event.image}
           title={event.description}
         />
 
@@ -55,7 +55,7 @@ export default function EventCard({ event }) {
 
           {/* Event Info */}
           <Typography gutterBottom className={classes.subtitle}>
-            {event.eventDate} {event.eventTime}
+            {event.date} 
             <br />
             {event.address.street}
             <br />
@@ -67,7 +67,7 @@ export default function EventCard({ event }) {
           </Typography>
 
           <Typography gutterBottom className={classes.distance}>
-            {event.distance} away
+            {event.address}
           </Typography>
         </CardContent>
       </CardActionArea>

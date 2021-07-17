@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   subtitle: {
     fontSize: "1rem",
   },
-  distance: {
+  creator: {
     fontSize: ".75rem",
   },
   pos: {
@@ -45,7 +45,7 @@ export default function PlaceCard({ place }) {
         {/* place Photo */}
         <CardMedia
           className={classes.media}
-          image={place.photo}
+          image={place.image}
           title={place.description}
         />
 
@@ -55,19 +55,18 @@ export default function PlaceCard({ place }) {
 
           {/* place Info */}
           <Typography gutterBottom className={classes.subtitle}>
-            {place.eventDate} {place.eventTime}
+
+            {place.address}
             <br />
-            {place.address.street}
-            <br />
-            {place.address.city} {place.address.state} {place.address.zip}
+  
           </Typography>
 
           <Typography gutterBottom variant="caption" color="textSecondary">
             {place.description}
           </Typography>
 
-          <Typography gutterBottom className={classes.distance}>
-            {place.distance} away
+          <Typography gutterBottom className={classes.creator}>
+           Created by {place.creator}
           </Typography>
           
         </CardContent>

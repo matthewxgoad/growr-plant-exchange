@@ -48,6 +48,10 @@ export default function TradeCard({ trade }) {
           <Typography gutterBottom variant="caption" color="textSecondary">
             {trade.description}
           </Typography>
+              <br />
+          <Typography gutterBottom variant="caption" color="textSecondary">
+            Created by {trade.creator}
+          </Typography>
 
           <Typography gutterBottom className={classes.timeStamp}>
             {trade.tradeCreated}
