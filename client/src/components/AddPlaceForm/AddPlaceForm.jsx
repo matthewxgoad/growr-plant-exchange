@@ -46,9 +46,8 @@ export default function AddPlaceForm() {
     const [website, setWebsite] = React.useState("");
     const [selectedFile, setSelectedFile] = React.useState("");
 
-    //hard-coded user id
     let loggedInUserData = JSON.parse(localStorage.getItem('user'));
-    const creator = loggedInUserData._id;
+    const creator = loggedInUserData;
   
     const handleSubmit = async (e) => {
         e.preventDefault();
