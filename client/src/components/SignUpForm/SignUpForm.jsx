@@ -55,7 +55,6 @@ export default function SignUpForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("button clicked");
 
     const formData = new FormData();
     formData.append("name", name);
@@ -63,20 +62,15 @@ export default function SignUpForm() {
     formData.append("address", address);
     formData.append("password", password);
     formData.append("image", selectedFile);
-    // const config = {
-    //   headers: "Content-type: multipart/form-data"
-    // }
-    console.log(selectedFile);
+    
 
     try {
-      console.log(">>>>>making 1st call<<<<<<<", formData);
       await axios.post("/api/users/signup", formData);
     } catch (err) {
       console.log(err);
     }
 
     try {
-      console.log(">>>>>making 2nd call<<<<<<<", formData);
       loginRequest({ email: email, password: password }, dispatch);
     } catch (err) {
       console.log(err);

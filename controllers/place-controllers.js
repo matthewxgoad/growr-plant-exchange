@@ -53,7 +53,7 @@ const createPlace = async (req, res, next) => {
     return next(new HttpError('Invalid inputs passed, please check your data.', 422));
   }
 
-  const { title, description, address, creator } = req.body;
+  const { title, description, address, creator, website } = req.body;
 
   let coords;
   let coordsArray;
@@ -73,8 +73,9 @@ const createPlace = async (req, res, next) => {
     description,
     address,
     location: {type: 'Point', coordinates: coordsArray},
-    image: req.file.path,
-    creator
+    image: req.file.location,
+    creator,
+    website
   });
 
   let user;
