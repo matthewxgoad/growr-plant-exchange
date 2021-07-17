@@ -52,8 +52,7 @@ export default function Greeting() {
             things plant related.
           </Typography>
           <div className={classes.buttonHolder}>
-            <Button variant="contained" color="primary" className={classes.button} href="/login">Login</Button>
-            <Button variant="contained" color="primary" className={classes.button} href="/signup">Sign Up</Button>
+            <Button variant="contained" color="primary" className={classes.button} href="/about">About</Button>
           </div>
         </Paper>
       </Container>
