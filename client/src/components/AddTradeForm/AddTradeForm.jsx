@@ -46,7 +46,8 @@ export default function AddTradeForm() {
   const [selectedFile, setSelectedFile] = React.useState("");
 
   //hard-coded user id
-  const creator = '60ef16f6dc30ae326495264f'
+  let loggedInUserData = JSON.parse(localStorage.getItem('user'));
+  const creator = loggedInUserData._id;
 
   const handleSubmit = async (e) => {
       e.preventDefault();

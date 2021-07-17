@@ -66,6 +66,7 @@ export default function SignUpForm() {
     // const config = {
     //   headers: "Content-type: multipart/form-data"
     // }
+    
     console.log(selectedFile);
 
     try {

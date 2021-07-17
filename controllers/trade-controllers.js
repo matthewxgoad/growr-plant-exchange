@@ -57,7 +57,7 @@ const createTrade = async (req, res, next) => {
   const createdTrade = new Trade({
     title,
     description,
-    image: req.file.path,
+    image: req.file.location,
     creator
   });
 
