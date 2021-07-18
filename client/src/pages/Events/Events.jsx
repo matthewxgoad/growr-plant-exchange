@@ -19,8 +19,21 @@ export default function Events(props) {
 function loadEvents() {
   API.getEvents(userId)
     .then( (res) => {
-      console.log(res)
-      setEventDataState(res.data[0].events)
+
+      let eventArr = [];
+
+      for(let i = 0; i < res.data.length; i++){
+        for(let j = 0; j < res.data[i].events.length; j++){
+          let eventLoop = res.data[i].events[j];
+          console.log(eventLoop)
+          if(eventLoop){
+            eventLoop.name = res.data[i].name;
+            eventArr.push(eventLoop)
+          }
+        }
+      }
+      setEventDataState(
+        eventArr)
     })
     .catch((err) => console.log(err));
 }

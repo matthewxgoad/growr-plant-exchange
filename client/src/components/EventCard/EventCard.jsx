@@ -31,6 +31,9 @@ const useStyles = makeStyles({
   distance: {
     fontSize: ".75rem",
   },
+  creator: {
+    fontSize: ".75rem",
+  },
   pos: {
     marginBottom: 12,
   },
@@ -69,6 +72,12 @@ export default function EventCard({ event }) {
           <Typography gutterBottom className={classes.distance}>
             {event.address}
           </Typography>
+
+
+          <Typography gutterBottom className={classes.creator}>
+           Created by {event.name}
+          </Typography>
+
         </CardContent>
       </CardActionArea>
 

@@ -19,8 +19,21 @@ export default function Places(props) {
   function loadPlaces() {
     API.getPlaces(userId)
       .then( (res) => {
-        console.log(res)
-        setPlaceDataState(res.data[0].places)
+
+        let placeArr = [];
+
+        for(let i = 0; i < res.data.length; i++){
+          for(let j = 0; j < res.data[i].places.length; j++){
+            let placeLoop = res.data[i].places[j];
+            console.log(placeLoop)
+            if(placeLoop){
+              placeLoop.name = res.data[i].name;
+              placeArr.push(placeLoop)
+            }
+          }
+        }
+        setPlaceDataState(
+          placeArr)
       })
       .catch((err) => console.log(err));
   }
