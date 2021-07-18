@@ -93,12 +93,6 @@ export default function NavBar( {page} ) {
           {/* Viewable if logged in */}
         </ListItem>
       </List>
-      <List>
-        <ListItem button component={Link} color="inherit" href="/inbox">
-          <ListItemText primary="inbox" />
-          {/* Viewable if logged in */}
-        </ListItem>
-      </List>
       <Divider />
       <List>
         <ListItem button component={Link} color="inherit" href="/about">
