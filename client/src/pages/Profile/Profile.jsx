@@ -33,8 +33,21 @@ export default function Profile(props) {
   function loadProfile() {
     API.getUser(userId)
       .then((res) => {
+        console.log(res);
         setProfileDataState(res.data.user);
-        setTradeDataState(res.data.user.trades);
+
+        let tradeArr = [];
+
+        for(let i = 0; i < res.data.user.trades.length; i++){
+            let tradeLoop = res.data.user.trades[i];
+            console.log(tradeLoop)
+            if(tradeLoop){
+              tradeLoop.name = res.data.user.name;
+              tradeArr.push(tradeLoop)
+            }
+          }
+        setTradeDataState(tradeArr)
+
       })
       .catch((err) => console.log(err));
   }
