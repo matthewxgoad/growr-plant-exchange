@@ -55,7 +55,7 @@ export default function ProfileCard( {profile} ) {
           <Typography className={classes.title}>{profile.name}</Typography>
 
           <Typography gutterBottom variant="caption" color="textSecondary">
-            {profile.address}
+            Neighborhood: {profile.neighborhood}
             {/* update this to city and state only */}
             {/* or just use Neighborhood */}
           </Typography>
@@ -70,7 +70,7 @@ export default function ProfileCard( {profile} ) {
       <CardActions>
         {/* Button click initiates either email or messaging */}
         <Button size="small" color="secondary">
-          {profile.email}
+        <a href={"mailto:" + profile.email}>{profile.email}</a>
         </Button>
       </CardActions>
     </Card>

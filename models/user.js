@@ -41,6 +41,10 @@ const userSchema = new Schema({
         // lat: { type: Number, required: true },
         // lng: { type: Number, required: true },
     },
+    neighborhood: { 
+        type: String, 
+        required: true 
+    },
     userCreated: {
         type: Date,
         default: Date.now
