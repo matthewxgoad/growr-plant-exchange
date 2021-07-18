@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
 import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
 import green from "@material-ui/core/colors/green";
@@ -20,6 +21,7 @@ const useStyles = makeStyles({
   root: {
     width: 300,
     margin: "10px",
+    height: "fit-content"
   },
   media: {
     height: 250,
@@ -33,6 +35,9 @@ const useStyles = makeStyles({
   },
   timeStamp: {
     fontSize: ".75rem",
+  },
+  action: {
+    alignSelf: "end",  
   },
   tradeTrade: {
     color: tradeBlue,
@@ -61,10 +66,11 @@ export default function TradeCard({ trade }) {
     return classes.tradeTrade
   }};
 
+  const creatorLink = "/profile/" + trade.creator;
 
 
   return (
-    <Card className={classes.root} variant="outlined">
+    <Card className={classes.root}>
       {/* trade Photo */}
       <CardMedia
         className={classes.media}
@@ -81,21 +87,17 @@ export default function TradeCard({ trade }) {
         </Typography>
         {/* trade Title */}
         <Typography className={classes.title}>{trade.title}</Typography>
-
-        <Typography gutterBottom variant="caption" color="textSecondary">
+        <br />
+        <Typography gutterBottom variant="body2">
           {trade.description}
         </Typography>
         <br />
         <Typography gutterBottom variant="caption" color="textSecondary">
-          Created by {trade.name}
-        </Typography>
-        <br />
-        <Typography gutterBottom className={classes.timeStamp}>
-          Date Posted: {formatedDate}
+          Posted by <Link href={creatorLink}>{trade.name}</Link> on {formatedDate}
         </Typography>
       </CardContent>
 
-      <CardActions>
+      <CardActions className={classes.action}>
         {/* Button click initiates either email or messaging */}
         <Button size="small" color="secondary">
           EMAIL
