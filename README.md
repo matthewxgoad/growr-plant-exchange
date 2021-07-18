@@ -14,9 +14,6 @@ With the dependency on mobile apps rooted deep in our behaviors, we want to revi
 Exchanges are just to get you into first gear - trade seeds for clippings, give away some free aloe pups, request some strange succulent to add to the collection - grow not just new plants but also your community and hit up the farmer's market or start a new urban/community garden with your new-to-you neighbors!
 
 
-
-
-
 ### Project Status:
 
 *ONGOING*
