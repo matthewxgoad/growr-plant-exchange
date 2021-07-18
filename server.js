@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/grower",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/grower",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
