@@ -42,6 +42,8 @@ app.use(cors())
 // Static images
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
+
+
 // app.use(routes);
 app.use('/api/users', usersRoutes);
 app.use('/api/places', placeRoutes);
@@ -50,6 +52,9 @@ app.use('/api/events', eventRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/conversations', conversationRoutes);
 app.use('/api/messages', messageRoutes);
+
+
+
 
 // Error handler
 app.use((req, res, next) => {
