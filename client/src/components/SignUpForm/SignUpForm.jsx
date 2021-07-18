@@ -52,6 +52,7 @@ export default function SignUpForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
+  const [neighborhood, setNeighborhood] = useState("");
   const [password, setPassword] = useState("");
 
   const { isFetching, dispatch } = useContext(AuthContext);
@@ -63,6 +64,7 @@ export default function SignUpForm() {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("address", address);
+    formData.append("neighborhood", neighborhood);
     formData.append("password", password);
     formData.append("image", selectedFile);
     
@@ -91,6 +93,10 @@ export default function SignUpForm() {
 
   const handleAddressInput = (event) => {
     setAddress(event.target.value);
+  };
+
+  const handleNeighborhoodInput = (event) => {
+    setNeighborhood(event.target.value);
   };
 
   const handlePasswordInput = (event) => {
@@ -132,6 +138,14 @@ export default function SignUpForm() {
             fullWidth
             label="Address"
             placeholder="Enter your address"
+          />
+          <TextField
+            value={neighborhood}
+            onChange={handleNeighborhoodInput}
+            required
+            fullWidth
+            label="Neighborhood"
+            placeholder="Enter your neighborhood"
           />
           <TextField
             value={password}
