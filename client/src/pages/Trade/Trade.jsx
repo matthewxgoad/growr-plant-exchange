@@ -30,7 +30,6 @@ export default function Places(props) {
             if(tradeLoop){
               tradeLoop.name = res.data[i].name;
               tradeArr.push(tradeLoop)
-              // console.log(tradeArr)
             }
           }
         }

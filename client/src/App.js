@@ -53,7 +53,7 @@ function App() {
           {user ? <Profile /> : <Login />}
         </Route>
         <Route exact path="/profile/:username">
-          {/* {user ? <Profile /> : <SignUp />} */}
+          {/* {user ? <OtherProfile /> : <SignUp />} */}
         </Route>
         <Route path="/inbox">
           {user ? <Inbox /> : <Login />}
