@@ -8,7 +8,7 @@ const ms3 = require('../../util/multer-s3')
 const router = express.Router();
 
 router.get('/', usersController.getUsers);
-router.get('/:uid', usersController.getUserById);
+router.get('/profile/:uid', usersController.getUserById);
 
 router.get('/radius/trades/:uid', usersController.getUsersTradesWithin);
 router.get('/radius/places/:uid', usersController.getUsersPlacesWithin);

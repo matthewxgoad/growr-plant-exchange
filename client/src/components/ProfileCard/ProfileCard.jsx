@@ -52,7 +52,6 @@ export default function ProfileCard( {profile} ) {
 
         <CardContent>
           {/* Profile Username */}
-          {console.log(`profile `, profile)}
           <Typography className={classes.title}>{profile.name}</Typography>
 
           <Typography gutterBottom variant="caption" color="textSecondary">

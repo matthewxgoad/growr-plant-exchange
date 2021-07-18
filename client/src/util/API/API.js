@@ -17,7 +17,7 @@ export default {
   },
   // Get logged in user info by id
   getUser: function(id) {
-    return axios.get("/api/users/"+ id);
+    return axios.get('/api/users/profile/'+ id);
   },
    // Get other user id
   //  getOtherUser: function(id) {
@@ -26,7 +26,7 @@ export default {
 
 
   // TO DO New user sign up
-  // newUser: function() {
-  //   return axios.post("/api/users/signup", formData)
-  // }
+  createUser: function(formData) {
+    return axios.post("/api/users/signup/", formData)
+  }
 };

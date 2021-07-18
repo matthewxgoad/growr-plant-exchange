@@ -66,7 +66,7 @@ export default function PlaceCard({ place }) {
           </Typography>
 
           <Typography gutterBottom className={classes.creator}>
-           Created by {place.creator}
+           Created by {place.name}
           </Typography>
           
         </CardContent>

@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useContext } from "react";
-import axios from "axios";
+// import axios from "axios";
 // DELETE before deploy
 import "./SignUpForm.css";
-import { loginRequest } from "../../loginRequest";
-import { AuthContext } from "../../context/AuthContext";
+import { loginRequest } from "../../util/API/loginRequest";
+import { AuthContext } from "../../util/context/AuthContext";
 // Update API util before uncommenting
-// import API from '../../util/API';
+import API from '../../util/API/API';
 import {
   makeStyles,
   Grid,
@@ -68,7 +68,8 @@ export default function SignUpForm() {
     
 
     try {
-      await axios.post("/api/users/signup", formData);
+      await API.createUser(formData);
+      // await axios.post("/api/users/signup", formData);
     } catch (err) {
       console.log(err);
     }

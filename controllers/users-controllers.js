@@ -59,7 +59,7 @@ const getUsersTradesWithin = async (req, res, next) => {
           type: "Point",
           coordinates: coordinates,
         },
-        $maxDistance: 20000,
+        $maxDistance: 25000,
       },
     },
   }).populate("trades");
@@ -82,7 +82,7 @@ const getUsersPlacesWithin = async (req, res, next) => {
           type: "Point",
           coordinates: coordinates,
         },
-        $maxDistance: 20000,
+        $maxDistance: 25000,
       },
     },
   }).populate("places");
@@ -105,7 +105,7 @@ const getUsersEventsWithin = async (req, res, next) => {
           type: "Point",
           coordinates: coordinates,
         },
-        $maxDistance: 20000,
+        $maxDistance: 250000,
       },
     },
   }).populate("events");
