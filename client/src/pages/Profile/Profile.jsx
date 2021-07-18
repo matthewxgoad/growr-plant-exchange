@@ -33,7 +33,6 @@ export default function Profile(props) {
   function loadProfile() {
     API.getUser(userId)
       .then((res) => {
-        console.log(res);
         setProfileDataState(res.data.user);
         setTradeDataState(res.data.user.trades);
       })
