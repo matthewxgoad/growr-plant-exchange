@@ -14,7 +14,6 @@ const commentRoutes = require('./routes/api/comment-routes');
 const conversationRoutes = require('./routes/api/conversation-routes');
 const messageRoutes = require('./routes/api/message-routes');
 
-
 const HttpError = require('./models/http-error');
 const path = require('path');
 const app = express();
@@ -29,11 +28,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-
-  // app.get("*", (req, res) => {
-  //   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  // })
+  // app.use(express.static("client/build"));
+  app.use(express.static(path.join('client', 'build')));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  })
 }
 
 
