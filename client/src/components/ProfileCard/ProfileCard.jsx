@@ -70,7 +70,7 @@ export default function ProfileCard( {profile} ) {
       <CardActions>
         {/* Button click initiates either email or messaging */}
         <Button size="small" color="secondary">
-        <a href={"mailto:" + profile.email}>{profile.email}</a>
+        <a href={"mailto:" + profile.email}>Contact</a>
         </Button>
       </CardActions>
     </Card>
