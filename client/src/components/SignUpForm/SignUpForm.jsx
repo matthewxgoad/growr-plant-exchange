@@ -1,11 +1,8 @@
 import React from "react";
 import { useState, useContext } from "react";
-// import axios from "axios";
-// DELETE before deploy
 import "./SignUpForm.css";
 import { loginRequest } from "../../util/API/loginRequest";
 import { AuthContext } from "../../util/context/AuthContext";
-// Update API util before uncommenting
 import API from '../../util/API/API';
 import {
   makeStyles,
@@ -45,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
   const classes = useStyles();
 
   const [selectedFile, setSelectedFile] = useState("");

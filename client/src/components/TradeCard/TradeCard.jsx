@@ -55,8 +55,6 @@ export default function TradeCard({ trade }) {
 
   const formatedDate = moment(trade.tradeCreated).format("L");
 
-  console.log('trade type ', trade.tradeType)
-
   let tradeColor = () => {
    if (trade.tradeType === "free") {
     return classes.tradeFree
@@ -66,6 +64,7 @@ export default function TradeCard({ trade }) {
     return classes.tradeTrade
   }};
 
+    // Concats link to creator profile
   const creatorLink = "/profile/" + trade.creator;
 
 
@@ -86,7 +85,7 @@ export default function TradeCard({ trade }) {
           {trade.tradeType.toUpperCase()}
         </Typography>
         {/* trade Title */}
-        <Typography className={classes.title}>{trade.title}</Typography>
+        <Typography className={classes.title}>{trade.title.toUpperCase()}</Typography>
         <br />
         <Typography gutterBottom variant="body2">
           {trade.description}
