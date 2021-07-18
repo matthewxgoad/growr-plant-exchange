@@ -1,7 +1,7 @@
 import EventCard from "../../components/EventCard";
 import NavBar from "../../components/NavBar";
 import Gallery from "../../components/Gallery";
-import API from "../../util/API";
+import API from "../../util/API/API";
 import { useState, useEffect } from "react";
 import "./Events.css";
 

@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 import Link from "@material-ui/core/Link";
 import { useContext } from "react";
-import { loginRequest } from "../../util/loginRequest";
+import { loginRequest } from "../../util/API/loginRequest";
 import { AuthContext } from "../../util/context/AuthContext";
 
 const headerColor = green[600];

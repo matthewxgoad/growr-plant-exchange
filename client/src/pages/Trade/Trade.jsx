@@ -2,7 +2,7 @@ import TradeCard from "../../components/TradeCard";
 import NavBar from "../../components/NavBar";
 import Gallery from "../../components/Gallery";
 import { useState, useEffect } from "react";
-import API from "../../util/API";
+import API from "../../util/API/API";
 import "./Trade.css";
 
 export default function Places(props) {

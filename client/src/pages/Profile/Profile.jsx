@@ -5,7 +5,7 @@ import Gallery from "../../components/Gallery";
 import NavBar from "../../components/NavBar";
 import ProfileCard from "../../components/ProfileCard";
 import TradeCard from "../../components/TradeCard";
-import API from "../../util/API";
+import API from "../../util/API/API";
 import { Grid } from "@material-ui/core";
 import "./Profile.css";
 
