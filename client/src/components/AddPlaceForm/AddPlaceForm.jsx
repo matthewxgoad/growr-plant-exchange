@@ -1,9 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import './AddPlaceForm.css';
-import { Grid,Paper, TextField, Button } from '@material-ui/core';
+import { Grid,Paper, TextField, Button, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
+import AddModal from '../AddModal';
+
 
 const headerColor = green[600];
 
@@ -45,12 +47,15 @@ export default function AddPlaceForm() {
     const [desc, setDesc] = React.useState("");
     const [website, setWebsite] = React.useState("");
     const [selectedFile, setSelectedFile] = React.useState("");
+    const [progress, SetProgress] = React.useState(false);
+    const [modalState, setModalState] = React.useState(false);
 
     let loggedInUserData = JSON.parse(localStorage.getItem('user'));
     const creator = loggedInUserData;
   
     const handleSubmit = async (e) => {
         e.preventDefault();
+        SetProgress(true)
     
         const formData = new FormData()
         formData.append('title', title);
@@ -66,6 +71,8 @@ export default function AddPlaceForm() {
         } catch (err) {
           console.log(err);
         }
+
+        setModalState(true);
     }
 
     const handleTitleInput = (event) =>{
@@ -89,6 +96,8 @@ export default function AddPlaceForm() {
     }
 
     return (
+        <>
+        { (!modalState) ?
         <Grid align='center'>
             <Paper elevation={20} className={classes.paper}>
                 <Grid align='center'>
@@ -142,12 +151,18 @@ export default function AddPlaceForm() {
                     /> 
                     <br/>
                     <div className={classes.submitBtn}>
-                    <Button type='submit' variant='contained' color='primary'>
-                        Add Place
+                    <Button type='submit' variant='contained' color='primary'
+                        disabled={progress}>
+                          { progress ? 
+                          (<CircularProgress/>) : 'Add Place'}
                     </Button>
                     </div>
                 </form>
             </Paper>
         </Grid>
+        :
+        <AddModal/>
+            }
+        </>
     )
 }

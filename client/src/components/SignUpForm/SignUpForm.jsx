@@ -55,10 +55,12 @@ export default function SignUpForm() {
   const [neighborhood, setNeighborhood] = useState("");
   const [password, setPassword] = useState("");
 
+  const [progress, SetProgress] = React.useState(false);
   const { isFetching, dispatch } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    SetProgress(true);
 
     const formData = new FormData();
     formData.append("name", name);
@@ -68,7 +70,6 @@ export default function SignUpForm() {
     formData.append("password", password);
     formData.append("image", selectedFile);
     
-
     try {
       await API.createUser(formData);
       // await axios.post("/api/users/signup", formData);
@@ -170,9 +171,9 @@ export default function SignUpForm() {
               type="submit"
               variant="contained"
               color="primary"
-              disabled={isFetching}
+              disabled={progress}
             >
-              {isFetching ? <CircularProgress /> : "Create Account"}
+              {progress ? <CircularProgress /> : "Create Account"}
             </Button>
           </div>
         </form>
