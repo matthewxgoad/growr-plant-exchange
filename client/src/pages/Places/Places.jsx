@@ -32,8 +32,7 @@ export default function Places(props) {
             }
           }
         }
-        setPlaceDataState(
-          placeArr)
+        setPlaceDataState(placeArr)
       })
       .catch((err) => console.log(err));
   }
