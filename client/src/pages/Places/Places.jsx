@@ -42,8 +42,8 @@ export default function Places(props) {
     <>
       <NavBar page="places" />
       <Gallery>
-        {placeDataState.map((place) => {
-          return <PlaceCard place={place} />;
+        {placeDataState.map((place, index) => {
+          return <PlaceCard key={index} place={place} />;
         })}
       </Gallery>
     </>
