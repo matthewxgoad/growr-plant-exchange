@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import moment from 'moment';
 
 const useStyles = makeStyles({
   root: {
@@ -31,6 +32,8 @@ const useStyles = makeStyles({
 export default function TradeCard({ trade }) {
   const classes = useStyles();
 
+  const formatedDate = moment(trade.tradeCreated).format("L")
+
   return (
     <Card className={classes.root} variant="outlined">
       <CardActionArea>
@@ -54,7 +57,7 @@ export default function TradeCard({ trade }) {
           </Typography>
 
           <Typography gutterBottom className={classes.timeStamp}>
-            {trade.tradeCreated}
+            Date Posted: {formatedDate}
           </Typography>
         </CardContent>
       </CardActionArea>
