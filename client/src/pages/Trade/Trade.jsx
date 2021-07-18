@@ -14,30 +14,27 @@ export default function Places(props) {
 
   useEffect(() => {
     loadTrades();
-
   }, []);
 
   // Loads all trades near userid
   function loadTrades() {
     API.getTrades(userId)
       .then( (res) => {
-        console.log(`trade info`, res)
-        let temp = [];
+
+        let tradeArr = [];
 
         for(let i = 0; i < res.data.length; i++){
-
           for(let j = 0; j < res.data[i].trades.length; j++){
-            let tempTrade = res.data[i].trades[j];
-            console.log(tempTrade)
-            if(tempTrade){
-              tempTrade.name = res.data[i].name;
-              temp.push(tempTrade)
+            let tradeLoop = res.data[i].trades[j];
+            console.log(tradeLoop)
+            if(tradeLoop){
+              tradeLoop.name = res.data[i].name;
+              tradeArr.push(tradeLoop)
             }
           }
         }
-        // console.log("temp", temp)
         setTradeDataState(
-          temp)
+          tradeArr)
       })
       .catch((err) => console.log(err));
   }
