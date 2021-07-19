@@ -59,7 +59,7 @@ const getUsersTradesWithin = async (req, res, next) => {
           type: "Point",
           coordinates: coordinates,
         },
-        $maxDistance: 20000,
+        $maxDistance: 25000,
       },
     },
   }).populate("trades");
@@ -82,7 +82,7 @@ const getUsersPlacesWithin = async (req, res, next) => {
           type: "Point",
           coordinates: coordinates,
         },
-        $maxDistance: 20000,
+        $maxDistance: 25000,
       },
     },
   }).populate("places");
@@ -105,7 +105,7 @@ const getUsersEventsWithin = async (req, res, next) => {
           type: "Point",
           coordinates: coordinates,
         },
-        $maxDistance: 20000,
+        $maxDistance: 250000,
       },
     },
   }).populate("events");
@@ -122,7 +122,7 @@ const signup = async (req, res, next) => {
   }
   console.log("req body", req.body);
 
-  const { name, email, password, address } = req.body;
+  const { name, email, password, address, neighborhood } = req.body;
 
   let existingUser;
   try {
@@ -174,6 +174,7 @@ const signup = async (req, res, next) => {
     image: req.file.location,
     address,
     location: { type: "Point", coordinates: coordsArray },
+    neighborhood,
     places: [],
   });
 
@@ -188,45 +189,6 @@ const signup = async (req, res, next) => {
 
   res.status(201).json({ user: createdUser.toObject({ getters: true }) });
 };
-
-// TO DO  deal with all of this
-
-// const login = async (req, res, next) => {
-  // const { email, password } = req.body;
-
-//   let existingUser;
-
-//   try {
-//     existingUser = await User.findOne({ email: email })
-//   } catch (err) {
-    // const error = new HttpError('Logging in failed, please try again later.', 500);
-    // return next(error);
-//   }
-
-//   if (!existingUser) {
-//     const error = new HttpError('Invalid credentials, could not log you in.', 401);
-    // return next(error);
-//   }
-
-//   let isValidPassword = false;
-//   try {
-//     isValidPassword = await bcrypt.compare(password, existingUser.password);
-//   } catch (err) {
-//     const error = new HttpError(
-//       'Could not log you in, please check your credentials and try again.',
-//       500
-//     );
-//     return next (error);
-//   }
-
-//   if (!isValidPassword) {
-//     const error = new HttpError('Invalid credentials, could not log you in.', 401);
-//     return next(error);
-//   }
-
-//   res.json({message: 'Logged in!'});
-// };
-
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;

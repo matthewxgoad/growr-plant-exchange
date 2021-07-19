@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../util/context/AuthContext";
 import grey from "@material-ui/core/colors/grey";
 import teal from "@material-ui/core/colors/teal";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -70,6 +70,12 @@ export default function NavBar( {page} ) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className>
+        <ListItem button component={Link} color="inherit" href="/profile">
+          <ListItemText primary="profile" />
+          {/* Viewable if logged in */}
+        </ListItem>
+      </List>
+      <List>
         <ListItem button component={Link} color="inherit" href="/add">
           <ListItemText primary="add" />
           {/* Viewable if logged in */}
@@ -93,12 +99,6 @@ export default function NavBar( {page} ) {
           {/* Viewable if logged in */}
         </ListItem>
       </List>
-      <List>
-        <ListItem button component={Link} color="inherit" href="/inbox">
-          <ListItemText primary="inbox" />
-          {/* Viewable if logged in */}
-        </ListItem>
-      </List>
       <Divider />
       <List>
         <ListItem button component={Link} color="inherit" href="/about">
@@ -106,6 +106,13 @@ export default function NavBar( {page} ) {
           {/* Viewable if logged in OR out */}
         </ListItem>
       </List>
+      <List>
+        <ListItem onClick={handleLogout} button component={Link} color="inherit" href="/">
+          <ListItemText primary="logout" />
+          {/* Viewable if logged in */}
+        </ListItem>
+      </List>
+
     </div>
   );
   return (
@@ -135,16 +142,6 @@ export default function NavBar( {page} ) {
           <Typography variant="h4" className={classes.title}>
             growr <span className={classes.pageName}>{page}</span>
           </Typography>
-              <Button color="inherit">
-                <Link component={Link} className={classes.links} href="/profile">
-                  Profile
-                </Link>
-              </Button>
-              <Button onClick={handleLogout} color="inherit">
-                <Link component={Link} className={classes.links} href="/">
-                Logout
-                </Link>
-              </Button>
             </> 
             : 
             <>

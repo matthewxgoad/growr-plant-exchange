@@ -5,7 +5,7 @@ import Gallery from "../../components/Gallery";
 import NavBar from "../../components/NavBar";
 import ProfileCard from "../../components/ProfileCard";
 import TradeCard from "../../components/TradeCard";
-import API from "../../util/API";
+import API from "../../util/API/API";
 import { Grid } from "@material-ui/core";
 import "./Profile.css";
 
@@ -35,7 +35,19 @@ export default function Profile(props) {
       .then((res) => {
         console.log(res);
         setProfileDataState(res.data.user);
-        setTradeDataState(res.data.user.trades);
+
+        let tradeArr = [];
+
+        for(let i = 0; i < res.data.user.trades.length; i++){
+            let tradeLoop = res.data.user.trades[i];
+            console.log(tradeLoop)
+            if(tradeLoop){
+              tradeLoop.name = res.data.user.name;
+              tradeArr.push(tradeLoop)
+            }
+          }
+        setTradeDataState(tradeArr)
+
       })
       .catch((err) => console.log(err));
   }

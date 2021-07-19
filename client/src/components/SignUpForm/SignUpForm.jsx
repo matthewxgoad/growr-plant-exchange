@@ -1,12 +1,9 @@
 import React from "react";
 import { useState, useContext } from "react";
-import axios from "axios";
-// DELETE before deploy
 import "./SignUpForm.css";
-import { loginRequest } from "../../loginRequest";
-import { AuthContext } from "../../context/AuthContext";
-// Update API util before uncommenting
-// import API from '../../util/API';
+import { loginRequest } from "../../util/API/loginRequest";
+import { AuthContext } from "../../util/context/AuthContext";
+import API from '../../util/API/API';
 import {
   makeStyles,
   Grid,
@@ -45,30 +42,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
   const classes = useStyles();
 
   const [selectedFile, setSelectedFile] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
+  const [neighborhood, setNeighborhood] = useState("");
   const [password, setPassword] = useState("");
 
+  const [progress, SetProgress] = React.useState(false);
   const { isFetching, dispatch } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    SetProgress(true);
 
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
     formData.append("address", address);
+    formData.append("neighborhood", neighborhood);
     formData.append("password", password);
     formData.append("image", selectedFile);
     
-
     try {
-      await axios.post("/api/users/signup", formData);
+      await API.createUser(formData);
+      // await axios.post("/api/users/signup", formData);
     } catch (err) {
       console.log(err);
     }
@@ -90,6 +91,10 @@ export default function SignUpForm() {
 
   const handleAddressInput = (event) => {
     setAddress(event.target.value);
+  };
+
+  const handleNeighborhoodInput = (event) => {
+    setNeighborhood(event.target.value);
   };
 
   const handlePasswordInput = (event) => {
@@ -133,6 +138,14 @@ export default function SignUpForm() {
             placeholder="Enter your address"
           />
           <TextField
+            value={neighborhood}
+            onChange={handleNeighborhoodInput}
+            required
+            fullWidth
+            label="Neighborhood"
+            placeholder="Enter your neighborhood"
+          />
+          <TextField
             value={password}
             onChange={handlePasswordInput}
             type="password"
@@ -155,9 +168,9 @@ export default function SignUpForm() {
               type="submit"
               variant="contained"
               color="primary"
-              disabled={isFetching}
+              disabled={progress}
             >
-              {isFetching ? <CircularProgress /> : "Create Account"}
+              {progress ? <CircularProgress /> : "Create Account"}
             </Button>
           </div>
         </form>
