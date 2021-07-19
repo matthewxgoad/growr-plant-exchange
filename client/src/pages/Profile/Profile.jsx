@@ -1,6 +1,6 @@
-import React from "react";
+import {React, useState, useEffect } from "react";
+import { useParams, useRouteMatch, useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { useState, useEffect } from "react";
 import Gallery from "../../components/Gallery";
 import NavBar from "../../components/NavBar";
 import ProfileCard from "../../components/ProfileCard";
@@ -25,13 +25,23 @@ export default function Profile(props) {
   let loggedInUserData = JSON.parse(localStorage.getItem("user"));
   const userId = loggedInUserData;
 
+  let location = useLocation()
+
+
   useEffect(() => {
-    loadProfile();
+    console.log(location.pathname.split('/')[2])
+    let otherUserId = location.pathname.split('/')[2]
+
+    if(otherUserId){
+      loadProfile(otherUserId)
+    } else {
+      loadProfile(userId)
+    }
   }, []);
 
   // Loads all trades near userid
-  function loadProfile() {
-    API.getUser(userId)
+  function loadProfile(id) {
+    API.getUser(id)
       .then((res) => {
         console.log(res);
         setProfileDataState(res.data.user);

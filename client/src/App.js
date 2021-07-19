@@ -49,11 +49,11 @@ function App() {
         <Route exact path="/places">
           {user ? <Places /> : <Login />}
         </Route>
-        <Route exact path="/profile">
+        <Route path="/profile">
           {user ? <Profile /> : <Login />}
         </Route>
-        <Route exact path="/profile/:username">
-          {/* {user ? <OtherProfile /> : <SignUp />} */}
+        <Route path="/profile/:otherUserId" >
+          {user ? <Profile /> : <Login />}
         </Route>
         <Route path="/inbox">
           {user ? <Inbox /> : <Login />}
