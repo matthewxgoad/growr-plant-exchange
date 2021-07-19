@@ -52,8 +52,8 @@ function App() {
         <Route path="/profile">
           {user ? <Profile /> : <Login />}
         </Route>
-        <Route path="/profile/:otherUserId">
-          {/* {user ? <OtherProfile /> : <SignUp />} */}
+        <Route path="/profile/:otherUserId" >
+          {user ? <Profile /> : <Login />}
         </Route>
         <Route path="/inbox">
           {user ? <Inbox /> : <Login />}

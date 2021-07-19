@@ -1,5 +1,5 @@
 import {React, useState, useEffect } from "react";
-import { useParams, useRouteMatch } from "react-router-dom";
+import { useParams, useRouteMatch, useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Gallery from "../../components/Gallery";
 import NavBar from "../../components/NavBar";
@@ -23,21 +23,16 @@ export default function Profile(props) {
   const [profileDataState, setProfileDataState] = useState([]);
 
   let loggedInUserData = JSON.parse(localStorage.getItem("user"));
-  // THE TWO VARIABLES TO USE FOR API CALL ON LINE 36, IF THEN OR TERNARY?
   const userId = loggedInUserData;
 
-  // using userRouteMatch to get ID of clicked user
-  const match = useRouteMatch({
-    path: "/profile/:otherUserId",
-    strict: true,
-    exact: true
-  });
-  const array = Object.values(match.params)
-  const otherUserId = array[0]
-  console.log(otherUserId)
+  let location = useLocation()
+
 
   useEffect(() => {
-    if(match){
+    console.log(location.pathname.split('/')[2])
+    let otherUserId = location.pathname.split('/')[2]
+
+    if(otherUserId){
       loadProfile(otherUserId)
     } else {
       loadProfile(userId)
