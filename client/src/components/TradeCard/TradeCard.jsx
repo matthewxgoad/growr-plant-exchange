@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -6,15 +7,14 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
+// import Link from "@material-ui/core/Link";
 import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
 import green from "@material-ui/core/colors/green";
-
 import moment from "moment";
 
 const tradeBlue = blue[900];
-const tradeGreen = green[900];
+const tradeGreen = green[700];
 const tradeRed = red[900];
 
 const useStyles = makeStyles({
@@ -65,7 +65,7 @@ export default function TradeCard({ trade }) {
   }};
 
     // Concats link to creator profile
-  const creatorLink = "/profile/" + trade.creator;
+  // const creatorLink = "/profile/" + trade.creator;
 
 
   return (
@@ -92,14 +92,14 @@ export default function TradeCard({ trade }) {
         </Typography>
         <br />
         <Typography gutterBottom variant="caption" color="textSecondary">
-          Posted by <Link href={creatorLink}>{trade.name}</Link> on {formatedDate}
+          Posted by <Link to={`/profile/${trade.creator}`}>{trade.name}</Link> on {formatedDate}
         </Typography>
       </CardContent>
 
       <CardActions className={classes.action}>
         {/* Button click initiates either email or messaging */}
-        <Button size="small" color="secondary">
-          EMAIL
+        <Button size="small" color="secondary" href={`/profile/${trade.creator}`}>
+          CONTACT
         </Button>
       </CardActions>
     </Card>
