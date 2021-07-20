@@ -33,7 +33,7 @@ export default function PlaceCard({ place }) {
   const classes = useStyles();
 
   // Concats link to creator profile
-  const creatorLink = "/profile/" + place.creator;
+  const creatorLink = "/profiles/" + place.creator;
 
   return (
     <Card className={classes.root}>

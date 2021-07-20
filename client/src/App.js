@@ -29,10 +29,10 @@ function App() {
           {<Root />}
         </Route>
         <Route path="/login">
-          {user ? <Redirect to="/profile" /> : <Login />}
+          {user ? <Redirect to="/profiles" /> : <Login />}
         </Route>
         <Route path="/signup">
-          {user ? <Redirect to="/profile" /> : <SignUp />}
+          {user ? <Redirect to="/profiles" /> : <SignUp />}
         </Route>
         <Route exact path="/about">
           {<About />}
@@ -49,10 +49,10 @@ function App() {
         <Route exact path="/places">
           {user ? <Places /> : <Login />}
         </Route>
-        <Route path="/profile">
+        <Route path="/profiles">
           {user ? <Profile /> : <Login />}
         </Route>
-        <Route path="/profile/:otherUserId" >
+        <Route path="/profiles/:otherUserId" >
           {user ? <Profile /> : <Login />}
         </Route>
         <Route path="/inbox">

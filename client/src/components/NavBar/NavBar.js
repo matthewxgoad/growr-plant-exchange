@@ -70,7 +70,7 @@ export default function NavBar( {page} ) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className>
-        <ListItem button component={Link} color="inherit" href="/profile">
+        <ListItem button component={Link} color="inherit" href="/profiles">
           <ListItemText primary="profile" />
           {/* Viewable if logged in */}
         </ListItem>

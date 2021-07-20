@@ -92,13 +92,13 @@ export default function TradeCard({ trade }) {
         </Typography>
         <br />
         <Typography gutterBottom variant="caption" color="textSecondary">
-          Posted by <Link to={`/profile/${trade.creator}`}>{trade.name}</Link> on {formatedDate}
+          Posted by <Link to={`/profiles/${trade.creator}`}>{trade.name}</Link> on {formatedDate}
         </Typography>
       </CardContent>
 
       <CardActions className={classes.action}>
         {/* Button click initiates either email or messaging */}
-        <Button size="small" color="secondary" href={`/profile/${trade.creator}`}>
+        <Button size="small" color="secondary" href={`/profiles/${trade.creator}`}>
           CONTACT
         </Button>
       </CardActions>

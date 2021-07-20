@@ -35,7 +35,7 @@ export default function AlertDialog() {
           <Link  href="/add">
             Add Again
           </Link>
-          <Link  href="/profile">
+          <Link  href="/profiles">
             View Profile
           </Link>
         </DialogActions>
