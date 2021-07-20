@@ -30,7 +30,7 @@ export default function EventCard({ event }) {
   const formatedTime = moment(event.time).format("LT");
 
   // Concats link to post creator profile
-  const creatorLink = "/profile/" + event.creator;
+  const creatorLink = "/profiles/" + event.creator;
 
   return (
     <Card className={classes.root}>
