@@ -26,14 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
 
-
-
 app.use(cors())
-
-// Static images
-// app.use('/uploads/images', express.static(path.join('uploads', 'images')));
-
-
 
 // app.use(routes);
 app.use('/api/users', usersRoutes);
@@ -56,16 +49,11 @@ if (process.env.NODE_ENV === "production") {
   })
 }
 
-
 // Error handler
 app.use((req, res, next) => {
   const error = new HttpError('Could not find this route.', 404);
   throw error;
 });
-
-
-
-
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/grower",
