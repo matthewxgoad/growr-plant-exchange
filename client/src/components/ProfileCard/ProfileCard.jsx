@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 
 export default function ProfileCard( {profile} ) {
   const classes = useStyles();
-  const formatedDate = moment(profile.userCreated).format("MMMM YYYY")
+  const formatedDate = moment(profile?.userCreated).format("MMMM YYYY")
 
   return (
     <Card className={classes.root} elevation={7}>
