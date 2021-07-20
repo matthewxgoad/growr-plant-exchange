@@ -14,7 +14,7 @@ import green from "@material-ui/core/colors/green";
 import moment from "moment";
 
 const tradeBlue = blue[900];
-const tradeGreen = green[900];
+const tradeGreen = green[700];
 const tradeRed = red[900];
 
 const useStyles = makeStyles({
@@ -98,8 +98,8 @@ export default function TradeCard({ trade }) {
 
       <CardActions className={classes.action}>
         {/* Button click initiates either email or messaging */}
-        <Button size="small" color="secondary">
-          EMAIL
+        <Button size="small" color="secondary" href={`/profile/${trade.creator}`}>
+          CONTACT
         </Button>
       </CardActions>
     </Card>
