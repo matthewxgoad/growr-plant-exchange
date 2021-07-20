@@ -14,6 +14,7 @@ const useStyles = makeStyles({
   root: {
     width: 350,
     margin: "10px",
+    height: "fit-content"
   },
   media: {
     height: 250,
@@ -66,7 +67,7 @@ export default function ProfileCard( {profile} ) {
 
       <CardActions>
         {/* Button click initiates either email or messaging */}
-        <Button size="small" color="secondary" href={"mailto:" + profile.email}>
+        <Button variant="contained" size="large" color="secondary" href={"mailto:" + profile.email}>
         EMAIL
         </Button>
       </CardActions>
