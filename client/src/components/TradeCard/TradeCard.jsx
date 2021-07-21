@@ -12,6 +12,8 @@ import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
 import green from "@material-ui/core/colors/green";
 import moment from "moment";
+import { useEffect } from "react";
+import API from "../../util/API/API";
 
 const tradeBlue = blue[900];
 const tradeGreen = green[700];
@@ -21,7 +23,7 @@ const useStyles = makeStyles({
   root: {
     width: 300,
     margin: "10px",
-    height: "fit-content"
+    height: "fit-content",
   },
   media: {
     height: 250,
@@ -37,7 +39,7 @@ const useStyles = makeStyles({
     fontSize: ".75rem",
   },
   action: {
-    alignSelf: "end",  
+    alignSelf: "end",
   },
   tradeTrade: {
     color: tradeBlue,
@@ -50,23 +52,33 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TradeCard({ trade }) {
-  const classes = useStyles( trade.tradeType );
+
+
+export default function TradeCard({ trade, loadTrades }) {
+  const classes = useStyles(trade.tradeType);
+
+  let loggedInUserData = JSON.parse(localStorage.getItem("user"));
+  const userId = loggedInUserData;
+
+  console.log( "userId", userId, "creatorId", trade.creator)
 
   const formatedDate = moment(trade.tradeCreated).format("L");
 
+  function deleteTrade(id) {
+    API.deleteTrade(id)
+      .then((res) => loadTrades())
+      .catch((err) => console.log(err));
+  }
+
   let tradeColor = () => {
-   if (trade.tradeType === "free") {
-    return classes.tradeFree
-  } else if (trade.tradeType === "request") {
-    return classes.tradeReq
-  } else if (trade.tradeType === "trade") {
-    return classes.tradeTrade
-  }};
-
-    // Concats link to creator profile
-  // const creatorLink = "/profile/" + trade.creator;
-
+    if (trade.tradeType === "free") {
+      return classes.tradeFree;
+    } else if (trade.tradeType === "request") {
+      return classes.tradeReq;
+    } else if (trade.tradeType === "trade") {
+      return classes.tradeTrade;
+    }
+  };
 
   return (
     <Card className={classes.root}>
@@ -78,29 +90,43 @@ export default function TradeCard({ trade }) {
       />
 
       <CardContent>
-        <Typography 
-          variant="overline" 
-          className={tradeColor()}
-          >
+        <Typography variant="overline" className={tradeColor()}>
           {trade.tradeType.toUpperCase()}
         </Typography>
         {/* trade Title */}
-        <Typography className={classes.title}>{trade.title.toUpperCase()}</Typography>
+        <Typography className={classes.title}>
+          {trade.title.toUpperCase()}
+        </Typography>
         <br />
         <Typography gutterBottom variant="body2">
           {trade.description}
         </Typography>
         <br />
         <Typography gutterBottom variant="caption" color="textSecondary">
-          Posted by <Link to={`/profiles/${trade.creator}`}>{trade.name}</Link> on {formatedDate}
+          Posted by <Link to={`/profiles/${trade.creator}`}>{trade.name}</Link>{" "}
+          on {formatedDate}
         </Typography>
       </CardContent>
 
       <CardActions className={classes.action}>
-        {/* Button click initiates either email or messaging */}
-        <Button size="small" color="secondary" href={`/profiles/${trade.creator}`}>
-          CONTACT
-        </Button>
+        {/* if  userid === trade.creator DELETE else CONTACT */}
+        { userId !== trade.creator ? (
+          <Button
+            size="small"
+            color="secondary"
+            href={`/profiles/${trade.creator}`}
+          >
+            CONTACT
+          </Button>
+        ) : (
+          <Button
+            size="small"
+            color="secondary"
+            onClick={() => deleteTrade(trade._id)}
+          >
+            DELETE
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
