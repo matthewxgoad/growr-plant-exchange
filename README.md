@@ -81,7 +81,7 @@ The following components are used to build the code for this project:
 
 ![growr-profile](./assets/growr-profile.png)
 
-#### Trades page:
+#### Trades page > navigate to other user profiles:
 
 ![growr-trades](./assets/growr-trades.gif)
 
