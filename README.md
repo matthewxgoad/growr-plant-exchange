@@ -1,31 +1,35 @@
-# ![GROWR-logo](./assets/growr-logo.png)
+# ![GROWR-banner](./assets/growr-banner.png)
 ## Table of Contents
-
+1. [Project Overview](#Project-Overview)
+2. [Deployement](#Deployement)
+3. [MVP](#MVP)
+4. [Beyond the MVP](#Beyond-the-MVP)
+5. [Installation](#Installation)
+6. [Usage](#Usage)
+7. [Application Screenshots](#Application-Screenshots)
+8. [License](#License)
+9. [Credit](#Credit)
 ****
 
 ## Project overview
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-Welcome to Growr, a plant exchange app with the focus of promoting community/local gathering and networking through the love of all things plant related.
-
-With the dependency on mobile apps rooted deep in our behaviors, we want to revitalize what it means to be part of and have the support of a community. Growr acts as a facilitator of "good neighbor vibes" by targeting the all your activities within a set radius - we're in support of face-to-plant interactions, not emoji-to-emoji. :seedling:
-
-Exchanges are just to get you into first gear - trade seeds for clippings, give away some free aloe pups, request some strange succulent to add to the collection - grow not just new plants but also your community and hit up the farmer's market or start a new urban/community garden with your new-to-you neighbors!
+![growr-about](./assets/growr-about.png)
 
 
 ### Project Status:
 
-*ONGOING*
+MVP complete --> post MVP: *ONGOING*
 
 #### In progress:
 * messenging/inboxing function: currently hardcoded
-* authentication: JWT > need to build auth into frontend simultaneously as data starts to get populated/rendered
+* authentication: session/connect-mongo vs passport vs JWT
+
 
 #### Issues to debug:
-* image upload function:
-    - `TypeError: cannot read property 'path' of undefined` > req.file.path not defined
-    - issue with where we are grabbing image from? multi-type form/data?
+* responsive-ness
+    - almost there but...
 
 ### Project Members:
 * Brandon Maxwell: [brandon-maxwell](https://github.com/brandon-maxwell)
@@ -38,7 +42,9 @@ Exchanges are just to get you into first gear - trade seeds for clippings, give 
 
 ## Deployment
 
-This project is deployed through Github Pages @ [Growr](gh-p link)
+This project is deployed through Github Pages @ [Growr](https://growr-project.herokuapp.com/)
+
+To excited to read about the boring parts >> go take a [SNEEK PEAK](#Sneak-Peak)
 
 ****
 
@@ -51,34 +57,46 @@ This project is deployed through Github Pages @ [Growr](gh-p link)
 The following components are used to build the code for this project:
 
 * FRONTEND
-1. React.js
-2. Material-UI
+    - React.js
+    -  React-router-dom
+    -  Material-UI
 
 * BACKEND
-1. Express.js
-2. MongoDB
+    - Express.js
+    - MongoDB > Mongoose.js
+    - MongoDB Atlas Cloud Database
 
 * Signifcant packages
-1. axios > for data requests
-2. bcrypt > for password hashing
-3. cors > for browser security
-4. multer > for file uploads
-5. dotenv > for environment variables
+    - axios > for data requests
+    - bcrypt > for password hashing
+    - cors > for browser security
+    - multer s3 & AWS > for image file uploads to cloud
+    - dotenv > for environment variables
 
 * Third-party API
-1. [Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview) 
+    - [Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview) 
 
-### Functionality:
+### Sneak Peak:
 
-The following lists all functions within this project:
+#### User Profile:
 
-* user can *see **ABOUT** page with info on app and creators*
-* user can ***LOGIN or SIGNUP** for account with app*
-* user can *access **PROFILE** page to see personal trades and message board*
-* user can *access **TRADES, EVENTS, and PLACES** within the set local area according to their own address*
-* user can ***ADD** to trades, events, and places using a dynamic prompt page*
-* user can ***MESSAGE** other trade cards' users to initiate conversation*
-* user can ***LOGOUT** and be redirected back to landing page*
+![growr-profile](./assets/growr-profile.png)
+
+#### Trades page > navigate to other user profiles:
+
+![growr-trades](./assets/growr-trades.gif)
+
+#### Events page:
+
+![growr-events](./assets/growr-events.png)
+
+#### Places page:
+
+![growr-places](./assets/growr-places.png)
+
+#### Add feature:
+
+![growr-add](./assets/growr-add.gif)
 
 
 ### Process:
@@ -90,9 +108,11 @@ The following lists all functions within this project:
     - research on react CSS library > Material-UI
     - design UI navigational flow chart for pages/components
     - build skeleton of react-creat-app directory structure
-    - design/edit/finalize style modifications
+    - design/edit/finalize style modifications for optimal UI/UX
+    - implement API calls and react hookk
     - image upload and render function
     - messaging/inboxing function
+    - deployement and post-deployement issues
 
 * **BACKEND:** BM / PH / RH
     - design models for mongoose/mongoDB schema and documents
@@ -101,16 +121,20 @@ The following lists all functions within this project:
     - research third party API for location functionality
     - image upload and render function
     - messaging/inboxing function
+    - deployement and post-deployement issues
 
-### Beyond the MVP
+****
+
+## Beyond the MVP
 
 * landing page search by zipcode function to render demo page
     - for non-signedup users
     - readme only with any interaction to redirect to signup page
 * develope messaging/inbox function into forum based UI
-* addition interactions with cards
+* addition UI features for cards
     - favorite trades and places
     - "I'm going!" function for events
+    - countdown / autodelete for events
 * admin user features for basic site management
     - validate and maintain "static" PLACES ie. "Did that nursery move locations?"
     - follow up on duplicate postings or violation of terms(?)
@@ -124,19 +148,35 @@ The following lists all functions within this project:
 1. Clone this repository onto local workspace
 2. Open Terminal (MacOS) or Git Bash (Windows) and change location to where you want the cloned directory
 3. Type `git clone` and paste copied respository
-4. Directory should include the following:
-![Directory Structure:](./assets/images/dir-struc.png)
+4. This application uses [**Mongoose.js**](https://mongoosejs.com/docs/) - please make sure you have the following tools installed for local server database use:
+    - [MongoDB](https://docs.mongodb.com/manual/)
+    - [Node.js](https://nodejs.org/en/docs/)
+    - [Robo 3T](https://robomongo.org/)
+    - [Postman](https://www.postman.com/) (recommended)
+5. This application uses the [dotenv](https://www.npmjs.com/package/dotenv) package to set up environment variables - use the search function in your code editor to locate the following keys. It's up to you if you want to install/download/signup for any of these:
+    - API_KEY > required for Google Maps Geocoding API
+    - BUCKET > required for AWS
+    - AWS_ID > required for AWS
+    - AWS_SECRET > required for AWS
+    - REGION > required for AWS Cloud Database
 
 ## Usage
 
-## Application Screenshots
-
+For local server use through CLI:
+```
+npm install
+npm run
+```
 ****
 
 ## License
 
+This application is licensed under MIT, please see the corresponding file in the repo directory.
+
 ## Credit
 
 * **Growr - Plant Exchange** original concept and code collaborators: Brandon Maxwell || Felicia Wootton || Matthew Goad || Pamela Hsi || Riheel H
+* Udemy : [Maximilian Schwarzmüller]https://www.udemy.com/user/maximilian-schwarzmuller/ the tutorial beast
+* Lama Dev - [React Social Media App Design Tutorial](https://www.youtube.com/watch?v=zM93yZ_8SvE)
 * Mim Armand and Kat Poulos provided assistance and mentorship as the program instructor and teaching assistant respectivley
 * Full-stack Bootcamp Program @ [Washington University, Saint Louis](https://bootcamp.tlcenter.wustl.edu/) through [© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand](https://www.trilogyed.com/)
