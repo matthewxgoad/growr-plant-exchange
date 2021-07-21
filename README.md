@@ -45,7 +45,7 @@ MVP complete --> post MVP: *ONGOING*
 
 This project is deployed through Github Pages @ [Growr](https://growr-project.herokuapp.com/)
 
-Too excited to read about the boring parts >> go take a [SNEEK PEAK](#Sneak-Peak)
+Too excited to read about the boring parts >> go take a [SNEAK PEAK](#Sneak-Peak)
 
 ****
 
