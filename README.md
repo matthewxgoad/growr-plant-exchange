@@ -176,5 +176,7 @@ This application is licensed under MIT, please see the corresponding file in the
 ## Credit
 
 * **Growr - Plant Exchange** original concept and code collaborators: Brandon Maxwell || Felicia Wootton || Matthew Goad || Pamela Hsi || Riheel H
+* Udemy : [Maximilian Schwarzmüller]https://www.udemy.com/user/maximilian-schwarzmuller/ the tutorial beast
+* Lama Dev - [React Social Media App Design Tutorial](https://www.youtube.com/watch?v=zM93yZ_8SvE)
 * Mim Armand and Kat Poulos provided assistance and mentorship as the program instructor and teaching assistant respectivley
 * Full-stack Bootcamp Program @ [Washington University, Saint Louis](https://bootcamp.tlcenter.wustl.edu/) through [© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand](https://www.trilogyed.com/)
