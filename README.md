@@ -17,6 +17,7 @@
 
 ![growr-about](./assets/growr-about.png)
 
+
 ### Project Status:
 
 MVP complete --> post MVP: *ONGOING*

@@ -55,15 +55,6 @@ const createEvent = async (req, res, next) => {
 
   const { title, description, address, creator, date, time } = req.body;
 
-  // let coordinates;
-  // try {
-  //   coordinates = await getCoordsForAddress(address);
-  // } catch (error) {
-  //   return next(error);
-  // }
-
-    ////// editing code block 58 - 63
-
     let coords;
     let coordsArray;
     try {
@@ -76,15 +67,13 @@ const createEvent = async (req, res, next) => {
     } catch (error) {
       return next(error);
     }
-  
-    ////// end of edit code block 58 - 63
 
   const createdEvent = new Event({
     title,
     description,
     address,
     location: {type: 'Point', coordinates: coordsArray},
-    image: req.file.path,
+    image: req.file.location,
     creator,
     date,
     time
@@ -102,8 +91,6 @@ const createEvent = async (req, res, next) => {
     const error = new HttpError('Could not find user for provided id', 404);
     return next(error);
   }
-
-  console.log(user);
 
   try {
     await createdEvent.save();

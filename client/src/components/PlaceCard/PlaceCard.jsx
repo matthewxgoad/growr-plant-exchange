@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
+import Link from "@material-ui/core/Link";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -12,14 +12,10 @@ const useStyles = makeStyles({
   root: {
     width: 300,
     margin: "10px",
+    height: "fit-content"
   },
   media: {
     height: 250,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
   },
   title: {
     fontSize: "1.5rem",
@@ -28,53 +24,47 @@ const useStyles = makeStyles({
   subtitle: {
     fontSize: "1rem",
   },
-  distance: {
+  creator: {
     fontSize: ".75rem",
-  },
-  pos: {
-    marginBottom: 12,
   },
 });
 
 export default function PlaceCard({ place }) {
   const classes = useStyles();
 
+  // Concats link to creator profile
+  const creatorLink = "/profiles/" + place.creator;
+
   return (
-    <Card className={classes.root} variant="outlined">
-      <CardActionArea>
+    <Card className={classes.root}>
         {/* place Photo */}
         <CardMedia
           className={classes.media}
-          image={place.photo}
+          image={place.image}
           title={place.description}
         />
 
         <CardContent>
           {/* place Title */}
-          <Typography className={classes.title}>{place.title}</Typography>
+          <Typography className={classes.title}>{place.title.toUpperCase()}</Typography>
 
           {/* place Info */}
           <Typography gutterBottom className={classes.subtitle}>
-            {place.eventDate} {place.eventTime}
-            <br />
-            {place.address.street}
-            <br />
-            {place.address.city} {place.address.state} {place.address.zip}
+            {place.address}
           </Typography>
-
-          <Typography gutterBottom variant="caption" color="textSecondary">
+            <br />
+          <Typography gutterBottom variant="body2">
             {place.description}
           </Typography>
-
-          <Typography gutterBottom className={classes.distance}>
-            {place.distance} away
+            <br />
+          <Typography gutterBottom variant="caption" color="textSecondary">
+           Created by <Link href={creatorLink}>{place.name}</Link>
           </Typography>
           
         </CardContent>
-      </CardActionArea>
 
       <CardActions>
-        <Button size="small" color="secondary">
+        <Button size="small" color="secondary" href={place.website}>
           {place.website}
         </Button>
       </CardActions>
