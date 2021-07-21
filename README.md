@@ -24,7 +24,6 @@ MVP complete --> post MVP: *ONGOING*
 #### In progress:
 * messenging/inboxing function: currently hardcoded
 * authentication: session/connect-mongo vs passport vs JWT
-* delete/update function for trades
 
 
 #### Issues to debug:
