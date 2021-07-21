@@ -28,8 +28,9 @@ MVP complete --> post MVP: *ONGOING*
 
 
 #### Issues to debug:
-* responsive-ness
-    - almost there but...
+* mobile-friendly
+* sticky navbar
+* "read more" feature for text inside cards
 
 ### Project Members:
 * Brandon Maxwell: [brandon-maxwell](https://github.com/brandon-maxwell)
@@ -44,7 +45,7 @@ MVP complete --> post MVP: *ONGOING*
 
 This project is deployed through Github Pages @ [Growr](https://growr-project.herokuapp.com/)
 
-To excited to read about the boring parts >> go take a [SNEEK PEAK](#Sneak-Peak)
+Too excited to read about the boring parts >> go take a [SNEEK PEAK](#Sneak-Peak)
 
 ****
 
