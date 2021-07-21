@@ -28,8 +28,9 @@ MVP complete --> post MVP: *ONGOING*
 
 
 #### Issues to debug:
-* responsive-ness
-    - almost there but...
+* mobile-friendly
+* sticky navbar
+* "read more" feature for text inside cards
 
 ### Project Members:
 * Brandon Maxwell: [brandon-maxwell](https://github.com/brandon-maxwell)
