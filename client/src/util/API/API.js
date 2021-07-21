@@ -21,10 +21,9 @@ export default {
   getUser: function(id) {
     return axios.get('/api/users/profile/'+ id);
   },
-   // Get other user id
-  //  getOtherUser: function(id) {
-  //   return axios.get("/api/users/profile"+ id);
-  // },
+  deleteTrade: function(id) {
+    return axios.delete('/api/trades/'+ id);
+  },
 
 
   // TO DO New user sign up
