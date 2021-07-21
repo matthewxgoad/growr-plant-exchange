@@ -1,6 +1,14 @@
 # ![GROWR-logo](./assets/growr-logo.png)
 ## Table of Contents
-
+1. [Project Overview](#Project-Overview)
+2. [Deployement](#Deployement)
+3. [MVP](#MVP)
+4. [Beyond the MVP](#Beyond-the-MVP)
+5. [Installation](#Installation)
+6. [Usage](#Usage)
+7. [Application Screenshots](#Application-Screenshots)
+8. [License](#License)
+9. [Credit](#Credit)
 ****
 
 ## Project overview
@@ -15,16 +23,18 @@ Exchanges are just to get you into first gear - trade seeds for clippings, give 
 
 ### Project Status:
 
-*ONGOING*
+MVP complete --> post MVP: *ONGOING*
 
 #### In progress:
 * messenging/inboxing function: currently hardcoded
-* authentication: JWT > need to build auth into frontend simultaneously as data starts to get populated/rendered
+* authentication: session/connect-mongo vs passport vs JWT
+* delete/update function for trades
+
 
 #### Issues to debug:
-* image upload function:
-    - `TypeError: cannot read property 'path' of undefined` > req.file.path not defined
-    - issue with where we are grabbing image from? multi-type form/data?
+* responsive-ness
+    - almost there but...
+* 
 
 ### Project Members:
 * Brandon Maxwell: [brandon-maxwell](https://github.com/brandon-maxwell)
@@ -37,7 +47,7 @@ Exchanges are just to get you into first gear - trade seeds for clippings, give 
 
 ## Deployment
 
-This project is deployed through Github Pages @ [Growr](gh-p link)
+This project is deployed through Github Pages @ [Growr](https://growr-project.herokuapp.com/)
 
 ****
 
@@ -51,17 +61,18 @@ The following components are used to build the code for this project:
 
 * FRONTEND
 1. React.js
+2. React-router-dom
 2. Material-UI
 
 * BACKEND
 1. Express.js
-2. MongoDB
+2. MongoDB > Mongoose.js
 
 * Signifcant packages
 1. axios > for data requests
 2. bcrypt > for password hashing
 3. cors > for browser security
-4. multer > for file uploads
+4. multer s3 & AWS > for image file uploads to cloud
 5. dotenv > for environment variables
 
 * Third-party API
@@ -73,10 +84,11 @@ The following lists all functions within this project:
 
 * user can *see **ABOUT** page with info on app and creators*
 * user can ***LOGIN or SIGNUP** for account with app*
-* user can *access **PROFILE** page to see personal trades and message board*
+* user can *access **PROFILE** page to see personal trades*
 * user can *access **TRADES, EVENTS, and PLACES** within the set local area according to their own address*
+* user can *access **PROFILE** page of other users from any card through a username link*
+* user can *contact **OTHER USERS** via email for inquiries on trades*
 * user can ***ADD** to trades, events, and places using a dynamic prompt page*
-* user can ***MESSAGE** other trade cards' users to initiate conversation*
 * user can ***LOGOUT** and be redirected back to landing page*
 
 
@@ -89,9 +101,11 @@ The following lists all functions within this project:
     - research on react CSS library > Material-UI
     - design UI navigational flow chart for pages/components
     - build skeleton of react-creat-app directory structure
-    - design/edit/finalize style modifications
+    - design/edit/finalize style modifications for optimal UI/UX
+    - implement API calls and react hookk
     - image upload and render function
     - messaging/inboxing function
+    - deployement and post-deployement issues
 
 * **BACKEND:** BM / PH / RH
     - design models for mongoose/mongoDB schema and documents
@@ -100,16 +114,18 @@ The following lists all functions within this project:
     - research third party API for location functionality
     - image upload and render function
     - messaging/inboxing function
+    - deployement and post-deployement issues
 
-### Beyond the MVP
+## Beyond the MVP
 
 * landing page search by zipcode function to render demo page
     - for non-signedup users
     - readme only with any interaction to redirect to signup page
 * develope messaging/inbox function into forum based UI
-* addition interactions with cards
+* addition UI features for cards
     - favorite trades and places
     - "I'm going!" function for events
+    - countdown / autodelete for events
 * admin user features for basic site management
     - validate and maintain "static" PLACES ie. "Did that nursery move locations?"
     - follow up on duplicate postings or violation of terms(?)
@@ -126,13 +142,24 @@ The following lists all functions within this project:
 4. Directory should include the following:
 ![Directory Structure:](./assets/images/dir-struc.png)
 
+5. This application uses [**Mongoose.js**](https://mongoosejs.com/docs/) - please make sure you have the following tools installed:
+    - [MongoDB](https://docs.mongodb.com/manual/)
+    - [Node.js](https://nodejs.org/en/docs/)
+    - [Robo 3T](https://robomongo.org/)
+    - [Postman](https://www.postman.com/) (recommended)
+
 ## Usage
 
-## Application Screenshots
-
+For local server use through CLI:
+```
+npm install
+npm run
+```
 ****
 
 ## License
+
+This application is licensed under MIT, please see the corresponding file in the repo directory.
 
 ## Credit
 
