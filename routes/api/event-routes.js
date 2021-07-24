@@ -2,6 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const eventsControllers = require('../../controllers/event-controllers');
+const checkAuth = require('../../util/check-auth')
 const ms3 = require('../../util/multer-s3');
 
 const router = express.Router();
@@ -9,6 +10,8 @@ const router = express.Router();
 router.get('/:eid', eventsControllers.getEventById);
 
 router.get('/user/:uid', eventsControllers.getEventsByUserId);
+
+router.use(checkAuth);
 
 router.delete('/:eid', eventsControllers.deleteEvent);
 
