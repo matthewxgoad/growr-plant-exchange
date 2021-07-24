@@ -51,9 +51,6 @@ export default function InboxMenu(props) {
         <Grid item xs={12}>
           <Paper elevation={20} className={classes.paper}>
             <div>
-              {/* <InboxItem convo={props.convo} />
-              {/* should be only one compoenent > hardcoded to show example */}
-
               {props.convo.map((convo, index)=>{
                 return <InboxItem convo={convo} key={index} />;
               })}

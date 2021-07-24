@@ -18,6 +18,8 @@ export default function Inbox(props) {
   const classes = useStyles();
 
   const [convoDataState, setConvoDataState] = useState([]);
+  const [currentChatState, setCurrentChatState] = useState(null);
+  // const [messageDataState, setMessageDataState] = useState([]);
 
   // retrieve logged in user's ID
   let loggedInUserData = JSON.parse(localStorage.getItem("user"));
@@ -28,7 +30,12 @@ export default function Inbox(props) {
     loadConvo(userId);
   }, []);
 
-  // API axios call for conversations
+  // retireve message by conversationId
+  // useEffect(() => {
+  //   loadMessages(convoId);
+  // }, []);
+
+  // API axios call for conversations by userId
   function loadConvo(id) {
     API.getConvo(id)
       .then((res) => {
@@ -38,12 +45,21 @@ export default function Inbox(props) {
       .catch((err) => console.log(err));
   }
 
+  // API axios call for messages by conversationId
+  // function loadMessage(id) {
+  //   API.getMessage(id)
+  //   .then((res) => {
+  //     console.log(res.data)
+  //   })
+  //   .catch((err) => console.log(err));
+  // }
+
   return (
     <>
       <NavBar page="inbox" />
       <div className={classes.root}>
         <InboxMenu convo={convoDataState} />
-        <MessageBox />
+        <MessageBox currentChat={currentChatState}/>
       </div>
     </>
   );

@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-export default function MessageBox() {
+export default function MessageBox(props) {
 
     const classes = useStyles();
 
@@ -103,10 +103,14 @@ export default function MessageBox() {
                 </Grid>
                 <Grid item xs={12}>
                     <Paper elevation={20} className={classes.paper}>
+                        {
+                          props.currentChat ?
+                        <>
                         <div className={classes.messageBoxTop}>
                             <Message />
                             <Message />
                         </div>
+                        
                         <Divider/>
                         <form onSubmit={handleSubmit} className={classes.form}>
                           <CustomTextField 
@@ -124,6 +128,8 @@ export default function MessageBox() {
                             </Button>
                           </div>
                         </form>
+                        </> : <span>Which message do you want to see?</span>
+                        }
                     </Paper>
                 </Grid>
             </Grid>
