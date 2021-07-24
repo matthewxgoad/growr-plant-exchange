@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function InboxMenu() {
+export default function InboxMenu(props) {
   const classes = useStyles();
 
   return (
@@ -51,9 +51,12 @@ export default function InboxMenu() {
         <Grid item xs={12}>
           <Paper elevation={20} className={classes.paper}>
             <div>
-              <InboxItem />
+              {/* <InboxItem convo={props.convo} />
               {/* should be only one compoenent > hardcoded to show example */}
-              <InboxItem />
+
+              {props.convo.map((convo, index)=>{
+                return <InboxItem convo={convo} key={index} />;
+              })}
             </div>
           </Paper>
         </Grid>
