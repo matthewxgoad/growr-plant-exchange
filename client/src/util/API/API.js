@@ -24,6 +24,10 @@ export default {
   deleteTrade: function(id) {
     return axios.delete('/api/trades/'+ id);
   },
+  // Get conversation by userId
+  getConvo: function(id) {
+    return axios.get('/api/conversations/'+ id);
+  },
 
 
   // TO DO New user sign up
