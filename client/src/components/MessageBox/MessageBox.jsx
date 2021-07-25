@@ -1,11 +1,11 @@
 import { React, useState } from 'react';
-import axios from "axios";
 import { Grid, Paper, TextField, Button } from '@material-ui/core';
 import Divider from "@material-ui/core/Divider";
 import { makeStyles, withStyles } from '@material-ui/core';
 import brown from "@material-ui/core/colors/brown";
 import green from "@material-ui/core/colors/green";
 import Message from "../../components/message/Message";
+import API from "../../util/API/API";
 
 
 const headerColor = green[600];
@@ -70,31 +70,46 @@ const useStyles = makeStyles((theme) => ({
 export default function MessageBox(props) {
     const classes = useStyles();
 
-    const [message, setMessage] = useState("")
-
     let loggedInUserData = JSON.parse(localStorage.getItem("user"));
     const userId = loggedInUserData;
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log('button clicked')
+      const message = {
+        sender: userId,
+        text: props.newMessage,
+        conversationId: props.currentChat.convo._id
+      };
+
+      try {
+        const res = await API.postMessage(message)
+        props.setChatMessages([...props.chatMessages, res.data])
+        props.setNewMessage("")
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    // const handleSubmit = async (e) => {
+    //   e.preventDefault();
+    //   console.log('button clicked')
   
-        const outgoingMessage = {
-          message: message
-        };
+    //     const outgoingMessage = {
+    //       message: message
+    //     };
   
-        console.log(message)
+    //     console.log(message)
   
-        try {
-          console.log('>>>>>making a call<<<<<<<', outgoingMessage)
-          await axios.post("http://localhost:3000/api/conversation", outgoingMessage);
-        } catch (err) {
-          console.log(err);
-        }
-    };
+    //     try {
+    //       console.log('>>>>>making a call<<<<<<<', outgoingMessage)
+    //       await axios.post("http://localhost:3000/api/conversation", outgoingMessage);
+    //     } catch (err) {
+    //       console.log(err);
+    //     }
+    // };
 
     const handleOutgoingMessage = (event) => {
-      setMessage(event.target.value)
+      props.setNewMessage(event.target.value)
     }
 
     return (
@@ -119,7 +134,7 @@ export default function MessageBox(props) {
                           <CustomTextField 
                             required
                             fullWidth
-                            value={message}
+                            value={props.newMessage}
                             onChange={handleOutgoingMessage} 
                             type='outgoing'
                             variant='outlined'

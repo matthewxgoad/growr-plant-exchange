@@ -32,6 +32,10 @@ export default {
   getMessages: function(id) {
     return axios.get('/api/messages/'+ id);
   },
+  //Post new message
+  postMessage: function(formData) {
+    return axios.post('/api/messages', formData);
+  },
 
   // TO DO New user sign up
   createUser: function(formData) {
