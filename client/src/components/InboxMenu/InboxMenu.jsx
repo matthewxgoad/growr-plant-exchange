@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function InboxMenu(props) {
   const classes = useStyles();
-
+  const data = props.currentChatState
+  console.log(">>>>>>", data)
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
@@ -52,7 +53,12 @@ export default function InboxMenu(props) {
           <Paper elevation={20} className={classes.paper}>
             <div>
               {props.convo.map((convo, index)=>{
-                return <InboxItem convo={convo} key={index} />;
+                return <div onClick = {()=> props.setCurrentChatState(convo)}>
+                        <InboxItem 
+                          convo={convo}
+                          key={index}  
+                        />
+                      </div>;
               })}
             </div>
           </Paper>

@@ -18,7 +18,7 @@ export default function Conversation({convo}) {
 
   // variable for friendId = id's in members array that are not current user id
   const friendId = convo.members.find(m => m !== userId)
-
+  
   // put friendId through getUserbyId API
   useEffect(() => {
     loadFriend(friendId);
@@ -27,7 +27,7 @@ export default function Conversation({convo}) {
   function loadFriend(id) {
     API.getUser(id)
       .then((res) => {
-        console.log(res.data.user);
+        // console.log(res.data.user);
         setFriendDataState(res.data.user)
       })
       .catch((err) => console.log(err));
@@ -37,13 +37,13 @@ export default function Conversation({convo}) {
   return (
     <>
       <List>
-        <ListItem button>
+        <ListItem button >
           <ListItemAvatar>
-            <Avatar alt="username" src={friendDataState.image}>
+            <Avatar alt="username" src={friendDataState?.image}>
               <AccountCircle />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary={friendDataState.name} />
+          <ListItemText primary={friendDataState?.name} />
         </ListItem>
       </List>
       <Divider />

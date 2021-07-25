@@ -58,7 +58,7 @@ export default function Inbox(props) {
     <>
       <NavBar page="inbox" />
       <div className={classes.root}>
-        <InboxMenu convo={convoDataState} />
+        <InboxMenu convo={convoDataState} currentChatState={currentChatState} setCurrentChatState={setCurrentChatState} />
         <MessageBox currentChat={currentChatState}/>
       </div>
     </>
