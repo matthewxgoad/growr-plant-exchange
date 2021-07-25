@@ -29,7 +29,7 @@ export default {
     return axios.get('/api/conversations/'+ id);
   },
 //Get message by convoId
-  getMessage: function(id) {
+  getMessages: function(id) {
     return axios.get('/api/messages/'+ id);
   },
 
