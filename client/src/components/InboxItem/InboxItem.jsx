@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import { React, useState, useEffect } from "react";
 // import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
+
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -36,8 +36,7 @@ export default function Conversation({convo}) {
 
   return (
     <>
-      <List>
-        <ListItem button >
+        <ListItem button>
           <ListItemAvatar>
             <Avatar alt="username" src={friendDataState?.image}>
               <AccountCircle />
@@ -45,7 +44,6 @@ export default function Conversation({convo}) {
           </ListItemAvatar>
           <ListItemText primary={friendDataState?.name} />
         </ListItem>
-      </List>
       <Divider />
     </>
   );

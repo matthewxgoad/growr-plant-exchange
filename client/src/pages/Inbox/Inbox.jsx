@@ -19,7 +19,7 @@ export default function Inbox(props) {
 
   const [convoDataState, setConvoDataState] = useState([]);
   const [currentChatState, setCurrentChatState] = useState(null);
-  // const [messageDataState, setMessageDataState] = useState([]);
+  const [messagesDataState, setMessagesDataState] = useState([]);
 
   // retrieve logged in user's ID
   let loggedInUserData = JSON.parse(localStorage.getItem("user"));
@@ -29,11 +29,6 @@ export default function Inbox(props) {
   useEffect(() => {
     loadConvo(userId);
   }, []);
-
-  // retireve message by conversationId
-  // useEffect(() => {
-  //   loadMessages(convoId);
-  // }, []);
 
   // API axios call for conversations by userId
   function loadConvo(id) {
@@ -45,21 +40,27 @@ export default function Inbox(props) {
       .catch((err) => console.log(err));
   }
 
+    // retireve message by conversation ID
+    useEffect(() => {
+      loadMessages(currentChatState?.convo._id);
+    }, [currentChatState.convo]);
+
   // API axios call for messages by conversationId
-  // function loadMessage(id) {
-  //   API.getMessage(id)
-  //   .then((res) => {
-  //     console.log(res.data)
-  //   })
-  //   .catch((err) => console.log(err));
-  // }
+  function loadMessages(id) {
+    API.getMessages(id)
+    .then((res) => {
+      console.log(res.data);
+      setMessagesDataState(res.data)
+    })
+    .catch((err) => console.log(err));
+  }
 
   return (
     <>
       <NavBar page="inbox" />
       <div className={classes.root}>
-        <InboxMenu convo={convoDataState} currentChatState={currentChatState} setCurrentChatState={setCurrentChatState} />
-        <MessageBox currentChat={currentChatState}/>
+        <InboxMenu convo={convoDataState} currentChat={currentChatState} setCurrentChatState={setCurrentChatState} />
+        <MessageBox currentChat={currentChatState} chatMessages={messagesDataState}/>
       </div>
     </>
   );

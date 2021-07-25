@@ -68,10 +68,12 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function MessageBox(props) {
-
     const classes = useStyles();
 
     const [message, setMessage] = useState("")
+
+    let loggedInUserData = JSON.parse(localStorage.getItem("user"));
+    const userId = loggedInUserData;
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -107,8 +109,9 @@ export default function MessageBox(props) {
                           props.currentChat ?
                         <>
                         <div className={classes.messageBoxTop}>
-                            <Message />
-                            <Message />
+                          { props.chatMessages.map((message, index) => {
+                              return <Message message={message} key={index} own={ message.sender === userId }/>;
+                          })}
                         </div>
                         
                         <Divider/>

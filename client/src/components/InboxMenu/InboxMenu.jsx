@@ -1,6 +1,7 @@
 import React from "react";
 // eslint-disable-next-line
 import { Grid, Paper, TextField, Button } from "@material-ui/core";
+import List from "@material-ui/core/List";
 import { makeStyles } from "@material-ui/core";
 import green from "@material-ui/core/colors/green";
 // import Link from "@material-ui/core/Link";
@@ -41,8 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function InboxMenu(props) {
   const classes = useStyles();
-  const data = props.currentChatState
-  console.log(">>>>>>", data)
+
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
@@ -51,16 +51,13 @@ export default function InboxMenu(props) {
         </Grid>
         <Grid item xs={12}>
           <Paper elevation={20} className={classes.paper}>
-            <div>
+            <List>
               {props.convo.map((convo, index)=>{
-                return <div onClick = {()=> props.setCurrentChatState(convo)}>
-                        <InboxItem 
-                          convo={convo}
-                          key={index}  
-                        />
+                return <div onClick = {()=> props.setCurrentChatState({convo})}>
+                        <InboxItem convo={convo} key={index} />
                       </div>;
               })}
-            </div>
+            </List>
           </Paper>
         </Grid>
       </Grid>
