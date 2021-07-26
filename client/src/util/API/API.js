@@ -28,9 +28,13 @@ export default {
   getConvo: function(id) {
     return axios.get('/api/conversations/'+ id);
   },
-//Get message by convoId
+  //Get message by convoId
   getMessages: function(id) {
     return axios.get('/api/messages/'+ id);
+  },
+  // Post new conversation
+  postConversation: function(formData) {
+    return axios.post('/api/conversations', formData)
   },
   //Post new message
   postMessage: function(formData) {
