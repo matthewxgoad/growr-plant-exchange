@@ -2,36 +2,36 @@ import { React, useState } from 'react';
 import { Grid, Paper, TextField, Button } from '@material-ui/core';
 import Divider from "@material-ui/core/Divider";
 import { makeStyles, withStyles } from '@material-ui/core';
-import brown from "@material-ui/core/colors/brown";
+// import brown from "@material-ui/core/colors/brown";
 import green from "@material-ui/core/colors/green";
-import Message from "../../components/message/Message";
+import Message from "../../components/Message/Message";
 import API from "../../util/API/API";
 
 
 const headerColor = green[600];
-const newBrown = brown[600];
+// const newBrown = brown[600];
 
-const CustomTextField = withStyles({
-  root: {
-    '& label.Mui-focused': {
-      color: headerColor,
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: newBrown,
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: newBrown,
-      },
-      '&:hover fieldset': {
-        borderColor: newBrown,
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: newBrown,
-      },
-    },
-  },
-})(TextField);
+// const CustomTextField = withStyles({
+//   root: {
+//     '& label.Mui-focused': {
+//       color: headerColor,
+//     },
+//     '& .MuiInput-underline:after': {
+//       borderBottomColor: newBrown,
+//     },
+//     '& .MuiOutlinedInput-root': {
+//       '& fieldset': {
+//         borderColor: newBrown,
+//       },
+//       '&:hover fieldset': {
+//         borderColor: newBrown,
+//       },
+//       '&.Mui-focused fieldset': {
+//         borderColor: newBrown,
+//       },
+//     },
+//   },
+// })(TextField);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,9 +61,6 @@ const useStyles = makeStyles((theme) => ({
     btnWrap: {
       margin: '10px 10px 0 0',
       textAlign: 'right'
-    },
-    btn: {
-      backgroundColor: headerColor,
     }
   }));
 
@@ -90,24 +87,6 @@ export default function MessageBox(props) {
       }
     }
 
-    // const handleSubmit = async (e) => {
-    //   e.preventDefault();
-    //   console.log('button clicked')
-  
-    //     const outgoingMessage = {
-    //       message: message
-    //     };
-  
-    //     console.log(message)
-  
-    //     try {
-    //       console.log('>>>>>making a call<<<<<<<', outgoingMessage)
-    //       await axios.post("http://localhost:3000/api/conversation", outgoingMessage);
-    //     } catch (err) {
-    //       console.log(err);
-    //     }
-    // };
-
     const handleOutgoingMessage = (event) => {
       props.setNewMessage(event.target.value)
     }
@@ -125,13 +104,17 @@ export default function MessageBox(props) {
                         <>
                         <div className={classes.messageBoxTop}>
                           { props.chatMessages.map((message, index) => {
-                              return <Message message={message} key={index} own={ message.sender === userId }/>;
+                              return <Message
+                                        message={message}
+                                        key={index}
+                                        own={ message.sender === userId }
+                                      />;
                           })}
                         </div>
                         
                         <Divider/>
                         <form onSubmit={handleSubmit} className={classes.form}>
-                          <CustomTextField 
+                          <TextField 
                             required
                             fullWidth
                             value={props.newMessage}
@@ -141,7 +124,7 @@ export default function MessageBox(props) {
                             label='write something...'
                           />
                           <div className={classes.btnWrap}>
-                            <Button type='submit' variant='contained' className={classes.btn}>
+                            <Button type='submit' variant='contained' color='primary'>
                               Send
                             </Button>
                           </div>
