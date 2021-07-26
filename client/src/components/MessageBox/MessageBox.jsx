@@ -117,6 +117,8 @@ export default function MessageBox(props) {
                           <TextField 
                             required
                             fullWidth
+                            multiline
+                            rows={3}
                             value={props.newMessage}
                             onChange={handleOutgoingMessage} 
                             type='outgoing'

@@ -50,7 +50,6 @@ export default function Inbox(props) {
   function loadMessages(id) {
     API.getMessages(id)
     .then((res) => {
-      console.log(res.data);
       setMessagesDataState(res.data)
     })
     .catch((err) => console.log(err));

@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -7,10 +7,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Typography from '@material-ui/core/Typography';
-import Grid from "@material-ui/core/Grid";
 import indigo from '@material-ui/core/colors/indigo';
 import blueGrey from '@material-ui/core/colors/blueGrey';
+import API from "../../util/API/API";
 
 const friendColor = indigo[50];
 const ownColor = blueGrey[50];
@@ -45,17 +44,6 @@ const useStyles = makeStyles(() => ({
       textAlign: "right"
     }
   },
-  // timeStamp: {
-  //   "& span":{
-  //     fontSize: "12px"
-  //   }
-  // },
-  // ownTimeStamp: {
-  //   "& span":{
-  //     fontSize: "12px",
-  //     textAlign: "right"
-  //   }
-  // },
   avatar: {
     width: "50px",
     height: "50px",
@@ -65,7 +53,22 @@ const useStyles = makeStyles(() => ({
 
 export default function Message({ message, own}) {
   const classes = useStyles();
+  
+  const [avatarDataState, setAvatarDataState] = useState("")
 
+  useEffect(() => {
+    loadAvatar(message.sender);
+  }, []);
+
+  function loadAvatar(id) {
+    API.getUser(id)
+      .then((res) => {
+        setAvatarDataState(res.data.user)
+      })
+      .catch((err) => console.log(err));
+  }
+
+  
   return (
     // if not own message > avatar first; otherwise > avatar second
     <>
@@ -75,25 +78,18 @@ export default function Message({ message, own}) {
           <ListItem>
             <ListItemAvatar>
               <Avatar
-                alt="username"
-                src="data from img file"
+                alt={avatarDataState?.name}
+                src={avatarDataState?.image}
                 className={classes.avatar}
               >
                 <AccountCircle />
               </Avatar>
             </ListItemAvatar>
-            {/* <Grid container>
-              <Grid item xs={12}> */}
                 <ListItemText
                   className={classes.message}
                   primary= {message.text}
                   secondary= {message.createdAt}
                 />
-              {/* </Grid>
-              <Grid item xs={12}>
-                <ListItemText className={classes.timeStamp} primary={message.createdAt} />
-              </Grid>
-            </Grid> */}
           </ListItem>
         </List>
       </div>
@@ -101,22 +97,15 @@ export default function Message({ message, own}) {
       <div className={classes.ownRoot}>
         <List>
           <ListItem alignItems="flex-end">
-            {/* <Grid container>
-              <Grid item xs={12}> */}
                 <ListItemText
                   className={classes.ownMessage}
                   primary= {message.text}
                   secondary= {message.createdAt}
                 />
-              {/* </Grid>
-              <Grid item xs={12}>
-                <ListItemText className={classes.ownTimeStamp} primary={message.createdAt} />
-              </Grid>
-            </Grid> */}
             <ListItemAvatar>
               <Avatar
-                alt="username"
-                src="data from img file"
+                alt={avatarDataState?.name}
+                src={avatarDataState?.image}
                 className={classes.avatar}
               >
                 <AccountCircle />
