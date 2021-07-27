@@ -7,7 +7,7 @@ import ProfileCard from "../../components/ProfileCard";
 import TradeCard from "../../components/TradeCard";
 import API from "../../util/API/API";
 import { Grid } from "@material-ui/core";
-import "./Profile.css";
+// import "./Profile.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
