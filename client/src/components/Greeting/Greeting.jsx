@@ -1,12 +1,13 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
-import green from '@material-ui/core/colors/green';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
+import green from "@material-ui/core/colors/green";
 import growrScreenshot from "../../assets/plant-trading-screenshot.png";
+import placesScreenshot from "../../assets/places-screenshot.png";
 import "./Greeting.css";
 
 const growrColor = green[800];
@@ -14,24 +15,24 @@ const growrColor = green[800];
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(3, 2),
-    margin: theme.spacing(3, 2), 
+    margin: theme.spacing(3, 2),
   },
   growrHeader: {
-    fontFamily: 'Dancing Script',
+    fontFamily: "Dancing Script",
     color: growrColor,
-    fontSize:"70px",
+    fontSize: "70px",
     textAlign: "center",
     marginBottom: 0,
   },
   growrSub: {
-    fontFamily: 'Oswald',
+    fontFamily: "Oswald",
   },
   button: {
     margin: theme.spacing(1),
   },
   buttonHolder: {
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 }));
 
 export default function Greeting() {
@@ -41,12 +42,14 @@ export default function Greeting() {
     <>
       <Container maxWidth="sm">
         <Paper className={classes.root}>
-          <Typography className={classes.growrHeader}>
-            growr
-          </Typography>
-          
-        
-          <Typography className={classes.growrSub} gutterBottom variant="h6" component="h4">
+          <Typography className={classes.growrHeader}>growr</Typography>
+
+          <Typography
+            className={classes.growrSub}
+            gutterBottom
+            variant="h6"
+            component="h4"
+          >
             Connecting green thumbs in your community.
           </Typography>
           <Typography gutterBottom component="p">
@@ -55,16 +58,38 @@ export default function Greeting() {
             things plant related.
           </Typography>
           <div className={classes.buttonHolder}>
-            <Button variant="contained" color="primary" className={classes.button} href="/about">About</Button>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              href="/login"
+            >
+              Log In
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              href="/signup"
+            >
+              Sign Up
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              href="/about"
+            >
+              About
+            </Button>
           </div>
         </Paper>
         <Box>
-            
-            <img
-              src={growrScreenshot}
-              alt="Plant trading screenshot"
-            />
-          </Box>
+          <img src={growrScreenshot} alt="Plant trading screenshot" />
+        </Box>
+        <Box>
+          <img src={placesScreenshot} alt="Growr Places screenshot" />
+        </Box>
       </Container>
     </>
   );
