@@ -3,7 +3,7 @@ import './AddForm.css';
 import AddTradeForm from '../AddTradeForm';
 import AddEventForm from '../AddEventForm';
 import AddPlaceForm from '../AddPlaceForm';
-import { Grid,Paper, Button, FormControl, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import { Grid, Paper, Button, FormControl, RadioGroup, FormControlLabel, Radio, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 
@@ -11,9 +11,9 @@ const headerColor = green[600];
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        padding:'50px 50px', 
+        padding:'10px', 
         width:300, 
-        margin:'20px auto',
+        margin:'auto',
         },
     header: {
       margin: "0",
@@ -91,11 +91,11 @@ export default function AddForm() {
   )
 
   return (
-    <>
+    <Container maxWidth="sm">
       { showAddForm ? <AddForm /> : null }
       { showTradeForm ? <AddTradeForm /> : null }
       { showEventForm ? <AddEventForm /> : null }
       { showPlaceForm ? <AddPlaceForm /> : null }
-    </>
+    </Container>
   )
 }

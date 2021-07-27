@@ -12,12 +12,9 @@ const headerColor = green[600];
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        paddingTop: '0px',
-        paddingBottom: '30px',
-        paddingLeft: '100px',
-        paddingRight: '100px',
-        width:600, 
-        margin:'20px auto'
+        padding: "10px",
+        width: 300, 
+        margin:'auto'
     },
     header: {
       margin: "0",

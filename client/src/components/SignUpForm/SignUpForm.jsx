@@ -19,15 +19,15 @@ const headerColor = green[600];
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    padding: "50px 50px",
-    width: 400,
-    margin: "20px auto",
+    padding: "10px",
+    width: 300,
+    margin: "auto",
   },
   header: {
     margin: "0",
     fontFamily: "Dancing Script",
     color: headerColor,
-    fontSize: "80px",
+    fontSize: "4rem",
   },
   uploadCaption: {
     marginBottom: "0",
@@ -106,7 +106,7 @@ export default function SignUpForm(props) {
   };
 
   return (
-    <Grid>
+    <Grid container>
       <Paper elevation={20} className={classes.paper}>
         <Grid align="center">
           <h2 className={classes.header}>growr</h2>
