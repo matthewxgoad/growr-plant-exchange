@@ -1,6 +1,6 @@
 import React from 'react';
-import { useContext, useState } from "react";
-import { AuthContext } from "../../util/context/AuthContext";
+import { useAuth0 } from '@auth0/auth0-react';
+import { useState } from "react";
 import grey from "@material-ui/core/colors/grey";
 import teal from "@material-ui/core/colors/teal";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -45,11 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar( {page} ) {
   const classes = useStyles();
-  const { user } = useContext(AuthContext);
-
-  function handleLogout() {
-    localStorage.clear();
-  }
+  const { user, loginWithRedirect, logout } = useAuth0();
 
   const [state, setState] = useState({
     right: false,
@@ -108,7 +104,7 @@ export default function NavBar( {page} ) {
         </ListItem>
       </List>
       <List>
-        <ListItem onClick={handleLogout} button component={Link} color="inherit" href="/">
+        <ListItem onClick={()=>logout()} button color="inherit">
           <ListItemText primary="logout" />
           {/* Viewable if logged in */}
         </ListItem>
@@ -117,7 +113,7 @@ export default function NavBar( {page} ) {
     </div>
   );
   return (
-    
+
     <React.Fragment className={classes.root}>
       <AppBar position="sticky" className={classes.nav}>
         <Toolbar>
@@ -144,12 +140,10 @@ export default function NavBar( {page} ) {
             growr <span className={classes.pageName}>{page}</span>
           </Typography>
             </> 
-            : 
+            :
             <>
-              <Button color="inherit">
-                <Link component={Link} className={classes.links} href="/login">
+              <Button color="inherit" onClick={()=>loginWithRedirect()}>
                   Log In
-                </Link>
               </Button>
               <Button color="inherit">
                 <Link component={Link} className={classes.links} href="/signup">
@@ -162,5 +156,6 @@ export default function NavBar( {page} ) {
       </AppBar>
       <div className={classes.offset} />
     </React.Fragment>
+
   );
 }

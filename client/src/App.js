@@ -1,7 +1,6 @@
 import Trade from "./pages/Trade";
 import Events from "./pages/Events";
 import Places from "./pages/Places";
-import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About";
@@ -15,21 +14,17 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { useContext } from "react";
-import { AuthContext } from "./util/context/AuthContext";
+import { useAuth0 } from '@auth0/auth0-react';
 
 import "./App.css";
 
 function App() {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth0();
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          {<Root />}
-        </Route>
-        <Route path="/login">
-          {user ? <Redirect to="/profiles" /> : <Login />}
+          {user ? <Redirect to="/profiles" /> : <Root />}
         </Route>
         <Route path="/signup">
           {user ? <Redirect to="/profiles" /> : <SignUp />}
@@ -38,25 +33,25 @@ function App() {
           {<About />}
         </Route>
         <Route exact path="/add">
-          {user ? <Add /> : <Login />}
+          {user ? <Add /> : <Root />}
         </Route>
         <Route exact path="/trade">
-          {user ? <Trade /> : <Login />}
+          {user ? <Trade /> : <Root />}
         </Route>
         <Route exact path="/events">
-          {user ? <Events /> : <Login />}
+          {user ? <Events /> : <Root />}
         </Route>
         <Route exact path="/places">
-          {user ? <Places /> : <Login />}
+          {user ? <Places /> : <Root />}
         </Route>
         <Route path="/profiles">
-          {user ? <Profile /> : <Login />}
+          {user ? <Profile /> : <Root />}
         </Route>
         <Route path="/profiles/:otherUserId" >
-          {user ? <Profile /> : <Login />}
+          {user ? <Profile /> : <Root />}
         </Route>
         <Route path="/inbox">
-          {user ? <Inbox /> : <Login />}
+          {user ? <Inbox /> : <Root />}
         </Route>
       </Switch>
     </Router>
