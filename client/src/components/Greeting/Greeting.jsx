@@ -14,8 +14,8 @@ const growrColor = green[800];
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(3, 2),
-    margin: theme.spacing(3, 2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(1),
   },
   growrHeader: {
     fontFamily: "Dancing Script",
