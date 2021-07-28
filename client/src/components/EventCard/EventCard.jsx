@@ -8,6 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import moment from "moment";
+import API from "../../util/API/API";
 
 const useStyles = makeStyles({
   root: {
@@ -22,15 +23,28 @@ const useStyles = makeStyles({
     fontSize: "1.5rem",
     fontFamily: "Oswald",
   },
+  action: {
+    alignSelf: "end",
+  }
 });
 
-export default function EventCard({ event }) {
+export default function EventCard({ event, loadEvents }) {
   const classes = useStyles();
   const formatedDate = moment(event.date).format("dddd, MMMM Do YYYY");
   const formatedTime = moment(event.time).format("LT");
 
+  let loggedInUserData = JSON.parse(localStorage.getItem("user"));
+  const userId = loggedInUserData;
+
   // Concats link to post creator profile
   const creatorLink = "/profiles/" + event.creator;
+
+  // delete event data function
+  function deleteEvent(id) {
+    API.deleteEvent(id)
+      .then((res) => loadEvents())
+      .catch((err) => console.log(err));
+  }
 
   return (
     <Card className={classes.root}>
@@ -70,12 +84,26 @@ export default function EventCard({ event }) {
         </Typography>
       </CardContent>
 
-      {/* <CardActions className={classes.action}>
-        <Button size="small" color="secondary" href={event.website}>
-          
-          {event.website}remove.Once-Website-Is.added
-        </Button>
-      </CardActions> */}
+      <CardActions className={classes.action}>
+        {/* if  userid === trade.creator DELETE else CONTACT */}
+        { userId !== event.creator ? (
+          <Button
+            size="small"
+            color="secondary"
+            href={`/profiles/${event.creator}`}
+          >
+            CONTACT
+          </Button>
+        ) : (
+          <Button
+            size="small"
+            color="secondary"
+            onClick={() => deleteEvent(event._id)}
+          >
+            DELETE
+          </Button>
+        )}
+      </CardActions>
     </Card>
   );
 }

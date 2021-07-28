@@ -58,7 +58,7 @@ export default function Events(props) {
       </Box>
       <Gallery>
         {eventDataState.map((event, index) => {
-          return <EventCard key={index} event={event} />;
+          return <EventCard key={index} event={event} loadEvents={loadEvents} />;
         })}
       </Gallery>
     </>
