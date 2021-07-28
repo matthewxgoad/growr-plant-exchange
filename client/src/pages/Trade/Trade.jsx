@@ -35,12 +35,7 @@ export default function Trade(props) {
   // Loads all trades near userid
   function loadTrades() {
     API.getTrades(userId)
-<<<<<<< HEAD
-      .then( (res) => {
-        // console.log(res.data)
-=======
       .then((res) => {
->>>>>>> master
         let tradeArr = [];
 
         for (let i = 0; i < res.data.length; i++) {
@@ -53,13 +48,7 @@ export default function Trade(props) {
             }
           }
         }
-<<<<<<< HEAD
-        setTradeDataState(
-          tradeArr)
-          // console.log(tradeArr)
-=======
         setTradeDataState(tradeArr);
->>>>>>> master
       })
       .catch((err) => console.log(err));
   }
@@ -89,13 +78,8 @@ export default function Trade(props) {
       <Typography variant="caption" className={classes.distance}>showing trades within 15 miles</Typography>
       </Box>
       <Gallery>
-<<<<<<< HEAD
         {tradeDataState.map( (trade) => {
           return <TradeCard trade={trade} loadTrades={loadTrades} convo={convoDataState} />;
-=======
-        {tradeDataState.map((trade, index) => {
-          return <TradeCard key={index} trade={trade} loadTrades={loadTrades} />;
->>>>>>> master
         })}
       </Gallery>
     </>
