@@ -52,7 +52,7 @@ export default function Places(props) {
     <>
       <NavBar page="places" />
       <Box align="center">
-      <Typography variant="caption" className={classes.distance}>showing trades within 15 miles</Typography>
+      <Typography variant="caption" className={classes.distance}>showing places within 15 miles</Typography>
       </Box>
       <Gallery>
         {placeDataState.map((place, index) => {
