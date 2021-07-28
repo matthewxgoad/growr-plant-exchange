@@ -12,7 +12,7 @@ const drawerColor = grey[800];
 const navColor = teal[600];
 
 const useStyles = makeStyles((theme) => ({
-  offset: theme.mixins.toolbar,
+  // offset: theme.mixins.toolbar,
   paper: {
     background: drawerColor,
     color: "white",
@@ -118,7 +118,7 @@ export default function NavBar( {page} ) {
   );
   return (
     
-    <React.Fragment className={classes.root}>
+    <React.Fragment>
       <AppBar position="sticky" className={classes.nav}>
         <Toolbar>
           {user ? //is user logged in?
@@ -160,7 +160,7 @@ export default function NavBar( {page} ) {
           }
         </Toolbar>
       </AppBar>
-      <div className={classes.offset} />
+      {/* <div className={classes.offset} /> */}
     </React.Fragment>
   );
 }
