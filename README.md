@@ -142,6 +142,18 @@ The following components are used to build the code for this project:
 * allowing multiple image uploads for posts
 * rendering "see your neighborhood" page
 
+### Sneak Peak Feature
+
+We are in the process of implementing a inbox/messaging system for users to connect directly off trade cards:
+
+#### Inbox:
+
+![growr-inbox](./assets/growr-inbox.png)
+
+#### Trade card "MESSAGE" feature:
+
+![growr-message](./assets/growr-message.gif)
+
 ****
 
 ## Installation
