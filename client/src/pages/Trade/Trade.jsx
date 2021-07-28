@@ -8,6 +8,7 @@ import "./Trade.css";
 export default function Places(props) {
   const [tradeDataState, setTradeDataState] = useState([]);
   const [convoDataState, setConvoDataState] = useState([]);
+  const [allData, setAllData] = useState([])
   // optimization add state for loading
 
   let loggedInUserData = JSON.parse(localStorage.getItem("user"));
@@ -21,7 +22,7 @@ export default function Places(props) {
   function loadTrades() {
     API.getTrades(userId)
       .then( (res) => {
-
+        // console.log(res.data)
         let tradeArr = [];
 
         for(let i = 0; i < res.data.length; i++){
@@ -36,6 +37,7 @@ export default function Places(props) {
         }
         setTradeDataState(
           tradeArr)
+          // console.log(tradeArr)
       })
       .catch((err) => console.log(err));
   }
@@ -50,12 +52,13 @@ export default function Places(props) {
     API.getConvo(id)
       .then((res) => {
         console.log(res.data);
-        setConvoDataState(res.data);
+        setConvoDataState(res.data)
       })
       .catch((err) => console.log(err));
   }
 
-
+  const concatData = tradeDataState.concat(convoDataState)
+  console.log(concatData)
 
   return (
     <>
