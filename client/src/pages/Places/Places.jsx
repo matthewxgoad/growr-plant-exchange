@@ -56,7 +56,7 @@ export default function Places(props) {
       </Box>
       <Gallery>
         {placeDataState.map((place, index) => {
-          return <PlaceCard key={index} place={place} />;
+          return <PlaceCard key={index} place={place} loadPlaces={loadPlaces} />;
         })}
       </Gallery>
     </>

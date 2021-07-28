@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import API from "../../util/API/API";
 
 const useStyles = makeStyles({
   root: {
@@ -27,13 +28,25 @@ const useStyles = makeStyles({
   creator: {
     fontSize: ".75rem",
   },
+  action: {
+    alignSelf: "end",
+  }
 });
 
-export default function PlaceCard({ place }) {
+export default function PlaceCard({ place, loadPlaces }) {
   const classes = useStyles();
+
+  let loggedInUserData = JSON.parse(localStorage.getItem("user"));
+  const userId = loggedInUserData;
 
   // Concats link to creator profile
   const creatorLink = "/profiles/" + place.creator;
+
+  function deletePlace(id) {
+    API.deletePlace(id)
+      .then((res) => loadPlaces())
+      .catch((err) => console.log(err));
+  }
 
   return (
     <Card className={classes.root}>
@@ -65,8 +78,19 @@ export default function PlaceCard({ place }) {
 
       <CardActions>
         <Button size="small" color="secondary" href={place.website}>
-          {place.website}
+          WEBSITE
         </Button>
+        { userId !== place.creator ? (
+          <div/>
+        ) : (
+          <Button
+            size="small"
+            color="secondary"
+            onClick={() => deletePlace(place._id)}
+          >
+            DELETE
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
