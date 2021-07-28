@@ -118,7 +118,7 @@ export default function NavBar( {page} ) {
   );
   return (
     
-    <React.Fragment className={classes.root}>
+    <React.Fragment>
       <AppBar position="sticky" className={classes.nav}>
         <Toolbar>
           {user ? //is user logged in?

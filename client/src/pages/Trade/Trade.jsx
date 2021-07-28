@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Places(props) {
+export default function Trade(props) {
 
   const classes = useStyles();
 
@@ -58,8 +58,8 @@ export default function Places(props) {
       <Typography variant="caption" className={classes.distance}>showing trades within 15 miles</Typography>
       </Box>
       <Gallery>
-        {tradeDataState.map((trade) => {
-          return <TradeCard trade={trade} loadTrades={loadTrades} />;
+        {tradeDataState.map((trade, index) => {
+          return <TradeCard key={index} trade={trade} loadTrades={loadTrades} />;
         })}
       </Gallery>
     </>

@@ -3,9 +3,23 @@ import NavBar from "../../components/NavBar";
 import Gallery from "../../components/Gallery";
 import API from "../../util/API/API";
 import { useState, useEffect } from "react";
+import { Typography, Box } from "@material-ui/core/";
+import { makeStyles } from "@material-ui/styles";
+import lightGreen from "@material-ui/core/colors/lightGreen";
 import "./Events.css";
 
+const growrGreen = lightGreen[700];
+
+const useStyles = makeStyles((theme) => ({
+  distance: {
+    color: growrGreen,
+  }
+}));
+
 export default function Events(props) {
+
+  const classes = useStyles();
+
   const [eventDataState, setEventDataState] = useState([]);
 
   let loggedInUserData = JSON.parse(localStorage.getItem("user"));
@@ -39,6 +53,9 @@ export default function Events(props) {
   return (
     <>
       <NavBar page="events" />
+      <Box align="center">
+      <Typography variant="caption" className={classes.distance}>showing events within 15 miles</Typography>
+      </Box>
       <Gallery>
         {eventDataState.map((event, index) => {
           return <EventCard key={index} event={event} />;
