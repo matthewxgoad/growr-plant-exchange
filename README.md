@@ -6,9 +6,8 @@
 4. [Beyond the MVP](#Beyond-the-MVP)
 5. [Installation](#Installation)
 6. [Usage](#Usage)
-7. [Application Screenshots](#Application-Screenshots)
-8. [License](#License)
-9. [Credit](#Credit)
+7. [License](#License)
+8. [Credit](#Credit)
 ****
 
 ## Project overview
@@ -23,14 +22,14 @@
 MVP complete --> post MVP: *ONGOING*
 
 #### In progress:
-* messenging/inboxing function: currently hardcoded
-* authentication: session/connect-mongo vs passport vs JWT
+* messenging/inboxing function: 
+    - need to clean up logic on creating new conversation
+* authentication: need to update to more secure method
 
 
 #### Issues to debug:
-* mobile-friendly
-* sticky navbar
-* "read more" feature for text inside cards
+* navbar not responsive on profile page for mobile-view
+* cards don't line up at bottom
 
 ### Project Members:
 * Brandon Maxwell: [brandon-maxwell](https://github.com/brandon-maxwell)
@@ -45,7 +44,7 @@ MVP complete --> post MVP: *ONGOING*
 
 This project is deployed through Github Pages @ [Growr](https://growr-project.herokuapp.com/)
 
-Too excited to read about the boring parts >> go take a [SNEAK PEAK](#Sneak-Peak)
+Checkout some [screenshots](#Screenshots)!
 
 ****
 
@@ -77,7 +76,7 @@ The following components are used to build the code for this project:
 * Third-party API
     - [Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview) 
 
-### Sneak Peak:
+### Screenshots:
 
 #### User Profile:
 
@@ -134,13 +133,26 @@ The following components are used to build the code for this project:
 * develope messaging/inbox function into forum based UI
 * addition UI features for cards
     - favorite trades and places
-    - "I'm going!" function for events
+    - "RSVP" function for events
     - countdown / autodelete for events
 * admin user features for basic site management
     - validate and maintain "static" PLACES ie. "Did that nursery move locations?"
     - follow up on duplicate postings or violation of terms(?)
 * Guestbook feature for users
 * allowing multiple image uploads for posts
+* rendering "see your neighborhood" page
+
+### Sneak Peak Feature
+
+We are in the process of implementing a inbox/messaging system for users to connect directly off trade cards:
+
+#### Inbox:
+
+![growr-inbox](./assets/growr-inbox.png)
+
+#### Trade card "MESSAGE" feature:
+
+![growr-message](./assets/growr-message.gif)
 
 ****
 
