@@ -87,13 +87,7 @@ export default function EventCard({ event, loadEvents }) {
       <CardActions className={classes.action}>
         {/* if  userid === trade.creator DELETE else CONTACT */}
         { userId !== event.creator ? (
-          <Button
-            size="small"
-            color="secondary"
-            href={`/profiles/${event.creator}`}
-          >
-            CONTACT
-          </Button>
+          <div/>
         ) : (
           <Button
             size="small"
