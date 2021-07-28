@@ -23,25 +23,7 @@ h3 {
     margin-top: 0;
 }
 
-.search-field {
-    height: 25px;
-    padding: 2px;
-    width:400px;
-    font-size: 18px;
-    outline: none;
-}
-
-.search-btn {
-    height: 35px;
-    width:100px;
-    background: rgb(90, 167, 90);;
-    border:none;
-    color:#000;
-    border-radius:25px;
-    margin-left: 5px;
-}
-
-.search-btn:hover {
-    background:#09621f;
-    cursor: pointer;
+img { 
+    width: 100%;
+    object-fit: cover;
 }

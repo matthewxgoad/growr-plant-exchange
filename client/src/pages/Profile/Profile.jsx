@@ -7,12 +7,12 @@ import ProfileCard from "../../components/ProfileCard";
 import TradeCard from "../../components/TradeCard";
 import API from "../../util/API/API";
 import { Grid } from "@material-ui/core";
-import "./Profile.css";
+// import "./Profile.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    margin: "2rem",
+    margin: "auto",
   },
 }));
 
@@ -29,7 +29,6 @@ export default function Profile(props) {
 
 
   useEffect(() => {
-    console.log(location.pathname.split('/')[2])
     let otherUserId = location.pathname.split('/')[2]
 
     if(otherUserId){

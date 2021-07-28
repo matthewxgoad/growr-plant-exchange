@@ -1,12 +1,16 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import IconButton from "@material-ui/core/IconButton";
-import plantClip from "../../assets/pictures/plantClip.png"
+import plantClip from "../../assets/pictures/plantClip.png";
+import lightGreen from "@material-ui/core/colors/lightGreen";
 import "./AboutCard.css";
+
+const growrGreen = lightGreen[700];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,20 +29,17 @@ const useStyles = makeStyles((theme) => ({
   growrName: {
     fontFamily: "Dancing Script",
     fontSize: "1.5rem",
-    color: "green"
+    color: growrGreen,
   },
   teamMemberName: {},
 }));
 
 export default function AboutCard() {
-  const classes = useStyles(
-
-  );
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Paper elevation={1}
-        >
+      <Paper elevation={1}>
         <Typography
           variant="h4"
           gutterBottom
@@ -49,9 +50,9 @@ export default function AboutCard() {
         </Typography>
         <Typography variant="body1">
           <p>
-            Welcome to <span className={classes.growrName}>growr</span>, a plant exchange app with the focus of promoting
-            community/local gathering and networking through the love of all
-            things plant related.
+            Welcome to <span className={classes.growrName}>growr</span>, a plant
+            exchange app with the focus of promoting community/local gathering
+            and networking through the love of all things plant related.
           </p>
 
           <p>
@@ -59,8 +60,7 @@ export default function AboutCard() {
             want to revitalize what it means to be part of and have the support
             of a community. Growr acts as a facilitator of "good neighbor vibes"
             by targeting the all your activities within a set radius - we're in
-            support of face-to-plant interactions, not emoji-to-emoji.
-            🌱
+            support of face-to-plant interactions, not emoji-to-emoji. 🌱
           </p>
 
           <p>
@@ -71,7 +71,9 @@ export default function AboutCard() {
             urban/community garden with your new-to-you neighbors!
           </p>
         </Typography>
-        <div align="center"><img src={plantClip} alt="potted plant" width="150px" /></div>
+        <div align="center">
+          <img src={plantClip} alt="potted plant" width="150px" />
+        </div>
       </Paper>
 
       <Paper elevation={1}>
@@ -84,18 +86,27 @@ export default function AboutCard() {
           the team
         </Typography>
         <Typography gutterBottom variant="body1">
-        <span className={classes.growrName}>growr</span> was born as a coding boot camp project and brought together an awesome and diverse team. Originally envisoned as an application for locating and sharing community gardens, the team's creativity and hard work has seen it <em>grow</em> into more. At the beginning of the project Brandon, Riheel, and Pam focused more on the back end while Felicia and Matt worked on the front, but as the project progressed everyone worked on the <em>full stack</em> and got their code into all aspects of the site.
+          <span className={classes.growrName}>growr</span> was born as a coding
+          boot camp project and brought together an awesome and diverse team.
+          Originally envisoned as an application for locating and sharing
+          community gardens, the team's creativity and hard work has seen it{" "}
+          <em>grow</em> into more. At the beginning of the project Brandon,
+          Riheel, and Pam focused more on the back end while Felicia and Matt
+          worked on the front, but as the project progressed everyone worked on
+          the <em>full stack</em> and got their code into all aspects of the
+          site.
         </Typography>
         <br />
         <Typography
           variant="h6"
-          gutterBottom
           className={classes.teamMemberName}
           align="center"
         >
           Brandon Maxwell
+        </Typography>
+        <Box align="center">
           <IconButton
-            color="primary"
+            color={growrGreen}
             href={"https://github.com/brandon-maxwell"}
             target="blank"
           >
@@ -103,104 +114,108 @@ export default function AboutCard() {
           </IconButton>
           <IconButton
             href={"https://www.linkedin.com/in/brandon-maxwell-b307b955/"}
-            color="primary"
+            color={growrGreen}
             target="blank"
           >
             <LinkedInIcon />
           </IconButton>
-        </Typography>
+        </Box>
 
         <Typography
           variant="h6"
-          gutterBottom
           className={classes.teamMemberName}
           align="center"
         >
           Felicia Wootton
+        </Typography>
+        <Box align="center">
           <IconButton
-            color="primary"
+            color={growrGreen}
             href={"https://github.com/fdwootton"}
             target="blank"
           >
             <GitHubIcon />
           </IconButton>
           <IconButton
-            color="primary"
+            color={growrGreen}
             href={"https://www.linkedin.com/in/felicia-wootton-9bb859203/"}
             target="blank"
           >
             <LinkedInIcon />
           </IconButton>
-        </Typography>
+        </Box>
 
         <Typography
           variant="h6"
-          gutterBottom
           className={classes.teamMemberName}
           align="center"
         >
           Matt Goad
+        </Typography>
+        <Box align="center">
           <IconButton
-            color="primary"
+            color={growrGreen}
             href={"https://github.com/matthewxgoad"}
             target="blank"
           >
             <GitHubIcon />
           </IconButton>
           <IconButton
-            color="primary"
+            color={growrGreen}
             href={"https://www.linkedin.com/in/goadmatthew/"}
             target="blank"
           >
             <LinkedInIcon />
           </IconButton>
-        </Typography>
+        </Box>
 
         <Typography
           variant="h6"
-          gutterBottom
           className={classes.teamMemberName}
           align="center"
         >
           Pam Hsu
+        </Typography>
+        <Box align="center">
           <IconButton
-            color="primary"
+            color={growrGreen}
             href={"https://github.com/p-hsu"}
             target="blank"
           >
             <GitHubIcon />
           </IconButton>
           <IconButton
-            color="primary"
+            color={growrGreen}
             href={"https://www.linkedin.com/in/pamela-hsu-b46384202/"}
             target="blank"
           >
             <LinkedInIcon />
           </IconButton>
-        </Typography>
+        </Box>
 
         <Typography
           variant="h6"
-          gutterBottom
           className={classes.teamMemberName}
           align="center"
         >
           Riheel Hamoande
+        </Typography>
+        <Box align="center">
           <IconButton
-            color="primary"
+            color={growrGreen}
             href={"https://github.com/riheelh"}
             target="blank"
           >
             <GitHubIcon />
           </IconButton>
           <IconButton
-            color="primary"
+            color={growrGreen}
             href={"https://www.linkedin.com/in/riheel-hamoande-8791a831/"}
             target="blank"
           >
             <LinkedInIcon />
           </IconButton>
-        </Typography>
+        </Box>
       </Paper>
     </div>
   );

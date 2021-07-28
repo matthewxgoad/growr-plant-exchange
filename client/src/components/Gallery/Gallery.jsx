@@ -15,11 +15,9 @@ export default function Gallery(props) {
   const classes = useStyles();
 
   return (
-      <div className={classes.root}>
-        <Grid container justifyContent="center" spacing={2}>
+        <Grid container justifyContent="center" spacing={2} className={classes.root}>
           {props.children}
         </Grid>
-      </div>
     
   );
 }
