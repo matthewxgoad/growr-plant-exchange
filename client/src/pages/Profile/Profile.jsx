@@ -12,7 +12,7 @@ import { Grid } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    margin: "2rem",
+    margin: "auto",
   },
 }));
 
@@ -29,7 +29,6 @@ export default function Profile(props) {
 
 
   useEffect(() => {
-    console.log(location.pathname.split('/')[2])
     let otherUserId = location.pathname.split('/')[2]
 
     if(otherUserId){
