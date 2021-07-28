@@ -9,6 +9,7 @@ import Avatar from "@material-ui/core/Avatar";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import indigo from '@material-ui/core/colors/indigo';
 import blueGrey from '@material-ui/core/colors/blueGrey';
+import moment from "moment";
 import API from "../../util/API/API";
 
 const friendColor = indigo[50];
@@ -56,6 +57,8 @@ export default function Message({ message, own}) {
   
   const [avatarDataState, setAvatarDataState] = useState("")
 
+  const timeStamp = moment(message.createdAt).fromNow();
+
   useEffect(() => {
     loadAvatar(message.sender);
   }, []);
@@ -88,7 +91,7 @@ export default function Message({ message, own}) {
                 <ListItemText
                   className={classes.message}
                   primary= {message.text}
-                  secondary= {message.createdAt}
+                  secondary= {timeStamp}
                 />
           </ListItem>
         </List>
@@ -100,7 +103,7 @@ export default function Message({ message, own}) {
                 <ListItemText
                   className={classes.ownMessage}
                   primary= {message.text}
-                  secondary= {message.createdAt}
+                  secondary= {timeStamp}
                 />
             <ListItemAvatar>
               <Avatar
