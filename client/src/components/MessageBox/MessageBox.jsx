@@ -5,7 +5,7 @@ import Divider from "@material-ui/core/Divider";
 import { makeStyles, withStyles } from '@material-ui/core';
 import brown from "@material-ui/core/colors/brown";
 import green from "@material-ui/core/colors/green";
-import Message from "../../components/message/Message";
+import Message from "../../components/Message/Message";
 
 
 const headerColor = green[600];
