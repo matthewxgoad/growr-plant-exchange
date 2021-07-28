@@ -61,7 +61,7 @@ export default function Message({ message, own}) {
 
   useEffect(() => {
     loadAvatar(message.sender);
-  }, []);
+  }, [message]);
 
   function loadAvatar(id) {
     API.getUser(id)
