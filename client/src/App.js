@@ -1,3 +1,6 @@
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./util/context/AuthContext";
 import Trade from "./pages/Trade";
 import Events from "./pages/Events";
 import Places from "./pages/Places";
@@ -8,16 +11,6 @@ import About from "./pages/About";
 import Inbox from "./pages/Inbox";
 import Add from "./pages/Add";
 import Root from "./pages/Root";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-
-import { useContext } from "react";
-import { AuthContext } from "./util/context/AuthContext";
-
 import "./App.css";
 
 function App() {
@@ -28,6 +21,7 @@ function App() {
         <Route exact path="/">
           {<Root />}
         </Route>
+        {/* conditional rendering to redirect to login or signup page if not logged in */}
         <Route path="/login">
           {user ? <Redirect to="/profiles" /> : <Login />}
         </Route>
@@ -49,6 +43,7 @@ function App() {
         <Route exact path="/places">
           {user ? <Places /> : <Login />}
         </Route>
+        {/* Conditional render for logged in user profile or other user profile */}
         <Route path="/profiles">
           {user ? <Profile /> : <Login />}
         </Route>

@@ -33,7 +33,7 @@ export default function Places() {
     API.getPlaces(userId)
       .then((res) => {
         let placeArr = [];
-
+        // nested for loop to bring array up a level to pass into component
         for (let i = 0; i < res.data.length; i++) {
           for (let j = 0; j < res.data[i].places.length; j++) {
             let placeLoop = res.data[i].places[j];

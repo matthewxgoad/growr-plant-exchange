@@ -25,11 +25,12 @@ export default function Profile() {
   let loggedInUserData = JSON.parse(localStorage.getItem("user"));
   const userId = loggedInUserData;
 
+  // useLocation hook for grabbing userId from url location.pathname
   let location = useLocation()
 
   useEffect(() => {
     let otherUserId = location.pathname.split('/')[2]
-
+    // if else statement to render either own profile or another user's profile using data from useLocation hook
     if(otherUserId){
       loadProfile(otherUserId)
     } else {
@@ -44,7 +45,7 @@ export default function Profile() {
         setProfileDataState(res.data.user);
 
         let tradeArr = [];
-
+        // nested for loop to bring array up a level to pass into component
         for(let i = 0; i < res.data.user.trades.length; i++){
             let tradeLoop = res.data.user.trades[i];
             if(tradeLoop){

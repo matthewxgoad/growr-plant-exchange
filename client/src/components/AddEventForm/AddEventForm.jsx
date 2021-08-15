@@ -54,6 +54,7 @@ export default function AddEventForm() {
     let loggedInUserData = JSON.parse(localStorage.getItem('user'));
     const creator = loggedInUserData;
   
+    // handleSumbit grabs data from form input to push through to post API
     const handleSubmit = async (e) => {
         e.preventDefault();
         SetProgress(true)
@@ -73,7 +74,6 @@ export default function AddEventForm() {
         } catch (err) {
           console.log(err);
         }
-
         setModalState(true);
     }
 

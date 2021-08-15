@@ -36,7 +36,7 @@ export default function Events() {
     API.getEvents(userId)
       .then((res) => {
         let eventArr = [];
-
+        // nested for loop to bring array up a level to pass into component
         for (let i = 0; i < res.data.length; i++) {
           for (let j = 0; j < res.data[i].events.length; j++) {
             let eventLoop = res.data[i].events[j];

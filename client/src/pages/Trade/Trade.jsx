@@ -36,7 +36,7 @@ export default function Trade() {
     API.getTrades(userId)
       .then((res) => {
         let tradeArr = [];
-
+        // nested for loop to bring array up a level to pass into component
         for (let i = 0; i < res.data.length; i++) {
           for (let j = 0; j < res.data[i].trades.length; j++) {
             let tradeLoop = res.data[i].trades[j];
