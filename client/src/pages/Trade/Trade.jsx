@@ -28,6 +28,7 @@ export default function Trade(props) {
 
   useEffect(() => {
     loadTrades();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Loads all trades near userid
