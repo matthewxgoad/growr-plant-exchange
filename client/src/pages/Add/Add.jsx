@@ -4,7 +4,7 @@ import AddForm from '../../components/AddForm';
 import "./Add.css"
 
 
-export default function Add(props) {
+export default function Add() {
   return (
   <>
     <NavBar page="add"/>

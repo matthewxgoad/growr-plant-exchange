@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Trade(props) {
+export default function Trade() {
 
   const classes = useStyles();
 

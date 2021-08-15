@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Places(props) {
+export default function Places() {
   const classes = useStyles();
   const [placeDataState, setPlaceDataState] = useState([]);
 

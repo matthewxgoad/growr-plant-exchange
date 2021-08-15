@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Profile(props) {
+export default function Profile() {
   const classes = useStyles();
 
   const [tradeDataState, setTradeDataState] = useState([]);

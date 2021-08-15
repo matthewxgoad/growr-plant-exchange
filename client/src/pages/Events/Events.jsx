@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Events(props) {
+export default function Events() {
 
   const classes = useStyles();
 
