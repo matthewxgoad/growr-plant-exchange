@@ -1,11 +1,11 @@
 import React from 'react';
-import axios from 'axios';
 import { Grid,Paper, TextField, Button, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import AddModal from '../AddModal';
+import API from '../../util/API/API';
 
 const headerColor = green[600];
 
@@ -69,7 +69,7 @@ export default function AddEventForm() {
     
     
         try {
-          await axios.post("/api/events", formData);
+          await API.createEvent(formData);
         } catch (err) {
           console.log(err);
         }
