@@ -1,10 +1,10 @@
-import TradeCard from "../../components/TradeCard";
-import NavBar from "../../components/NavBar";
-import Gallery from "../../components/Gallery";
 import { useState, useEffect } from "react";
 import { Typography, Box } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/styles";
 import lightGreen from "@material-ui/core/colors/lightGreen";
+import TradeCard from "../../components/TradeCard";
+import NavBar from "../../components/NavBar";
+import Gallery from "../../components/Gallery";
 import API from "../../util/API/API";
 import "./Trade.css";
 

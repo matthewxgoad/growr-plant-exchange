@@ -6,9 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import IconButton from "@material-ui/core/IconButton";
-import plantClip from "../../assets/pictures/plantClip.png";
 import lightGreen from "@material-ui/core/colors/lightGreen";
-import "./AboutCard.css";
+import plantClip from "../../assets/pictures/plantClip.png";
 
 const growrGreen = lightGreen[700];
 

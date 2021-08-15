@@ -1,13 +1,13 @@
 import {React, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
 import Gallery from "../../components/Gallery";
 import NavBar from "../../components/NavBar";
 import ProfileCard from "../../components/ProfileCard";
 import TradeCard from "../../components/TradeCard";
 import API from "../../util/API/API";
-import { Grid } from "@material-ui/core";
-// import "./Profile.css";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {

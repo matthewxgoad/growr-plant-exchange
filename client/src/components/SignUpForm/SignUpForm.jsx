@@ -1,19 +1,9 @@
-import React from "react";
-import { useState, useContext } from "react";
-import "./SignUpForm.css";
+import { React, useState, useContext } from "react";
 import { loginRequest } from "../../util/API/loginRequest";
 import { AuthContext } from "../../util/context/AuthContext";
-import API from '../../util/API/API';
-import {
-  makeStyles,
-  Grid,
-  Paper,
-  Link,
-  TextField,
-  Button,
-  CircularProgress,
-} from "@material-ui/core";
+import { makeStyles, Grid, Paper, Link, TextField, Button, CircularProgress } from "@material-ui/core";
 import green from "@material-ui/core/colors/green";
+import API from '../../util/API/API';
 
 const headerColor = green[600];
 

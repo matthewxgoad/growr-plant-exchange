@@ -1,10 +1,8 @@
-import { React, useState } from 'react';
-import './LoginForm.css';
+import { React, useState, useContext } from 'react';
 import { Grid,Paper, TextField, Button, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 import Link from "@material-ui/core/Link";
-import { useContext } from "react";
 import { loginRequest } from "../../util/API/loginRequest";
 import { AuthContext } from "../../util/context/AuthContext";
 

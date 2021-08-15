@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './AddTradeForm.css';
-import { Grid,Paper, TextField, Button, 
-  FormControl, RadioGroup, FormControlLabel, Radio, CircularProgress } from '@material-ui/core';
+import { Grid,Paper, TextField, Button, FormControl, RadioGroup, FormControlLabel, Radio, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
 import AddModal from '../AddModal';

@@ -1,12 +1,13 @@
 import React from 'react';
 import { useContext, useState } from "react";
 import { AuthContext } from "../../util/context/AuthContext";
+import { makeStyles, AppBar, Toolbar, Typography, Button, Link, List, 
+  Divider, ListItem, ListItemText, Drawer, IconButton } from "@material-ui/core";
 import grey from "@material-ui/core/colors/grey";
 import teal from "@material-ui/core/colors/teal";
 import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
-import { makeStyles, AppBar, Toolbar, Typography, Button, Link, List, 
-  Divider, ListItem, ListItemText, Drawer, IconButton } from "@material-ui/core";
+
 
 const drawerColor = grey[800];
 const navColor = teal[600];

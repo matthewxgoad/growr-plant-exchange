@@ -1,11 +1,10 @@
 import React from 'react';
-import './AddForm.css';
-import AddTradeForm from '../AddTradeForm';
-import AddEventForm from '../AddEventForm';
-import AddPlaceForm from '../AddPlaceForm';
 import { Grid, Paper, Button, FormControl, RadioGroup, FormControlLabel, Radio, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
+import AddTradeForm from '../AddTradeForm';
+import AddEventForm from '../AddEventForm';
+import AddPlaceForm from '../AddPlaceForm';
 
 const headerColor = green[600];
 

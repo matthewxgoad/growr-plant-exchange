@@ -1,8 +1,8 @@
-import NavBar from "../../components/NavBar";
-import "./Inbox.css";
+import { makeStyles } from "@material-ui/core";
 import InboxMenu from "../../components/InboxMenu";
 import MessageBox from "../../components/MessageBox";
-import { makeStyles } from "@material-ui/core";
+import NavBar from "../../components/NavBar";
+import "./Inbox.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {

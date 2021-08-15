@@ -1,7 +1,8 @@
 import React from 'react';
 import NavBar from '../../components/NavBar';
-import "./Add.css"
 import AddForm from '../../components/AddForm';
+import "./Add.css"
+
 
 export default function Add(props) {
   return (

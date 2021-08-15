@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import './AddPlaceForm.css';
 import { Grid,Paper, TextField, Button, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import green from "@material-ui/core/colors/green";
