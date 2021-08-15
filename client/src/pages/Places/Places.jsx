@@ -25,6 +25,7 @@ export default function Places(props) {
 
   useEffect(() => {
     loadPlaces();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Loads all trades near userid
