@@ -37,7 +37,6 @@ export default function Places(props) {
         for (let i = 0; i < res.data.length; i++) {
           for (let j = 0; j < res.data[i].places.length; j++) {
             let placeLoop = res.data[i].places[j];
-            console.log(placeLoop);
             if (placeLoop) {
               placeLoop.name = res.data[i].name;
               placeArr.push(placeLoop);
