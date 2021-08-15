@@ -1,5 +1,5 @@
 import {React, useState, useEffect } from "react";
-import { useParams, useRouteMatch, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Gallery from "../../components/Gallery";
 import NavBar from "../../components/NavBar";
@@ -27,7 +27,6 @@ export default function Profile(props) {
 
   let location = useLocation()
 
-
   useEffect(() => {
     let otherUserId = location.pathname.split('/')[2]
 
@@ -36,20 +35,18 @@ export default function Profile(props) {
     } else {
       loadProfile(userId)
     }
-  }, []);
+  }, [userId, location.pathname]);
 
   // Loads all trades near userid
   function loadProfile(id) {
     API.getUser(id)
       .then((res) => {
-        console.log(res);
         setProfileDataState(res.data.user);
 
         let tradeArr = [];
 
         for(let i = 0; i < res.data.user.trades.length; i++){
             let tradeLoop = res.data.user.trades[i];
-            console.log(tradeLoop)
             if(tradeLoop){
               tradeLoop.name = res.data.user.name;
               tradeArr.push(tradeLoop)
