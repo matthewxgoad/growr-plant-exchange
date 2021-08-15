@@ -59,7 +59,6 @@ export default function SignUpForm(props) {
     
     try {
       await API.createUser(formData);
-      // await axios.post("/api/users/signup", formData);
     } catch (err) {
       console.log(err);
     }
