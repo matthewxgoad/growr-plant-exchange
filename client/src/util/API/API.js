@@ -1,7 +1,5 @@
 import axios from "axios";
 
-
-
 // eslint-disable-next-line
 export default {
   // GET all trades in radius by logged in uid
@@ -32,8 +30,20 @@ export default {
   deletePlace: function(id) {
     return axios.delete('/api/places/'+ id);
   },
-  // create new user
+  // POST new user
   createUser: function(formData) {
     return axios.post("/api/users/signup/", formData)
+  },
+  // POST new trade
+  createTrade: function(formData) {
+    return axios.post("/api/trades", formData)
+  },
+  // POST new event
+  createEvent: function(formData) {
+    return axios.post("/api/events", formData)
+  },
+  // POST new place
+  createPlace: function(formData) {
+    return axios.post("/api/places", formData)
   }
 };
