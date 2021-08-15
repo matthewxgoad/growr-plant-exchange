@@ -63,7 +63,6 @@ const createPlace = async (req, res, next) => {
     let temp = coordsArray[0];
     coordsArray[0]=coordsArray[1];
     coordsArray[1]=temp;
-    console.log(coordsArray)
   } catch (error) {
     return next(error);
   }
@@ -90,8 +89,6 @@ const createPlace = async (req, res, next) => {
     const error = new HttpError('Could not find user for provided id', 404);
     return next(error);
   }
-
-  console.log(user);
 
   try {
     await createdPlace.save();

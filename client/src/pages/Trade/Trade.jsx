@@ -40,7 +40,6 @@ export default function Trade() {
         for (let i = 0; i < res.data.length; i++) {
           for (let j = 0; j < res.data[i].trades.length; j++) {
             let tradeLoop = res.data[i].trades[j];
-            // console.log(tradeLoop)
             if (tradeLoop) {
               tradeLoop.name = res.data[i].name;
               tradeArr.push(tradeLoop);

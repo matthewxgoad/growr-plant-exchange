@@ -73,8 +73,6 @@ const createComment = async (req, res, next) => {
     return next(error);
   }
 
-  console.log(user);
-
   try {
     await createdComment.save();
     user.comments.push(createdComment);

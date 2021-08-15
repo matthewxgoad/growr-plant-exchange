@@ -25,7 +25,6 @@ const getUserById = async (req, res, next) => {
   let user;
   try {
     user = await User.findById(userId, "-password").populate("trades").populate("places").populate("events");
-    console.log(user)
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not find user.",
@@ -51,7 +50,6 @@ const getUsersTradesWithin = async (req, res, next) => {
   const {
     location: { coordinates },
   } = (await sourceUser).toObject();
-  console.log(coordinates);
 
   let result = await User.find({
     location: {
@@ -74,7 +72,6 @@ const getUsersPlacesWithin = async (req, res, next) => {
   const {
     location: { coordinates },
   } = (await sourceUser).toObject();
-  console.log(coordinates);
 
   let result = await User.find({
     location: {
@@ -97,7 +94,6 @@ const getUsersEventsWithin = async (req, res, next) => {
   const {
     location: { coordinates },
   } = (await sourceUser).toObject();
-  console.log(coordinates);
 
   let result = await User.find({
     location: {
@@ -121,7 +117,6 @@ const signup = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  console.log("req body", req.body);
 
   const { name, email, password, address, neighborhood } = req.body;
 
@@ -152,7 +147,6 @@ const signup = async (req, res, next) => {
     let temp = coordsArray[0];
     coordsArray[0] = coordsArray[1];
     coordsArray[1] = temp;
-    console.log(coordsArray);
   } catch (error) {
     return next(error);
   }
@@ -178,8 +172,6 @@ const signup = async (req, res, next) => {
     neighborhood,
     places: [],
   });
-
-  console.log(`>>createdUser`, createdUser);
   
   try {
     await createdUser.save();

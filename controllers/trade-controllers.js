@@ -75,8 +75,6 @@ const createTrade = async (req, res, next) => {
     return next(error);
   }
 
-  console.log(user);
-
   try {
     await createdTrade.save();
     user.trades.push(createdTrade);

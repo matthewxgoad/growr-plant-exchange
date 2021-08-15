@@ -63,7 +63,6 @@ const createEvent = async (req, res, next) => {
       let temp = coordsArray[0];
       coordsArray[0]=coordsArray[1];
       coordsArray[1]=temp;
-      console.log(coordsArray)
     } catch (error) {
       return next(error);
     }

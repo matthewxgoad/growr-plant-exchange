@@ -21,5 +21,3 @@ const angle = Math.pow(Math.sin(deltaLat/2), 2) + Math.cos(radiansOne) * Math.co
 const c = 2*Math.atan2(Math.sqrt(angle), Math.sqrt(1-angle));
 
 const distance =  R * c;
-
-console.log(distance)
